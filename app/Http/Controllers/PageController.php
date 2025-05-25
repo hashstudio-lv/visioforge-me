@@ -21,7 +21,7 @@ class PageController extends Controller
 
     public function home()
     {
-        return view('themes.new.pages.home');
+        return view('pages.home');
     }
 
     public function show($slug)

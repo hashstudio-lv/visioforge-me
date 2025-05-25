@@ -21,9 +21,7 @@ class ProductController extends Controller
 
     public function index()
     {
-//        GenerateProduct::dispatch(ProductCategory::PEOPLE_PORTRAITS, ProductStyle::PHOTO_REALISM);
-
-        return view('themes.new.pages.products.index', [
+        return view('pages.products.index', [
             'products' => $this->productRepository->get(request()->all()),
         ]);
     }
@@ -32,7 +30,7 @@ class ProductController extends Controller
     {
         $product = $this->productRepository->find($slug);
 
-        return view('themes.new.pages.products.show', [
+        return view('pages.products.show', [
             'product' => $product,
         ]);
     }
