@@ -1489,22 +1489,37 @@
                     </a>
                 </div>
                 <div>
-                    <form
-                        class="max-w-form-xl md:max-w-form-md lg:max-w-form-lg xl:max-w-form-xl 2xl:max-w-form-2xl bg-deepgray ml-auto rounded relative"
-                        data-aos="fade-up"
+                    <div
+                        x-data="{ submitted: false }"
+                        class="max-w-form-xl md:max-w-form-md lg:max-w-form-lg xl:max-w-form-xl 2xl:max-w-form-2xl ml-auto"
                     >
-                        <input
-                            type="email"
-                            placeholder="Enter your email here"
-                            class="text-whiteColor h-62px pl-15px focus:outline-none border border-deepgray focus:border-whitegrey bg-transparent rounded w-full"
+                        <form
+                            x-show="!submitted"
+                            @submit.prevent="submitted = true"
+                            class="bg-deepgray rounded relative"
+                            data-aos="fade-up"
                         >
-                        <button
-                            type="submit"
-                            class="px-3 md:px-10px lg:px-5 bg-primaryColor hover:bg-deepgray text-xs lg:text-size-15 text-whiteColor border border-primaryColor block rounded absolute right-0 top-0 h-full"
+                            <input
+                                type="email"
+                                placeholder="Enter your email here"
+                                class="text-whiteColor h-62px pl-15px focus:outline-none border border-deepgray focus:border-whitegrey bg-transparent rounded w-full"
+                            >
+                            <button
+                                type="submit"
+                                class="px-3 md:px-10px lg:px-5 bg-primaryColor hover:bg-deepgray text-xs lg:text-size-15 text-whiteColor border border-primaryColor block rounded absolute right-0 top-0 h-full"
+                            >
+                                Subscribe Now
+                            </button>
+                        </form>
+
+                        <div
+                            x-show="submitted"
+                            x-transition
+                            class="mt-4 text-whiteColor bg-green-600 px-4 py-3 rounded text-sm"
                         >
-                            Subscribe Now
-                        </button>
-                    </form>
+                            Thank you for subscribing!
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
