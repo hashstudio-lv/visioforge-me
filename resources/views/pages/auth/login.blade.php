@@ -82,7 +82,7 @@
                     class="absolute w-0 h-1 bg-primaryColor top-0 left-0 group-hover/btn:w-full"
                 ></span>
 
-                            {{ __('Sing up') }}
+                            {{ __('Sign Up') }}
                         </a>
                     </div>
 

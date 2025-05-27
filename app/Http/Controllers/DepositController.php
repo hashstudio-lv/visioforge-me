@@ -29,7 +29,7 @@ class DepositController extends Controller
         }
 
 
-        return view('themes.new.pages.deposits.create', [
+        return view('pages.deposits.create', [
             'user' => $user,
             'countries' => $countries,
             'currency' => $currency,
@@ -70,7 +70,7 @@ class DepositController extends Controller
     {
         $user = auth()->user();
 
-        return view('themes.new.pages.deposits.index', [
+        return view('pages.deposits.index', [
             'user' => $user,
             'deposits' => $user->deposits
         ]);

@@ -53,13 +53,13 @@
                                     {{ __('Get Start') }}
                                 </a>
                             </li>
-                            <li class="block lg:hidden">
-                                <button
-                                    class="open-mobile-menu text-3xl text-darkdeep1 hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor">
-                                    <i class="icofont-navigation-menu"></i>
-                                </button>
-                            </li>
                         @endif
+                        <li class="block lg:hidden">
+                            <button
+                                class="open-mobile-menu text-3xl text-darkdeep1 hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor">
+                                <i class="icofont-navigation-menu"></i>
+                            </button>
+                        </li>
                     </ul>
                 </div>
             </div>

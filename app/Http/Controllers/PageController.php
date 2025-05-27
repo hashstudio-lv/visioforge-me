@@ -30,18 +30,18 @@ class PageController extends Controller
             return $query->where('slug', $slug);
         })->firstOrFail();
 
-        return view($page->view ?? 'themes.new.pages.content', [
+        return view($page->view ?? 'pages.static', [
             'page' => $page,
         ]);
     }
 
     public function imageEditing()
     {
-        return view('themes.new.pages.landings.image-editing');
+        return view('pages.landings.image-editing');
     }
 
     public function imageGeneration()
     {
-        return view('themes.new.pages.landings.image-generation');
+        return view('pages.landings.image-generation');
     }
 }

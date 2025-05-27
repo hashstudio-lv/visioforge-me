@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="{{ asset('assets/css/swiper-bundle.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/aos.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
 </head>
 <body
     class="relative font-inter font-normal text-base leading-[1.8] bg-bodyBg dark:bg-bodyBg-dark"
@@ -1406,8 +1408,6 @@
     </div>
 </header>
 
-<!-- main body -->
-
 @yield('content')
 
 <footer class="bg-darkblack">
@@ -1417,9 +1417,9 @@
                 class="grid grid-cols-1 md:grid-cols-2 gap-y-5 md:gap-y-0 items-center pb-45px border-b border-darkcolor"
             >
                 <div data-aos="fade-up">
-                    <a href="{{ route('login') }}"
-                    ><img src="{{ asset('assets/images/logo/logo_2.png') }}" alt=""
-                        ></a>
+                    <a href="{{ route('login') }}" class="text-primaryColor font-bold text-4xl">
+                        VISIO<span class="text-white">FORGE</span>
+                    </a>
                 </div>
                 <div>
                     <form
@@ -1609,17 +1609,21 @@
                     <ul class="flex items-center justify-end">
                         <li>
                             <a
-                                href="#"
-                                class="text-base text-darkgray hover:text-primaryColor pr-4 border-r border-darkgray leading-1"
-                            >Terms of Use
+                                href="{{ route('pages.show', 'terms-and-conditions') }}"
+                                class="text-base text-darkgray hover:text-primaryColor pr-4 border-r border-darkgray leading-1">
+                                {{ __('Terms & Conditions') }}
                             </a>
                         </li>
                         <li>
-                            <a
-                                href="#"
-                                class="text-base text-darkgray hover:text-primaryColor pl-4"
-                            >
-                                Privacy Policy
+                            <a href="{{ route('pages.show', 'privacy-policy') }}"
+                                class="text-base text-darkgray hover:text-primaryColor pl-4 pr-4 border-r border-darkgray leading-1">
+                                {{ __('Privacy Policy') }}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('pages.show', 'cookie-policy') }}"
+                               class="text-base text-darkgray hover:text-primaryColor pl-4">
+                                {{ __('Cookie Policy') }}
                             </a>
                         </li>
                     </ul>
