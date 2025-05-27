@@ -161,11 +161,11 @@
                                             <label for="remember"> Remember me</label>
                                         </div>
                                         <div>
-                                            <a
-                                                href="#"
-                                                class="hover:text-primaryColor relative after:absolute after:left-0 after:bottom-0.5 after:w-0 after:h-0.5 after:bg-primaryColor after:transition-all after:duration-300 hover:after:w-full"
-                                            >Forgot your password?
-                                            </a>
+{{--                                            <a--}}
+{{--                                                href="#"--}}
+{{--                                                class="hover:text-primaryColor relative after:absolute after:left-0 after:bottom-0.5 after:w-0 after:h-0.5 after:bg-primaryColor after:transition-all after:duration-300 hover:after:w-full"--}}
+{{--                                            >Forgot your password?--}}
+{{--                                            </a>--}}
                                         </div>
                                     </div>
                                     <div class="my-25px text-center">
