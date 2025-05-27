@@ -38,13 +38,13 @@ Route::group(
 
     require __DIR__ . '/auth.php';
 
-//    Route::get('/emails', [\App\Http\Controllers\PageController::class, 'emailLanding'])->name('pages.email-landing');
-//    Route::get('/agreements', [\App\Http\Controllers\PageController::class, 'agreementLanding'])->name('pages.agreement-landing');
+    Route::get('/emails', [\App\Http\Controllers\PageController::class, 'emails'])->name('pages.emails');
+    Route::get('/agreements', [\App\Http\Controllers\PageController::class, 'agreements'])->name('pages.agreements');
 //    Route::get('/images', [\App\Http\Controllers\PageController::class, 'imageLanding'])->name('pages.image-landing');
     Route::get('/products', [\App\Http\Controllers\ProductController::class, 'index'])->name('products.index');
     Route::get('/products/{slug}', [\App\Http\Controllers\ProductController::class, 'show'])->name('products.show');
-    Route::get('/image-generation', [\App\Http\Controllers\PageController::class, 'imageGeneration'])->name('pages.image-generation');
-    Route::get('/image-editing', [\App\Http\Controllers\PageController::class, 'imageEditing'])->name('pages.image-editing');
+//    Route::get('/image-generation', [\App\Http\Controllers\PageController::class, 'imageGeneration'])->name('pages.image-generation');
+//    Route::get('/image-editing', [\App\Http\Controllers\PageController::class, 'imageEditing'])->name('pages.image-editing');
     Route::get('/{slug?}', [\App\Http\Controllers\PageController::class, 'show'])->name('pages.show');
 });
 

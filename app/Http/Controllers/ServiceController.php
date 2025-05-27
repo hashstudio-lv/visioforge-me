@@ -27,8 +27,8 @@ class ServiceController extends Controller
             abort(404);
         }
 
-        return view('themes.new.pages.services.show', [
-            'service' => Service::tryFrom($slug)
+        return view('pages.services.show', [
+            'service' => $service
         ]);
     }
 }

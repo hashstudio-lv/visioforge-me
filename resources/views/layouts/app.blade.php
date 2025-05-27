@@ -45,9 +45,76 @@
 </div>
 <!--======= Header area start =======-->
 <header>
-    @include('includes.nav-bar')
+    <!-- navbar start -->
+    <div
+        class="transition-all duration-500 sticky-header z-medium dark:bg-whiteColor-dark lg:border-b border-borderColor dark:border-borderColor-dark"
+    >
+        <nav>
+            <div
+                class="py-15px lg:py-0 px-15px container sm:container-fluid lg:container 3xl:container-secondary 4xl:container mx-auto relative"
+            >
+                <div class="grid grid-cols-2 lg:grid-cols-12 items-center gap-15px">
+                    <!-- navbar left -->
+                    <div class="lg:col-start-1 lg:col-span-2">
+                        <a href="{{ route('home') }}" class="block font-bold text-3xl">
+                            <span class="text-primaryColor">VISIO</span><span class="text-secondaryColor">FORGE</span>
+                        </a>
+                    </div>
+                    <!-- Main menu -->
+                    <div class="hidden lg:block lg:col-start-3 lg:col-span-7">
+                        <ul class="nav-list flex justify-center">
+                            @foreach([
+                                ['title' => 'Home', 'url' => route('home')],
+                                ['title' => 'Generate Agreements', 'url' => route('pages.agreements')],
+                                ['title' => 'Generate Emails', 'url' => route('pages.emails')],
+                                ['title' => 'Image Stock', 'url' => route('products.index')],
+                            ] as $item)
+                                <li class="nav-item group">
+                                    <a href="{{ $item['url'] }}"
+                                       class="px-5 lg:px-10px 2xl:px-15px 3xl:px-5 py-10 lg:py-5 2xl:py-30px 3xl:py-10 leading-sm 2xl:leading-lg text-base lg:text-sm 2xl:text-base font-semibold block group-hover:text-primaryColor dark:text-whiteColor">
+                                        {{ $item['title'] }}
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    <!-- navbar right -->
+                    <div class="lg:col-start-10 lg:col-span-3">
+                        <ul class="relative nav-list flex justify-end items-center">
+                            @if(auth()->check())
+                                <li class="hidden lg:block">
+                                    <a href="{{ route('login') }}"
+                                       class="text-size-12 2xl:text-size-15 px-15px py-2 text-blackColor hover:text-whiteColor bg-whiteColor block hover:bg-primaryColor border border-borderColor1 rounded-standard font-semibold mr-[7px] 2xl:mr-15px dark:text-blackColor-dark dark:bg-whiteColor-dark dark:hover:bg-primaryColor dark:hover:text-whiteColor dark:hover:border-primaryColor">
+                                        <i class="icofont-user-alt-5"></i>
+                                    </a>
+                                </li>
+                            @else
+                                <li class="hidden lg:block">
+                                    <a href="{{ route('login') }}"
+                                       class="text-size-12 2xl:text-size-15 px-15px py-2 text-blackColor hover:text-whiteColor bg-whiteColor block hover:bg-primaryColor border border-borderColor1 rounded-standard font-semibold mr-[7px] 2xl:mr-15px dark:text-blackColor-dark dark:bg-whiteColor-dark dark:hover:bg-primaryColor dark:hover:text-whiteColor dark:hover:border-primaryColor">
+                                        <i class="icofont-user-alt-5"></i>
+                                    </a>
+                                </li>
+                                <li class="hidden lg:block">
+                                    <a href="{{ route('register') }}"
+                                       class="text-size-12 2xl:text-size-15 text-whiteColor bg-primaryColor block border-primaryColor border hover:text-primaryColor hover:bg-white px-15px py-2 rounded-standard dark:hover:bg-whiteColor-dark dark: dark:hover:text-whiteColor">
+                                        {{ __('Get Start') }}
+                                    </a>
+                                </li>
+                            @endif
+                            <li class="block lg:hidden">
+                                <button
+                                    class="open-mobile-menu text-3xl text-darkdeep1 hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor">
+                                    <i class="icofont-navigation-menu"></i>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
 
-    <!-- mobile menu -->
     <div
         class="mobile-menu w-mobile-menu-sm md:w-mobile-menu-lg fixed top-0 -right-[280px] md:-right-[330px] transition-all duration-500 w-mobile-menu h-full shadow-dropdown-secodary bg-whiteColor dark:bg-whiteColor-dark z-high block lg:hidden"
     >
@@ -1417,8 +1484,8 @@
                 class="grid grid-cols-1 md:grid-cols-2 gap-y-5 md:gap-y-0 items-center pb-45px border-b border-darkcolor"
             >
                 <div data-aos="fade-up">
-                    <a href="{{ route('login') }}" class="text-primaryColor font-bold text-4xl">
-                        VISIO<span class="text-white">FORGE</span>
+                    <a href="{{ route('login') }}" class="font-bold text-4xl">
+                        <span class="text-primaryColor">VISIO</span><span class="text-secondaryColor">FORGE</span>
                     </a>
                 </div>
                 <div>
@@ -1509,8 +1576,8 @@
                     <ul class="flex flex-col gap-y-3">
                         @foreach([
                                 ['url' => route('home'), 'title' => __('Home')],
-                                ['url' => route('products.index'), 'title' => __('Agreement Generation')],
-                                ['url' => route('products.index'), 'title' => __('Email Generation')],
+                                ['url' => route('pages.agreements'), 'title' => __('Agreement Generation')],
+                                ['url' => route('pages.emails'), 'title' => __('Email Generation')],
                                 ['url' => route('products.index'), 'title' => __('Image Stock')],
                                 ['url' => route('pages.show', 'contact-us'), 'title' => __('Contact Us')],
                             ] as $item)
@@ -1533,41 +1600,14 @@
                         {{ __('Image Stock') }}
                     </h4>
                     <ul class="flex flex-col gap-y-3">
-                        <li>
-                            <a
-                                href="#"
-                                class="text-darkgray relative hover:text-primaryColor after:transition-all after:duration-300 after:w-0 after:h-2px after:absolute after:bg-primaryColor hover:after:w-full after:bottom-0 after:left-0"
-                            >Ui Ux Design</a
-                            >
-                        </li>
-                        <li>
-                            <a
-                                href="#"
-                                class="text-darkgray relative hover:text-primaryColor after:transition-all after:duration-300 after:w-0 after:h-2px after:absolute after:bg-primaryColor hover:after:w-full after:bottom-0 after:left-0"
-                            >Web Development</a
-                            >
-                        </li>
-                        <li>
-                            <a
-                                href="#"
-                                class="text-darkgray relative hover:text-primaryColor after:transition-all after:duration-300 after:w-0 after:h-2px after:absolute after:bg-primaryColor hover:after:w-full after:bottom-0 after:left-0"
-                            >Business Strategy</a
-                            >
-                        </li>
-                        <li>
-                            <a
-                                href="#"
-                                class="text-darkgray relative hover:text-primaryColor after:transition-all after:duration-300 after:w-0 after:h-2px after:absolute after:bg-primaryColor hover:after:w-full after:bottom-0 after:left-0"
-                            >Softwere Development</a
-                            >
-                        </li>
-                        <li>
-                            <a
-                                href="#"
-                                class="text-darkgray relative hover:text-primaryColor after:transition-all after:duration-300 after:w-0 after:h-2px after:absolute after:bg-primaryColor hover:after:w-full after:bottom-0 after:left-0"
-                            >Business English</a
-                            >
-                        </li>
+                        @foreach(Arr::take(\App\Enums\ProductCategory::cases(), 6) as $item)
+                            <li>
+                                <a href="{{ route('products.index', ['category' => [$item->value]]) }}"
+                                    class="text-darkgray relative hover:text-primaryColor after:transition-all after:duration-300 after:w-0 after:h-2px after:absolute after:bg-primaryColor hover:after:w-full after:bottom-0 after:left-0">
+                                    {{ $item->translatedValue() }}
+                                </a>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
                 <!-- right -->
@@ -1592,6 +1632,14 @@
             </div>
         </section>
 
+        <div class="text-base text-darkgray py-5 lg:py-10">
+            {{ env('COMPANY_NAME') }},
+            {{ env('COMPANY_ADDRESS') }},
+            <a href="tel:{{ env('COMPANY_PHONE') }}"
+               class="mobile tran3s text-[20px] lg:text-[18px] md:text-[18px] sm:text-[18px] xsm:text-[18px] font-medium text-[color:var(--prime-two)] hover:underline">
+                {{ env('COMPANY_PHONE') }}
+            </a>
+        </div>
         <!-- footer copyright  -->
         <div>
             <div

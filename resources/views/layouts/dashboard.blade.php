@@ -12,54 +12,10 @@
                             <h2 class="text-2xl leading-1.24">{{ auth()->user()->email }}</h2>
                         </div>
                     </div>
-                    <div class="text-center">
-                        <div class="text-yellow">
-                            <i class="icofont-star"></i>
-                            <i class="icofont-star"></i>
-                            <i class="icofont-star"></i>
-                            <i class="icofont-star"></i>
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="16"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                class="feather feather-star inline-block"
-                            >
-                                <polygon
-                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                                ></polygon>
-                            </svg>
-                        </div>
-                        <p class="text-whiteColor">4.0 (120 Reviews)</p>
-                    </div>
-                    <div>
-                        <a
-                            href="create-course.html"
-                            class="text-size-15 text-whiteColor bg-primaryColor px-25px py-10px border border-whiteColor hover:text-primaryColor hover:bg-whiteColor rounded group text-nowrap flex gap-1 items-center"
-                        >
-                            Create a New Course
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                class="feather feather-arrow-right"
-                            >
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
-                        </a>
-                    </div>
+                    <a href="{{ route('deposits.create') }}" class="text-whiteColor">
+                        <span class="uppercase text-xs">{{ __('Balance') }}</span><br>
+                        <span class="font-bold text-2xl">{{ __(':amount VFT', ['amount' => auth()->user()->balance]) }}</span>
+                    </a>
                 </div>
             </div>
         </section>
@@ -79,8 +35,8 @@
                             <ul>
                                 @foreach([
                                     ['url' => route('dashboard'), 'title' => __('Dashboard'), 'is_active' => request()->route()->getName() == 'dashboard'],
-                                    ['url' => route('services.show', 'generate-agreements'), 'title' =>  __('Generate Agreements'), 'is_active' => false],
-                                    ['url' => route('services.show', 'generate-emails'), 'title' =>  __('Generate Emails'), 'is_active' => false],
+                                    ['url' => route('services.show', 'generate-agreement'), 'title' =>  __('Generate Agreements'), 'is_active' => false],
+                                    ['url' => route('services.show', 'generate-email'), 'title' =>  __('Generate Emails'), 'is_active' => false],
                                     ['url' => route('products.index'), 'title' =>  __('Image Stock'), 'is_active' => false],
                                 ] as $link)
                                     <li class="py-10px @if(!$loop->last) border-b border-borderColor dark:border-borderColor-dark @endif">

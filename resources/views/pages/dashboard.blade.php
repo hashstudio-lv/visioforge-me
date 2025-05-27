@@ -11,8 +11,8 @@
 
         <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-x-30px gap-y-5">
             @foreach([
-                ['title' =>  __('Generate Agreements'), 'url' => route('services.show', 'generate-agreements')],
-                ['title' =>  __('Generate Emails'), 'url' => route('services.show', 'generate-emails')],
+                ['title' =>  __('Generate Agreements'), 'url' => route('services.show', 'generate-agreement')],
+                ['title' =>  __('Generate Emails'), 'url' => route('services.show', 'generate-email')],
                 ['title' =>  __('Image Stock'), 'url' => route('products.index')],
             ] as $link)
                 <a href="{{ $link['url'] }}"

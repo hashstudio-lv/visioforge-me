@@ -35,13 +35,13 @@ class PageController extends Controller
         ]);
     }
 
-    public function imageEditing()
+    public function agreements()
     {
-        return view('pages.landings.image-editing');
+        return view('pages.landings.agreements');
     }
 
-    public function imageGeneration()
+    public function emails()
     {
-        return view('pages.landings.image-generation');
+        return view('pages.landings.emails');
     }
 }

@@ -43,7 +43,7 @@
                     </li>
                     <li>
                         <a class="whitespace-nowrap text-size-15 text-whiteColor bg-secondaryColor px-25px py-10px border border-secondaryColor hover:text-secondaryColor hover:bg-whiteColor inline-block rounded dark:hover:bg-whiteColor-dark dark:hover:text-whiteColor"
-                           href="course.html">
+                           href="{{ route('pages.emails') }}">
                             Generate Email <i class="icofont-long-arrow-right"></i>
                         </a>
                     </li>
@@ -64,7 +64,7 @@
                     </li>
                     <li>
                         <a class="whitespace-nowrap text-size-15 text-whiteColor bg-secondaryColor px-25px py-10px border border-secondaryColor hover:text-secondaryColor hover:bg-whiteColor inline-block rounded dark:hover:bg-whiteColor-dark dark:hover:text-whiteColor"
-                           href="course.html">
+                           href="{{ route('pages.agreements') }}">
                             Generate Agreement <i class="icofont-long-arrow-right"></i>
                         </a>
                     </li>
@@ -85,7 +85,7 @@
                     </li>
                     <li>
                         <a class="whitespace-nowrap text-size-15 text-whiteColor bg-secondaryColor px-25px py-10px border border-secondaryColor hover:text-secondaryColor hover:bg-whiteColor inline-block rounded dark:hover:bg-whiteColor-dark dark:hover:text-whiteColor"
-                           href="course.html">
+                           href="{{ route('products.index') }}">
                             Explore <i class="icofont-long-arrow-right"></i>
                         </a>
                     </li>
@@ -105,7 +105,7 @@
                             data-aos="fade-up">
                             <div class="tilt"
                                  style="will-change: transform; transform: perspective(2000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1);">
-                                <img class="w-full" src="./assets/images/about/about_single_course_3.png" alt="">
+                                <img class="w-full" src="{{ asset('assets/images/Rolands_Generate_image_for_website_service__AI_Email_Gener_9e1feb49-19b4-4553-aebf-8e6f65c5be8f.png') }}" alt="">
                             </div>
                         </div>
                         <!-- about right -->
@@ -149,14 +149,11 @@
                                      data-aos="fade-up">
                                     <div class="flex gap-4">
                                         <div>
-                                            <img src="./assets/images/counter/counter__1.png" alt="">
-                                        </div>
-                                        <div>
                                             <p class="text-size-34 leading-[1.1] text-blackColor font-bold font-hind dark:text-blackColor-dark">
                                                 <span data-countup-number="27">27</span><span>k+</span>
                                             </p>
                                             <p class="uppercase text-blackColor font-medium leading-[18px] dark:text-blackColor-dark">
-                                                Emails Generated
+                                                Emails<br>Generated
                                             </p>
                                         </div>
                                     </div>
@@ -164,15 +161,12 @@
                                 <div class="basis-full sm:basis-1/2 lg:basis-1/3 aos-init aos-animate"
                                      data-aos="fade-up">
                                     <div class="flex gap-4">
-                                        <div>
-                                            <img src="./assets/images/counter/counter__2.png" alt="">
-                                        </div>
                                         <div>
                                             <p class="text-size-34 leading-[1.1] text-blackColor font-bold font-hind dark:text-blackColor-dark">
                                                 <span data-countup-number="145">145</span><span>+</span>
                                             </p>
                                             <p class="uppercase text-blackColor font-medium leading-[18px] dark:text-blackColor-dark">
-                                                Business Users
+                                                Business<br>Users
                                             </p>
                                         </div>
                                     </div>
@@ -181,18 +175,21 @@
                                      data-aos="fade-up">
                                     <div class="flex gap-4">
                                         <div>
-                                            <img src="./assets/images/counter/counter__3.png" alt="">
-                                        </div>
-                                        <div>
                                             <p class="text-size-34 leading-[1.1] text-blackColor font-bold font-hind dark:text-blackColor-dark">
                                                 <span data-countup-number="10">10</span><span>k</span>
                                             </p>
                                             <p class="uppercase text-blackColor font-medium leading-[18px] dark:text-blackColor-dark">
-                                                Saved Hours
+                                                Saved<br>Hours
                                             </p>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+
+                            <div class="mt-10">
+                                <a href="{{ route('pages.emails') }}" class="text-sm md:text-size-15 text-whiteColor bg-primaryColor border border-primaryColor px-25px py-15px hover:text-primaryColor hover:bg-whiteColor rounded inline-block dark:hover:bg-whiteColor-dark dark:hover:text-whiteColor">
+                                    {{ __('Generate Email') }}
+                                </a>
                             </div>
                         </div>
 
@@ -200,114 +197,102 @@
                 </div>
             </div>
         </section>
-
         <section class="pb-100px">
-            <div
-                class="py-10 md:py-10 2xl:py-50px 3xl:py-30 mx-10px md:mx-50px 3xl:mx-150px bg-darkdeep3 dark:bg-darkdeep3-dark shadow-container rounded-5">
+            <div class="py-10 md:py-10 2xl:py-50px 3xl:py-30 mx-10px md:mx-50px 3xl:mx-150px bg-darkdeep3 dark:bg-darkdeep3-dark shadow-container rounded-5">
                 <div class="container">
                     <!-- about section  -->
                     <div class="grid grid-cols-1 xl:grid-cols-2 gap-x-30px">
                         <!-- about left -->
                         <!-- about right -->
                         <div data-aos="fade-up" class="aos-init aos-animate">
-                            <span
-                                class="text-sm font-semibold text-primaryColor bg-whitegrey3 px-6 py-5px mb-5 rounded-full inline-block">
-                                AI Email Generation
-                            </span>
+                    <span class="text-sm font-semibold text-primaryColor bg-whitegrey3 px-6 py-5px mb-5 rounded-full inline-block">
+                        AI Agreement Generation
+                    </span>
                             <h3 class="text-3xl md:text-size-45 leading-10 md:leading-2xl font-bold text-blackColor dark:text-blackColor-dark pb-25px">
-                                Welcome to the Future of
+                                Effortless Creation of<br>
                                 <span
-                                    class="relative after:w-full after:h-[7px] after:bg-secondaryColor z-0 after:absolute after:left-0 after:bottom-3 md:after:bottom-5 md:after:-z-1">Email Writing</span>
+                                    class="relative after:w-full after:h-[7px] after:bg-secondaryColor z-0 after:absolute after:left-0 after:bottom-3 md:after:bottom-5 md:after:-z-1">Legal Documents</span>
                             </h3>
                             <p class="text-sm md:text-base leading-7 text-contentColor dark:text-contentColor-dark mb-6 pl-3 border-l-2 border-primaryColor">
-                                AI-powered tools to help you write clear, professional, and effective emails for any
-                                situation — instantly and effortlessly.
+                                Use AI to generate contracts, agreements, and legal forms with ease — accurate, customizable, and ready in seconds.
                             </p>
                             <ul class="space-y-5">
                                 <li class="flex items-center group">
                                     <i class="icofont-check text-primaryColor mr-15px border border-primaryColor rounded-full"></i>
                                     <p class="text-sm md:text-base text-blackColor dark:text-blackColor-dark">
-                                        Compose emails in seconds with AI assistance
+                                        Generate legal agreements in just a few clicks
                                     </p>
                                 </li>
                                 <li class="flex items-center group">
                                     <i class="icofont-check text-primaryColor mr-15px border border-primaryColor rounded-full"></i>
                                     <p class="text-sm md:text-base text-blackColor dark:text-blackColor-dark">
-                                        Perfect for outreach, support, and daily communication
+                                        Ideal for freelancers, startups, and businesses
                                     </p>
                                 </li>
                                 <li class="flex items-center group">
                                     <i class="icofont-check text-primaryColor mr-15px border border-primaryColor rounded-full"></i>
                                     <p class="text-sm md:text-base text-blackColor dark:text-blackColor-dark">
-                                        Boost reply rates and save writing time
+                                        Save hours on drafting and reviewing documents
                                     </p>
                                 </li>
                             </ul>
                             <!-- about counter -->
                             <div class="counter flex flex-wrap lg:pt-30px gap-y-30px lg:gap-y-0">
-                                <div class="basis-full sm:basis-1/2 lg:basis-1/3 aos-init aos-animate"
-                                     data-aos="fade-up">
+                                <div class="basis-full sm:basis-1/2 lg:basis-1/3 aos-init aos-animate" data-aos="fade-up">
                                     <div class="flex gap-4">
                                         <div>
-                                            <img src="./assets/images/counter/counter__1.png" alt="">
-                                        </div>
-                                        <div>
                                             <p class="text-size-34 leading-[1.1] text-blackColor font-bold font-hind dark:text-blackColor-dark">
-                                                <span data-countup-number="27">27</span><span>k+</span>
+                                                <span data-countup-number="9">9</span><span>k+</span>
                                             </p>
                                             <p class="uppercase text-blackColor font-medium leading-[18px] dark:text-blackColor-dark">
-                                                Emails Generated
+                                                Agreements<br>Created
                                             </p>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="basis-full sm:basis-1/2 lg:basis-1/3 aos-init aos-animate"
-                                     data-aos="fade-up">
+                                <div class="basis-full sm:basis-1/2 lg:basis-1/3 aos-init aos-animate" data-aos="fade-up">
                                     <div class="flex gap-4">
                                         <div>
-                                            <img src="./assets/images/counter/counter__2.png" alt="">
-                                        </div>
-                                        <div>
                                             <p class="text-size-34 leading-[1.1] text-blackColor font-bold font-hind dark:text-blackColor-dark">
-                                                <span data-countup-number="145">145</span><span>+</span>
+                                                <span data-countup-number="120">120</span><span>+</span>
                                             </p>
                                             <p class="uppercase text-blackColor font-medium leading-[18px] dark:text-blackColor-dark">
-                                                Business Users
+                                                Legal Use<br>Cases
                                             </p>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="basis-full sm:basis-1/2 lg:basis-1/3 aos-init aos-animate"
-                                     data-aos="fade-up">
+                                <div class="basis-full sm:basis-1/2 lg:basis-1/3 aos-init aos-animate" data-aos="fade-up">
                                     <div class="flex gap-4">
                                         <div>
-                                            <img src="./assets/images/counter/counter__3.png" alt="">
-                                        </div>
-                                        <div>
                                             <p class="text-size-34 leading-[1.1] text-blackColor font-bold font-hind dark:text-blackColor-dark">
-                                                <span data-countup-number="10">10</span><span>k</span>
+                                                <span data-countup-number="8">8</span><span>k</span>
                                             </p>
                                             <p class="uppercase text-blackColor font-medium leading-[18px] dark:text-blackColor-dark">
-                                                Saved Hours
+                                                Hours<br>Saved
                                             </p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="mt-10">
+                                <a href="{{ route('pages.agreements') }}" class="text-sm md:text-size-15 text-whiteColor bg-primaryColor border border-primaryColor px-25px py-15px hover:text-primaryColor hover:bg-whiteColor rounded inline-block dark:hover:bg-whiteColor-dark dark:hover:text-whiteColor">
+                                    {{ __('Generate Agreement') }}
+                                </a>
+                            </div>
                         </div>
 
-                        <div
-                            class="relative z-0 mb-30px lg:mb-0 pb-0 md:pb-30px xl:pb-0 overflow-visible aos-init aos-animate"
-                            data-aos="fade-up">
-                            <div class="tilt"
-                                 style="will-change: transform; transform: perspective(2000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1);">
-                                <img class="w-full" src="./assets/images/about/about_single_course_3.png" alt="">
+                        <div class="relative z-0 mb-30px lg:mb-0 pb-0 md:pb-30px xl:pb-0 overflow-visible aos-init aos-animate" data-aos="fade-up">
+                            <div class="tilt" style="will-change: transform; transform: perspective(2000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1);">
+                                <img class="w-full" src="{{ asset('assets/images/Rolands_An_advanced_AI_system_generating_a_formal_agreemen_b4538020-583d-4d57-8c44-3b4bb2c406de.png') }}" alt="">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
 
         <section>
             <div
