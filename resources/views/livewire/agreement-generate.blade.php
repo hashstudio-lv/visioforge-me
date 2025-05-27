@@ -13,33 +13,33 @@
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6" x-data="{ selected: '' }">
             @foreach([
-    [
-        'title' => 'Freelance & Services',
-        'items' => [
-            ['title' => 'Freelance Work Agreement', 'value' => 'Freelance Work Agreement'],
-            ['title' => 'Service Agreement for Client', 'value' => 'Service Agreement for Client'],
-            ['title' => 'Consulting Agreement', 'value' => 'Consulting Agreement'],
-        ]
-    ],
-    [
-        'title' => 'Business & Operations',
-        'items' => [
-            ['title' => 'Non-Disclosure Agreement (NDA)', 'value' => 'Non-Disclosure Agreement (NDA)'],
-            ['title' => 'Partnership Agreement', 'value' => 'Partnership Agreement'],
-            ['title' => 'Vendor Contract', 'value' => 'Vendor Contract'],
-            ['title' => 'Sales Agreement', 'value' => 'Sales Agreement'],
-        ]
-    ],
-    [
-        'title' => 'HR & Employment',
-        'items' => [
-            ['title' => 'Employment Agreement', 'value' => 'Employment Agreement'],
-            ['title' => 'Internship Agreement', 'value' => 'Internship Agreement'],
-            ['title' => 'Contractor Agreement', 'value' => 'Contractor Agreement'],
-            ['title' => 'Termination of Employment Letter', 'value' => 'Termination of Employment Letter'],
-        ]
-    ]
-] as $group)
+                [
+                    'title' => 'Freelance & Services',
+                    'items' => [
+                        ['title' => 'Freelance Work Agreement', 'value' => 'Freelance Work Agreement'],
+                        ['title' => 'Service Agreement for Client', 'value' => 'Service Agreement for Client'],
+                        ['title' => 'Consulting Agreement', 'value' => 'Consulting Agreement'],
+                    ]
+                ],
+                [
+                    'title' => 'Business & Operations',
+                    'items' => [
+                        ['title' => 'Non-Disclosure Agreement (NDA)', 'value' => 'Non-Disclosure Agreement (NDA)'],
+                        ['title' => 'Partnership Agreement', 'value' => 'Partnership Agreement'],
+                        ['title' => 'Vendor Contract', 'value' => 'Vendor Contract'],
+                        ['title' => 'Sales Agreement', 'value' => 'Sales Agreement'],
+                    ]
+                ],
+                [
+                    'title' => 'HR & Employment',
+                    'items' => [
+                        ['title' => 'Employment Agreement', 'value' => 'Employment Agreement'],
+                        ['title' => 'Internship Agreement', 'value' => 'Internship Agreement'],
+                        ['title' => 'Contractor Agreement', 'value' => 'Contractor Agreement'],
+                        ['title' => 'Termination of Employment Letter', 'value' => 'Termination of Employment Letter'],
+                    ]
+                ]
+            ] as $group)
                 <!-- Sales & Marketing -->
                 <div>
                     <h4 class="text-sm leading-1 font-semibold uppercase text-contentColor dark:text-contentColor-dark bg-lightGrey5 dark:bg-whiteColor-dark p-10px pb-7px mb-10px">{{ $group['title'] }}</h4>
