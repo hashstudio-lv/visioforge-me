@@ -43,7 +43,7 @@
                 <div class="text-contentColor dark:text-contentColor-dark flex items-center">
                     <input type="checkbox" id="accept-pp" class="w-18px h-18px mr-2 block box-content">
                     <label for="accept-pp">
-                        {!! __('I agree with <a href=":privacyPolicyUrl" target="_blank">privacy policy</a> and <a href=":termsConditionsUrl">terms and conditions</a>.', ['privacyPolicyUrl' => route('pages.show', 'privacy-policy'), 'termsConditionsUrl' => route('pages.show', 'terms-conditions')]) !!}
+                        {!! __('I agree with <a href=":privacyPolicyUrl" target="_blank" class="font-bold">privacy policy</a> and <a href=":termsConditionsUrl" class="font-bold" target="_blank">terms and conditions</a>.', ['privacyPolicyUrl' => route('pages.show', 'privacy-policy'), 'termsConditionsUrl' => route('pages.show', 'terms-and-conditions')]) !!}
                     </label>
                 </div>
 
@@ -51,6 +51,21 @@
                     <button type="submit" class="text-size-15 text-whiteColor bg-primaryColor px-25px py-10px w-full border border-primaryColor hover:text-primaryColor hover:bg-whiteColor inline-block rounded group dark:hover:text-whiteColor dark:hover:bg-whiteColor-dark">
                         {{ __('Deposit') }}
                     </button>
+                </div>
+
+                <div class="flex justify-center items-center mt-5">
+                        <div>
+                            <img src="{{ asset('assets/images/Visa_Brandmark_Blue_RGB_2021.png') }}"
+                                 style="width: 3rem;">
+                        </div>
+                        <div class="ml-5 mr-5">
+                            <img src="{{ asset('assets/images/ma_symbol_opt_73_2x.png') }}"
+                                 style="width: 3rem;">
+                        </div>
+                        <div>
+                            <img src="{{ asset('assets/images/PngItem_7569533.png') }}"
+                                 style="width: 3rem;">
+                        </div>
                 </div>
 
 {{--                <div class="mt-8">--}}
