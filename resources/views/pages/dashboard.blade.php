@@ -67,9 +67,9 @@
                                             {{ __(':amount VFT', ['amount' => $order->price]) }}
                                         </div>
                                     </div>
-                                    <a class="hover:text-primaryColor" href="../../course-details.html">
+                                    <div class="hover:text-primaryColor">
                                         {{ \Illuminate\Support\Str::limit($order->product->prompt, 150) }}
-                                    </a>
+                                    </div>
                                 </h5>
                             </div>
 
