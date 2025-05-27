@@ -4,6 +4,8 @@ namespace App\Livewire;
 
 use App\Enums\ProductCategory;
 use App\Enums\ProductStyle;
+use App\Enums\ProductType;
+use App\Enums\Service;
 use App\Models\Order;
 use App\Models\Product;
 use App\Services\AgreementGenerationService;
@@ -37,7 +39,6 @@ class AgreementGenerate extends Component
     {
         $this->balance -= 1;
 
-        // Validate the input (this will apply the rules set in the $rules property)
         $this->validate();
 
         $prompt = $agreementGenerationService->generateAgreementPromptUsingOpenAI($this->prompt);
@@ -46,7 +47,7 @@ class AgreementGenerate extends Component
         $data = [
             'price' => 1.00,
             'prompt' => $prompt,
-            'type' => 'agreement'
+            'type' => ProductType::AGREEMENT
         ];
 
         foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties) {
@@ -69,8 +70,10 @@ class AgreementGenerate extends Component
         $zipFileName = $orderDirectory . $timestamp . '-files.zip';
         $zipPath = storage_path('app/' . $timestamp . '-files.zip'); // Temporary local path
 
-// Create a new ZIP archive
+        $product->update(['path' => $timestamp . '-files.zip']);
+
         $zip = new ZipArchive;
+
         if ($zip->open($zipPath, ZipArchive::CREATE) === TRUE) {
             // Add the prompt file
             $zip->addFromString($timestamp . '-prompt.txt', $prompt);
@@ -82,18 +85,13 @@ class AgreementGenerate extends Component
             $zip->close();
         }
 
-// Upload ZIP file to S3
-        Storage::disk('s3')->put($zipFileName, file_get_contents($zipPath));
+        Storage::disk('public')->put($zipFileName, file_get_contents($zipPath));
 
-// Generate public URL for the ZIP file
-        $zipFileUrl = Storage::disk('s3')->url($zipFileName);
+        $zipFileUrl = Storage::disk('public')->url($zipFileName);
 
-// Delete the temporary ZIP file from local storage
         unlink($zipPath);
 
-// Dispatch event for download link
         $this->dispatch('fileDownload', $zipFileUrl);
-
     }
 
     public function render()

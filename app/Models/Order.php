@@ -30,6 +30,10 @@ class Order extends Model
             return $this->product->getThumbnailUrl();
         }
 
+//        if ($this->product->type == ProductType::AGREEMENT) {
+//            return $this->product->getThumbnailUrl();
+//        }
+
         return url('storage/orders/' . $this->id . '/' . $this->product->path);
     }
 }

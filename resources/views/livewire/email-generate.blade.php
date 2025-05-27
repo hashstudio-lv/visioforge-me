@@ -30,7 +30,7 @@
                 </div>
             </div>
         @else
-            <button class="btn-main btn-fullwidth mt-4"
+            <button class="text-size-15 text-whiteColor bg-primaryColor px-25px py-10px w-full border border-primaryColor hover:text-primaryColor hover:bg-whiteColor inline-block rounded group dark:hover:text-whiteColor dark:hover:bg-whiteColor-dark"
                     wire:click="download"
                     wire:loading.attr="disabled"
                     wire:loading.remove>

@@ -36,34 +36,54 @@
             @if(!$orders->count())
                 {{ __("You don't have any orders yet.") }}
             @else
+                <ul>
+
                 @foreach($orders as $order)
-                    <div class="xl:w-4/12 lg:w-6/12 w-full flex-[0_0_auto] px-[15px] max-w-full mb-[30px] wow fadeInUp">
-                        <div
-                            class="card-style-fourteen rounded-2xl bg-white p-8 shadow-[0px_10px_30px_rgba(0,0,0,0.05)] hover:shadow-[0px_20px_40px_rgba(0,0,0,0.1)] transition-all duration-300">
-                            <div class="flex items-center gap-6 mb-6">
+                    <li class="flex items-center flex-wrap py-5 border-b border-borderColor dark:border-borderColor-dark">
+                        <!-- avatar -->
+                        <div class="w-full md:w-30% md:pr-5">
+                            <div class="w-full">
                                 @if(in_array($order->product->type, [\App\Enums\ProductType::VIDEO_FROM_IMAGE, \App\Enums\ProductType::VIDEO_FROM_TEXT]))
                                     <video autoplay muted loop playsinline class="w-24 h-24 object-cover rounded-lg">
                                         <source src="{{ $order->url }}" type="video/mp4"/>
                                     </video>
+                                @elseif(in_array($order->product->type, [\App\Enums\ProductType::AGREEMENT, \App\Enums\ProductType::EMAIL]))
+
                                 @else
                                     <img src="{{ $order->url }}" alt=""
                                          class="w-24 h-24 object-cover rounded-lg shadow">
                                 @endif
-                                <div>
-                                    <h4 class="text-[20px] font-medium text-black mb-1">
-                                        {{ $order->product->type->name() }}
-                                    </h4>
-                                    <div
-                                        class="text-[14px] text-gray-400">{{ $order->created_at->format('M d, Y') }}</div>
-                                </div>
                             </div>
-                            <a href="{{ $order->url }}" download target="_blank"
-                               class="btn-twentyOne font-medium tran3s leading-[50px] text-white tracking-[-0.36px] p-[0_35px] rounded-[30px] bg-[var(--prime-ten)] hover:bg-black hover:text-white w-full text-center block">
-                                {{ __('Download') }}
-                            </a>
                         </div>
-                    </div>
+                        <!-- details -->
+                        <div class="w-full md:w-70% md:pr-5">
+                            <div>
+                                <h5 class="text-lg leading-1.5 font-medium text-contentColor dark:text-contentColor-dark mb-5px">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <div>
+                                            {{ $order->created_at->format('M d, Y') }}
+                                        </div>
+                                        <div class="text-primaryColor font-bold text-3xl">
+                                            {{ __(':amount VFT', ['amount' => $order->price]) }}
+                                        </div>
+                                    </div>
+                                    <a class="hover:text-primaryColor" href="../../course-details.html">
+                                        {{ \Illuminate\Support\Str::limit($order->product->prompt, 150) }}
+                                    </a>
+                                </h5>
+                            </div>
+
+                            <div class="mt-2">
+                                <a href="{{ $order->url }}" download target="_blank"
+                                   class="text-sm md:text-size-15 text-whiteColor bg-primaryColor border border-primaryColor px-25px py-15px hover:text-primaryColor hover:bg-whiteColor rounded inline-block dark:hover:bg-whiteColor-dark dark:hover:text-whiteColor">
+                                    {{ __('Download') }}
+                                </a>
+                            </div>
+                        </div>
+                    </li>
                 @endforeach
+
+                </ul>
             @endif
         </div>
     </div>
