@@ -10,7 +10,6 @@ return [
         'es' => ['name' => 'Spanish', 'script' => 'Latn', 'native' => 'español', 'regional' => 'es_ES'],
         'fr' => ['name' => 'French', 'script' => 'Latn', 'native' => 'français', 'regional' => 'fr_FR'],
         'lv' => ['name' => 'Latvian', 'script' => 'Latn', 'native' => 'latviešu', 'regional' => 'lv_LV'],
-        'ar' => ['name' => 'Arabic', 'script' => 'Arab', 'native' => 'العربية', 'regional' => 'ar_AE'],
     ],
 
     // Requires middleware `LaravelSessionRedirect.php`.
