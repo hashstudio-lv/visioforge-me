@@ -64,14 +64,14 @@
                     <div class="hidden lg:block lg:col-start-3 lg:col-span-7">
                         <ul class="nav-list flex justify-center">
                             @foreach([
-                                ['title' => 'Home', 'url' => route('home')],
-                                ['title' => 'Generate Agreements', 'url' => route('pages.agreements')],
-                                ['title' => 'Generate Emails', 'url' => route('pages.emails')],
-                                ['title' => 'Image Stock', 'url' => route('products.index')],
+                                ['title' => 'Home', 'url' => route('home'), 'is_active' => request()->route()->getName() == 'home'],
+                                ['title' => 'Generate Agreements', 'url' => route('pages.agreements'), 'is_active' => request()->route()->getName() == 'pages.agreements'],
+                                ['title' => 'Generate Emails', 'url' => route('pages.emails'), 'is_active' => request()->route()->getName() == 'pages.emails'],
+                                ['title' => 'Image Stock', 'url' => route('products.index'), 'is_active' => request()->route()->getName() == 'products.index'],
                             ] as $item)
                                 <li class="nav-item group">
                                     <a href="{{ $item['url'] }}"
-                                       class="px-5 lg:px-10px 2xl:px-15px 3xl:px-5 py-10 lg:py-5 2xl:py-30px 3xl:py-10 leading-sm 2xl:leading-lg text-base lg:text-sm 2xl:text-base font-semibold block group-hover:text-primaryColor dark:text-whiteColor">
+                                       class="@if($item['is_active']) text-primaryColor @endif px-5 lg:px-10px 2xl:px-15px 3xl:px-5 py-10 lg:py-5 2xl:py-30px 3xl:py-10 leading-sm 2xl:leading-lg text-base lg:text-sm 2xl:text-base font-semibold block group-hover:text-primaryColor">
                                         {{ $item['title'] }}
                                     </a>
                                 </li>
@@ -1528,41 +1528,33 @@
                         {{ __('Professionals and teams around the world rely on VisioForge.me for smart, AI-powered email writing, contract creation, and access to stunning stock images — all in one place.') }}
                     </p>
                     <ul class="flex gap-3 lg:gap-2 2xl:gap-3" data-aos="fade-up">
-                        <li>
-                            <a
-                                href="#"
-                                class="w-11 md:w-10 2xl:w-11 h-11 md:h-10 2xl:h-11 leading-11 md:leading-10 2xl:leading-11 text-whitegrey bg-darkgray bg-opacity-10 hover:text-whiteColor dark:text-whiteColor-dark dark:bg-whiteColor dark:hover:bg-secondaryColor dark:hover:text-whiteColor rounded-full text-center"
-                            ><i class="icofont-facebook"></i
-                                ></a>
-                        </li>
-                        <li>
-                            <a
-                                href="#"
-                                class="w-11 md:w-10 2xl:w-11 h-11 md:h-10 2xl:h-11 leading-11 md:leading-10 2xl:leading-11 text-whitegrey bg-darkgray bg-opacity-10 hover:text-whiteColor dark:text-whiteColor-dark dark:bg-whiteColor dark:hover:bg-secondaryColor dark:hover:text-whiteColor rounded-full text-center"
-                            ><i class="icofont-twitter"></i
-                                ></a>
-                        </li>
-                        <li>
-                            <a
-                                href="#"
-                                class="w-11 md:w-10 2xl:w-11 h-11 md:h-10 2xl:h-11 leading-11 md:leading-10 2xl:leading-11 text-whitegrey bg-darkgray bg-opacity-10 hover:text-whiteColor dark:text-whiteColor-dark dark:bg-whiteColor dark:hover:bg-secondaryColor dark:hover:text-whiteColor rounded-full text-center"
-                            ><i class="icofont-vimeo"></i
-                                ></a>
-                        </li>
-                        <li>
-                            <a
-                                href="#"
-                                class="w-11 md:w-10 2xl:w-11 h-11 md:h-10 2xl:h-11 leading-11 md:leading-10 2xl:leading-11 text-whitegrey bg-darkgray bg-opacity-10 hover:text-whiteColor dark:text-whiteColor-dark dark:bg-whiteColor dark:hover:bg-secondaryColor dark:hover:text-whiteColor rounded-full text-center"
-                            ><i class="icofont-linkedin"></i
-                                ></a>
-                        </li>
-                        <li>
-                            <a
-                                href="#"
-                                class="w-11 md:w-10 2xl:w-11 h-11 md:h-10 2xl:h-11 leading-11 md:leading-10 2xl:leading-11 text-whitegrey bg-darkgray bg-opacity-10 hover:text-whiteColor dark:text-whiteColor-dark dark:bg-whiteColor dark:hover:bg-secondaryColor dark:hover:text-whiteColor rounded-full text-center"
-                            ><i class="icofont-skype"></i
-                                ></a>
-                        </li>
+                        @if(env('SOCIAL_NETWORK_FACEBOOK'))
+                            <li>
+                                <a href="{{ env('SOCIAL_NETWORK_FACEBOOK') }}"
+                                    target="_blank"
+                                    class="w-11 md:w-10 2xl:w-11 h-11 md:h-10 2xl:h-11 leading-11 md:leading-10 2xl:leading-11 text-whitegrey bg-darkgray bg-opacity-10 hover:text-whiteColor dark:text-whiteColor-dark dark:bg-whiteColor dark:hover:bg-secondaryColor dark:hover:text-whiteColor rounded-full text-center">
+                                    <i class="icofont-facebook"></i>
+                                </a>
+                            </li>
+                        @endif
+                        @if(env('SOCIAL_NETWORK_FACEBOOK'))
+                            <li>
+                                <a href="{{ env('SOCIAL_NETWORK_X') }}"
+                                    target="_blank"
+                                    class="w-11 md:w-10 2xl:w-11 h-11 md:h-10 2xl:h-11 leading-11 md:leading-10 2xl:leading-11 text-whitegrey bg-darkgray bg-opacity-10 hover:text-whiteColor dark:text-whiteColor-dark dark:bg-whiteColor dark:hover:bg-secondaryColor dark:hover:text-whiteColor rounded-full text-center">
+                                    <i class="icofont-twitter"></i>
+                                </a>
+                            </li>
+                        @endif
+                        @if(env('SOCIAL_NETWORK_YOUTUBE'))
+                            <li>
+                                <a href="{{ env('SOCIAL_NETWORK_YOUTUBE') }}"
+                                    target="_blank"
+                                    class="w-11 md:w-10 2xl:w-11 h-11 md:h-10 2xl:h-11 leading-11 md:leading-10 2xl:leading-11 text-whitegrey bg-darkgray bg-opacity-10 hover:text-whiteColor dark:text-whiteColor-dark dark:bg-whiteColor dark:hover:bg-secondaryColor dark:hover:text-whiteColor rounded-full text-center">
+                                    <i class="icofont-youtube"></i>
+                                </a>
+                            </li>
+                        @endif
                     </ul>
                 </div>
                 <!-- middle 1 -->
@@ -1571,7 +1563,7 @@
                     data-aos="fade-up"
                 >
                     <h4 class="text-size-22 font-bold text-whiteColor mb-3">
-                        Usefull Links
+                        {{ __('Usefull Links') }}
                     </h4>
                     <ul class="flex flex-col gap-y-3">
                         @foreach([
@@ -1632,13 +1624,26 @@
             </div>
         </section>
 
-        <div class="text-base text-darkgray py-5 lg:py-10">
-            {{ env('COMPANY_NAME') }},
-            {{ env('COMPANY_ADDRESS') }},
-            <a href="tel:{{ env('COMPANY_PHONE') }}"
-               class="mobile tran3s text-[20px] lg:text-[18px] md:text-[18px] sm:text-[18px] xsm:text-[18px] font-medium text-[color:var(--prime-two)] hover:underline">
-                {{ env('COMPANY_PHONE') }}
-            </a>
+        <div class="text-base text-darkgray py-5 lg:py-10 flex justify-between items-center flex-col sm:flex-row">
+            <div>
+                {{ env('COMPANY_NAME') }},
+                {{ env('COMPANY_ADDRESS') }},
+                <a href="tel:{{ env('COMPANY_PHONE') }}"
+                   class="mobile tran3s text-[20px] lg:text-[18px] md:text-[18px] sm:text-[18px] xsm:text-[18px] font-medium text-[color:var(--prime-two)] hover:underline">
+                    {{ env('COMPANY_PHONE') }}
+                </a>
+            </div>
+
+            <div class="flex items-center">
+                <div class="mr-2">
+                    <img src="{{ asset('assets/images/Visa_Brandmark_Blue_RGB_2021.png') }}"
+                         style="width: 3rem;">
+                </div>
+                <div>
+                    <img src="{{ asset('assets/images/ma_symbol_opt_73_2x.png') }}"
+                         style="width: 3rem;">
+                </div>
+            </div>
         </div>
         <!-- footer copyright  -->
         <div>
@@ -1648,8 +1653,8 @@
                 <div>
                     <p class="text-base text-darkgray">
                         © 2024 Powered by
-                        <a href="#" class="hover:text-primaryColor">Edurock</a>. All
-                        Rights Reserved.
+                        <a href="{{ route('home') }}" class="hover:text-primaryColor">{{ config('app.name') }}</a>.
+                        {{ __('All Rights Reserved.') }}
                     </p>
                 </div>
 

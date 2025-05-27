@@ -27,16 +27,28 @@
                         <div
                             class="p-30px pt-5 lg:p-5 2xl:p-30px 2xl:pt-5 rounded-lg2 shadow-accordion dark:shadow-accordion-dark bg-whiteColor dark:bg-whiteColor-dark"
                         >
-                            <h5
-                                class="text-sm leading-1 font-semibold uppercase text-contentColor dark:text-contentColor-dark bg-lightGrey5 dark:bg-whiteColor-dark p-10px pb-7px mt-5 mb-10px"
-                            >
-                                {{ __('Welcome, :name', ['name' => auth()->user()->email]) }}
-                            </h5>
                             <ul>
                                 @foreach([
                                     ['url' => route('dashboard'), 'title' => __('Dashboard'), 'is_active' => request()->route()->getName() == 'dashboard'],
-                                    ['url' => route('services.show', 'generate-agreement'), 'title' =>  __('Generate Agreements'), 'is_active' => false],
-                                    ['url' => route('services.show', 'generate-email'), 'title' =>  __('Generate Emails'), 'is_active' => false],
+                                ] as $link)
+                                    <li class="py-10px @if(!$loop->last) border-b border-borderColor dark:border-borderColor-dark @endif">
+                                        <a href="{{ $link['url'] }}"
+                                           class="@if($link['is_active']) text-primaryColor hover:text-primaryColor dark:hover:text-primaryColor @else text-contentColor dark:text-contentColor-dark hover:text-primaryColor dark:hover:text-primaryColor @endif leading-1.8 flex gap-3 text-nowrap ">
+                                            {{ $link['title'] }}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+
+                            <h5
+                                class="text-sm leading-1 font-semibold uppercase text-contentColor dark:text-contentColor-dark bg-lightGrey5 dark:bg-whiteColor-dark p-10px pb-7px mt-5 mb-10px"
+                            >
+                                {{ __('Services') }}
+                            </h5>
+                            <ul>
+                                @foreach([
+                                    ['url' => route('services.show', 'generate-agreement'), 'title' =>  __('Generate Agreements'), 'is_active' => (request()->route()->getName() == 'services.show' && !empty($service) && $service == \App\Enums\Service::GENERATE_AGREEMENT)],
+                                    ['url' => route('services.show', 'generate-email'), 'title' =>  __('Generate Emails'), 'is_active' =>  (request()->route()->getName() == 'services.show' && !empty($service) && $service == \App\Enums\Service::GENERATE_EMAIL)],
                                     ['url' => route('products.index'), 'title' =>  __('Image Stock'), 'is_active' => false],
                                 ] as $link)
                                     <li class="py-10px @if(!$loop->last) border-b border-borderColor dark:border-borderColor-dark @endif">
