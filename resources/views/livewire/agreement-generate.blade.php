@@ -14,33 +14,29 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6" x-data="{ selected: '' }">
             @foreach([
     [
-        'title' => 'Sales & Marketing',
+        'title' => 'Freelance & Services',
         'items' => [
-            ['title' => 'Cold Outreach to Potential Client', 'value' => 'Cold Outreach to Potential Client'],
-            ['title' => 'Follow-Up After Sales Call', 'value' => 'Follow-Up After Sales Call'],
-            ['title' => 'Product Demo Invitation', 'value' => 'Product Demo Invitation'],
-            ['title' => 'Upsell Email to Existing Customer', 'value' => 'Upsell Email to Existing Customer'],
-            ['title' => 'Promotional Offer Announcement', 'value' => 'Promotional Offer Announcement'],
+            ['title' => 'Freelance Work Agreement', 'value' => 'Freelance Work Agreement'],
+            ['title' => 'Service Agreement for Client', 'value' => 'Service Agreement for Client'],
+            ['title' => 'Consulting Agreement', 'value' => 'Consulting Agreement'],
         ]
     ],
     [
-        'title' => 'Customer & Support',
+        'title' => 'Business & Operations',
         'items' => [
-            ['title' => 'Order Confirmation Email', 'value' => 'Order Confirmation Email'],
-            ['title' => 'Shipping Delay Notification', 'value' => 'Shipping Delay Notification'],
-            ['title' => 'Refund Process Update', 'value' => 'Refund Process Update'],
-            ['title' => 'Troubleshooting Response Email', 'value' => 'Troubleshooting Response Email'],
-            ['title' => 'Satisfaction Survey Request', 'value' => 'Satisfaction Survey Request'],
+            ['title' => 'Non-Disclosure Agreement (NDA)', 'value' => 'Non-Disclosure Agreement (NDA)'],
+            ['title' => 'Partnership Agreement', 'value' => 'Partnership Agreement'],
+            ['title' => 'Vendor Contract', 'value' => 'Vendor Contract'],
+            ['title' => 'Sales Agreement', 'value' => 'Sales Agreement'],
         ]
     ],
     [
-        'title' => 'Internal & HR',
+        'title' => 'HR & Employment',
         'items' => [
-            ['title' => 'New Employee Welcome Email', 'value' => 'New Employee Welcome Email'],
-            ['title' => 'Performance Review Request', 'value' => 'Performance Review Request'],
-            ['title' => 'Internal Policy Update Notice', 'value' => 'Internal Policy Update Notice'],
-            ['title' => 'Team Meeting Agenda Email', 'value' => 'Team Meeting Agenda Email'],
-            ['title' => 'Remote Work Approval Email', 'value' => 'Remote Work Approval Email'],
+            ['title' => 'Employment Agreement', 'value' => 'Employment Agreement'],
+            ['title' => 'Internship Agreement', 'value' => 'Internship Agreement'],
+            ['title' => 'Contractor Agreement', 'value' => 'Contractor Agreement'],
+            ['title' => 'Termination of Employment Letter', 'value' => 'Termination of Employment Letter'],
         ]
     ]
 ] as $group)
