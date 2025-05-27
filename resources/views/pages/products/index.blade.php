@@ -76,9 +76,8 @@
                                 </h4>
                                 <ul class="flex flex-col gap-y-23px">
                                     @foreach(\App\Enums\ProductCategory::cases() as $category)
-                                        <li class="text-primaryColor text-size-15 font-medium dark:text-contentColor-dark flex justify-between leading-26px group">
+                                        <li class="@if(in_array($category->value, request()->get('category') ?? [])) text-primaryColor @endif text-size-15 font-medium dark:text-contentColor-dark flex justify-between leading-26px group">
                                             <a href="{{ route('products.index', ['category' => [$category]]) }}" class="w-full flex items-center gap-11px">
-                                                <span class="w-14px h-15px border border-primaryColor bg-primaryColor group-hover:border-primaryColor group-hover:bg-primaryColor"></span>
                                                 <span>{{ $category->translatedValue() }}</span>
                                             </a>
                                         </li>
