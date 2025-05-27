@@ -67,10 +67,10 @@ class AgreementGenerate extends Component
 
         $timestamp = now()->timestamp;
         $orderDirectory = 'orders/' . $order->id . '/';
-        $zipFileName = $orderDirectory . $timestamp . '-files.zip';
-        $zipPath = storage_path('app/' . $timestamp . '-files.zip'); // Temporary local path
+        $zipFileName = $orderDirectory . $timestamp . '.zip';
+        $zipPath = storage_path('app/' . $timestamp . '.zip'); // Temporary local path
 
-        $product->update(['path' => $timestamp . '-files.zip']);
+        $product->update(['path' => $timestamp . '.zip']);
 
         $zip = new ZipArchive;
 

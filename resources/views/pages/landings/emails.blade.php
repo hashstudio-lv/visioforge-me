@@ -4,7 +4,6 @@
 @section('content')
     <main class="bg-transparent">
         <section>
-            <!-- bannaer section -->
             <div
                 class="container2-xl bg-darkdeep1 py-50px md:pt-20 md:pb-30 2xl:pt-130px 2xl:pb-50 rounded-2xl relative overflow-hidden shadow-brand"
             >
@@ -28,16 +27,16 @@
                             </h1>
                         </div>
                         <form
-                            action="{{ route('services.show', 'generate-agreement') }}"
+                            action="{{ route('services.show', 'generate-email') }}"
                             class="bg-whiteColor w-full rounded-full py-1 sm:py-6px pl-30px pr-1 sm:pr-2 flex items-center justify relative z-small"
                         >
-                            <div>
-                                <input
-                                    type="text"
-                                    placeholder="Enter your prompt.."
-                                    class="placeholder:text-darkdeep4 w-full ml-2 text-xs sm:text-sm md:text-base focus:outline-none"
-                                >
-                            </div>
+                            <input
+                                type="text"
+                                name="prompt"
+                                placeholder="Enter key details for your email..."
+                                class="placeholder:text-darkdeep4 w-full ml-2 text-xs sm:text-sm md:text-base focus:outline-none"
+                            >
+
                             <div class="self-end ml-auto">
                                 <button
                                     type="submit"
@@ -128,7 +127,7 @@
     ['review' => 'As a non-native English speaker, this platform helps me sound more confident and professional in every message.', 'name' => 'Yuki H.', 'position' => 'Freelance Consultant'],
     ['review' => 'We use it across the team for internal updates and external communications. It saves us hours each week.', 'name' => 'Angela B.', 'position' => 'Project Manager'],
 ] as $item)
-                                    <div class="swiper-slide">
+                                        <div class="swiper-slide">
                                             <div>
                                                 <p class="md:text-xl md:leading-10 text-lightGrey dark:text-whiteColor">
                                                     <i class="icofont-quote-left quote__left text-primaryColor text-xl"></i>

@@ -31,13 +31,12 @@
                             action="{{ route('services.show', 'generate-email') }}"
                             class="bg-whiteColor w-full rounded-full py-1 sm:py-6px pl-30px pr-1 sm:pr-2 flex items-center justify relative z-small"
                         >
-                            <div>
-                                <input
-                                    type="text"
-                                    placeholder="Enter your prompt.."
-                                    class="placeholder:text-darkdeep4 w-full ml-2 text-xs sm:text-sm md:text-base focus:outline-none"
-                                >
-                            </div>
+                            <input
+                                type="text"
+                                name="prompt"
+                                placeholder="Enter key details for your contract..."
+                                class="placeholder:text-darkdeep4 w-full ml-2 text-xs sm:text-sm md:text-base focus:outline-none"
+                            >
                             <div class="self-end ml-auto">
                                 <button
                                     type="submit"

@@ -12,50 +12,50 @@
         <section>
             <!-- banner section -->
             <div
-                    class="bg-lightGrey10 dark:bg-lightGrey10-dark relative z-0 overflow-y-visible py-50px md:py-20 lg:py-100px 2xl:pb-150px 2xl:pt-40.5"
+                class="bg-lightGrey10 dark:bg-lightGrey10-dark relative z-0 overflow-y-visible py-50px md:py-20 lg:py-100px 2xl:pb-150px 2xl:pt-40.5"
             >
                 <!-- animated icons -->
                 <div>
                     <img
-                            class="absolute left-0 bottom-0 md:left-[14px] lg:left-[50px] lg:bottom-[21px] 2xl:left-[165px] 2xl:bottom-[60px] animate-move-var z-10"
-                            src="{{ asset('assets/images/herobanner/herobanner__1.png') }}"
-                            alt=""
+                        class="absolute left-0 bottom-0 md:left-[14px] lg:left-[50px] lg:bottom-[21px] 2xl:left-[165px] 2xl:bottom-[60px] animate-move-var z-10"
+                        src="{{ asset('assets/images/herobanner/herobanner__1.png') }}"
+                        alt=""
                     ><img
-                            class="absolute left-0 top-0 lg:left-[50px] lg:top-[100px] animate-spin-slow"
-                            src="{{ asset('assets/images/herobanner/herobanner__2.png') }}"
-                            alt=""
+                        class="absolute left-0 top-0 lg:left-[50px] lg:top-[100px] animate-spin-slow"
+                        src="{{ asset('assets/images/herobanner/herobanner__2.png') }}"
+                        alt=""
                     ><img
-                            class="absolute right-[30px] top-0 md:right-10 lg:right-[575px] 2xl:top-20 animate-move-var2 opacity-50 hidden md:block"
-                            src="{{ asset('assets/images/herobanner/herobanner__3.png') }}"
-                            alt=""
+                        class="absolute right-[30px] top-0 md:right-10 lg:right-[575px] 2xl:top-20 animate-move-var2 opacity-50 hidden md:block"
+                        src="{{ asset('assets/images/herobanner/herobanner__3.png') }}"
+                        alt=""
                     >
 
                     <img
-                            class="absolute right-[30px] top-[212px] md:right-10 md:top-[157px] lg:right-[45px] lg:top-[100px] animate-move-hor"
-                            src="{{ asset('assets/images/herobanner/herobanner__5.png') }}"
-                            alt=""
+                        class="absolute right-[30px] top-[212px] md:right-10 md:top-[157px] lg:right-[45px] lg:top-[100px] animate-move-hor"
+                        src="{{ asset('assets/images/herobanner/herobanner__5.png') }}"
+                        alt=""
                     >
                 </div>
                 <div class="container">
                     <div class="text-center">
                         <h1
-                                class="text-3xl md:text-size-40 2xl:text-size-55 font-bold text-blackColor dark:text-blackColor-dark mb-7 md:mb-6 pt-3"
+                            class="text-3xl md:text-size-40 2xl:text-size-55 font-bold text-blackColor dark:text-blackColor-dark mb-7 md:mb-6 pt-3"
                         >
                             {{ $product->title }}
                         </h1>
                         <ul class="flex gap-1 justify-center">
                             <li>
                                 <a
-                                        href="{{ route('home') }}"
-                                        class="text-lg text-blackColor2 dark:text-blackColor2-dark">
+                                    href="{{ route('home') }}"
+                                    class="text-lg text-blackColor2 dark:text-blackColor2-dark">
                                     {{ __('Home') }}
                                     <i class="icofont-simple-right"></i>
                                 </a>
                             </li>
                             <li>
                                 <a
-                                        href="{{ route('products.index') }}"
-                                        class="text-lg text-blackColor2 dark:text-blackColor2-dark">
+                                    href="{{ route('products.index') }}"
+                                    class="text-lg text-blackColor2 dark:text-blackColor2-dark">
                                     {{ __('Image Stock') }}
                                     <i class="icofont-simple-right"></i>
                                 </a>
@@ -94,22 +94,22 @@
                             <!-- blog thumbnail -->
                             <div class="overflow-hidden relative mb-35px">
                                 <img
-                                        src="{{ asset('storage/' . $product->getThumbnailPath()) }}"
-                                        alt=""
-                                        class="w-full"
+                                    src="{{ asset('storage/' . $product->getThumbnailPath()) }}"
+                                    alt=""
+                                    class="w-full"
                                 >
                             </div>
                             <!-- blog content -->
                             <div>
                                 <h4
-                                        class="text-size-26 font-bold text-blackColor dark:text-blackColor-dark mb-15px !leading-30px"
-                                        data-aos="fade-up"
+                                    class="text-size-26 font-bold text-blackColor dark:text-blackColor-dark mb-15px !leading-30px"
+                                    data-aos="fade-up"
                                 >
                                     Description
                                 </h4>
                                 <p
-                                        class="text-darkdeep4 mb-15px !leading-29px"
-                                        data-aos="fade-up"
+                                    class="text-darkdeep4 mb-15px !leading-29px"
+                                    data-aos="fade-up"
                                 >
                                     {{ $product->description }}
                                 </p>
@@ -149,12 +149,12 @@
 
                     <div class="lg:col-start-9 lg:col-span-4">
                         <div
-                                class="py-33px px-25px shadow-event mb-30px"
-                                data-aos="fade-up"
+                            class="py-33px px-25px shadow-event mb-30px"
+                            data-aos="fade-up"
                         >
                             <div class="flex justify-between mb-50px">
                                 <div
-                                        class="text-size-21 font-bold text-primaryColor font-inter leading-25px">
+                                    class="text-size-21 font-bold text-primaryColor font-inter leading-25px">
                                     {{ $product->price }} VFT
                                 </div>
                             </div>
@@ -181,16 +181,54 @@
                                 </li>
                             </ul>
                             <div class="mt-30px" data-aos="fade-up">
-                                <button
-                                        type="submit"
-                                        class="text-size-15 text-whiteColor bg-primaryColor px-14 py-10px border border-primaryColor hover:text-primaryColor hover:bg-whiteColor inline-block rounded group dark:hover:text-whiteColor dark:hover:bg-whiteColor-dark"
-                                >
-                                    {{ __('Buy') }}
-                                </button>
+                                @if(auth()->check())
+
+                                    <div x-data="{ showForm: false }">
+                                        <!-- Buy Button -->
+                                        <button
+                                            x-show="!showForm"
+                                            @click="showForm = true"
+                                            type="button"
+                                            class="text-size-15 text-whiteColor bg-primaryColor px-14 py-10px border border-primaryColor hover:text-primaryColor hover:bg-whiteColor inline-block rounded group dark:hover:text-whiteColor dark:hover:bg-whiteColor-dark"
+                                        >
+                                            {{ __('Buy') }}
+                                        </button>
+
+                                        <!-- Purchase Form -->
+                                        <form
+                                            x-show="showForm"
+                                            x-transition
+                                            action="{{ route('products.purchase', $product->slug) }}"
+                                            method="post"
+                                        >
+                                            @csrf
+
+                                            <div class="mb-2">Are you sure?</div>
+                                            <button
+                                                type="submit"
+                                                class="whitespace-nowrap text-size-15 text-whiteColor bg-secondaryColor px-25px py-10px border border-secondaryColor hover:text-secondaryColor hover:bg-whiteColor inline-block rounded dark:hover:bg-whiteColor-dark dark:hover:text-whiteColor"
+                                            >
+                                                {{ __('Purchase for :amount VFT', ['amount' => $product->price]) }}
+                                            </button>
+                                        </form>
+                                    </div>
+
+                                @else
+                                    <button
+                                        type="button"
+                                        class="cursor-not-allowed text-size-15 text-lightGrey6 bg-lightGrey5 px-14 py-10px border border-gray-500 inline-block rounded group"
+                                        disabled>
+                                        {{ __('Buy') }}
+                                    </button>
+                                    <div>
+                                        <h3 class="text-secondaryColor mt-1">{!! __('You need to be <a href=' . route('login') . ' class="font-bold underline">logged in</a>.') !!} </h3>
+                                    </div>
+                                @endif
                             </div>
                         </div>
-                        <div class="p-5 md:p-30px lg:p-5 2xl:p-30px mb-30px border border-borderColor2 dark:border-borderColor2-dark aos-init aos-animate"
-                             data-aos="fade-up">
+                        <div
+                            class="p-5 md:p-30px lg:p-5 2xl:p-30px mb-30px border border-borderColor2 dark:border-borderColor2-dark aos-init aos-animate"
+                            data-aos="fade-up">
                             <h4 class="text-size-22 text-blackColor dark:text-blackColor-dark font-bold pl-2 before:w-0.5 relative before:h-[21px] before:bg-primaryColor before:absolute before:bottom-[5px] before:left-0 leading-30px mb-25px">
                                 {{ __('Follow Us') }}
                             </h4>
@@ -200,28 +238,28 @@
                                         <li>
                                             <a href="{{ env('SOCIAL_NETWORK_FACEBOOK') }}"
                                                class="w-38px h-38px leading-38px text-center text-blackColor2 bg-whitegrey2 hover:text-whiteColor hover:bg-primaryColor dark:bg-whitegrey2-dark dark:text-blackColor2-dark dark:hover:text-whiteColor dark:hover:bg-primaryColor rounded"><i
-                                                        class="icofont-facebook"></i></a>
+                                                    class="icofont-facebook"></i></a>
                                         </li>
                                     @endif
                                     @if(env('SOCIAL_NETWORK_INSTAGRAM'))
                                         <li>
                                             <a href="{{ env('SOCIAL_NETWORK_INSTAGRAM') }}"
                                                class="w-38px h-38px leading-38px text-center text-blackColor2 bg-whitegrey2 hover:text-whiteColor hover:bg-primaryColor dark:bg-whitegrey2-dark dark:text-blackColor2-dark dark:hover:text-whiteColor dark:hover:bg-primaryColor rounded"><i
-                                                        class="icofont-instagram"></i></a>
+                                                    class="icofont-instagram"></i></a>
                                         </li>
                                     @endif
                                     @if(env('SOCIAL_NETWORK_X'))
                                         <li>
                                             <a href="{{ env('SOCIAL_NETWORK_X') }}"
                                                class="w-38px h-38px leading-38px text-center text-blackColor2 bg-whitegrey2 hover:text-whiteColor hover:bg-primaryColor dark:bg-whitegrey2-dark dark:text-blackColor2-dark dark:hover:text-whiteColor dark:hover:bg-primaryColor rounded"><i
-                                                        class="icofont-twitter"></i></a>
+                                                    class="icofont-twitter"></i></a>
                                         </li>
                                     @endif
                                     @if(env('SOCIAL_NETWORK_YOUTUBE'))
                                         <li>
                                             <a href="{{ env('SOCIAL_NETWORK_YOUTUBE') }}"
                                                class="w-38px h-38px leading-38px text-center text-blackColor2 bg-whitegrey2 hover:text-whiteColor hover:bg-primaryColor dark:bg-whitegrey2-dark dark:text-blackColor2-dark dark:hover:text-whiteColor dark:hover:bg-primaryColor rounded"><i
-                                                        class="icofont-youtube"></i></a>
+                                                    class="icofont-youtube"></i></a>
                                         </li>
                                     @endif
                                 </ul>

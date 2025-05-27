@@ -11,7 +11,7 @@
     @else
             <div class="mb-25px">
                 <label class="text-contentColor dark:text-contentColor-dark mb-10px block" for="input-prompt">{{ __('Your prompt') }}</label>
-                <textarea rows="5" wire:model.live="prompt" id="input-prompt" class="@if($balance <= 0) cursor-not-allowed @endif w-full pl-5 pt-5 bg-transparent text-sm focus:outline-none text-contentColor dark:text-contentColor-dark border border-borderColor dark:border-borderColor-dark placeholder:text-placeholder placeholder:opacity-80 font-medium rounded"
+                <textarea rows="5" wire:model.live="prompt" placeholder="Enter key details for your agreement..." id="input-prompt" class="@if($balance <= 0) cursor-not-allowed @endif w-full pl-5 pt-5 bg-transparent text-sm focus:outline-none text-contentColor dark:text-contentColor-dark border border-borderColor dark:border-borderColor-dark placeholder:text-placeholder placeholder:opacity-80 font-medium rounded"
                           @if($balance <= 0) disabled @endif></textarea>
             </div>
 

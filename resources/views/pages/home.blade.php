@@ -54,7 +54,7 @@
                     <li>
                         <div class="flex flex-col pr-4">
                             <span class="text-black dark:text-blackColor-dark font-bold">
-                                {{ __('AI Email Generations') }}
+                                {{ __('AI Agreement Generations') }}
                             </span>
                             <div class="text-sm">
                                 Craft clear, polished emails for any situation — from business proposals to customer

@@ -66,35 +66,33 @@ class EmailGenerate extends Component
         $timestamp = now()->timestamp;
         $orderDirectory = 'orders/' . $order->id . '/';
         $zipFileName = $orderDirectory . $timestamp . '.zip';
-        $zipPath = storage_path('app/' . $timestamp . '.zip'); // Temporary ZIP storage
+        $zipPath = storage_path('app/' . $timestamp . '.zip');
 
-// Create prompt and email content files in memory
-        $promptContent = $prompt;
-        $emailContent = $this->email;
+        $product->update(['path' => $timestamp . '.zip']);
 
-// Create a ZIP file
         $zip = new ZipArchive;
+
         if ($zip->open($zipPath, ZipArchive::CREATE) === true) {
             // Add the prompt text as a file inside the ZIP
-            $zip->addFromString('prompt.txt', $promptContent);
+            $zip->addFromString('prompt.txt', $prompt);
 
             // Add the email text as a file inside the ZIP
-            $zip->addFromString('email.txt', $emailContent);
+            $zip->addFromString('email.txt', $this->email);
 
             // Close the ZIP archive
             $zip->close();
         }
 
-// Upload ZIP file to S3
-        Storage::disk('s3')->put($zipFileName, file_get_contents($zipPath));
+        // Upload ZIP file to S3
+        Storage::disk('public')->put($zipFileName, file_get_contents($zipPath));
 
-// Generate public URL for the ZIP file
-        $zipFileUrl = Storage::disk('s3')->url($zipFileName);
+        // Generate public URL for the ZIP file
+        $zipFileUrl = Storage::disk('public')->url($zipFileName);
 
-// Delete temporary ZIP file from local storage
+        // Delete temporary ZIP file from local storage
         unlink($zipPath);
 
-// Dispatch event for download link
+        // Dispatch event for download link
         $this->dispatch('fileDownload', $zipFileUrl);
     }
 
