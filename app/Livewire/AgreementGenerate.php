@@ -24,6 +24,8 @@ class AgreementGenerate extends Component
     public $balance;
     public $prompt;
     public $agreement;
+    public $order;
+    public $template;
 
     protected $rules = [
         'prompt' => 'required',
@@ -41,7 +43,7 @@ class AgreementGenerate extends Component
 
         $this->validate();
 
-        $prompt = $agreementGenerationService->generateAgreementPromptUsingOpenAI($this->prompt);
+        $prompt = $agreementGenerationService->generateAgreementPromptUsingOpenAI($this->template . ' ' . $this->prompt);
         $this->agreement = $agreementGenerationService->generateAgreementFromPrompt($prompt);
 
         $data = [
@@ -59,14 +61,14 @@ class AgreementGenerate extends Component
 
         $product = Product::create($data);
 
-        $order = Order::create([
+        $this->order = Order::create([
             'product_id' => $product->id,
             'user_id' => auth()->id(),
             'price' => $product->price,
         ]);
 
         $timestamp = now()->timestamp;
-        $orderDirectory = 'orders/' . $order->id . '/';
+        $orderDirectory = 'orders/' . $this->order->id . '/';
         $zipFileName = $orderDirectory . $timestamp . '.zip';
         $zipPath = storage_path('app/' . $timestamp . '.zip'); // Temporary local path
 

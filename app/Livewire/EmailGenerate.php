@@ -21,6 +21,8 @@ class EmailGenerate extends Component
     public $balance;
     public $prompt;
     public $email;
+    public $order;
+    public $template;
 
     protected $rules = [
         'prompt' => 'required',
@@ -39,7 +41,7 @@ class EmailGenerate extends Component
         // Validate the input (this will apply the rules set in the $rules property)
         $this->validate();
 
-        $prompt = $emailGenerationService->generatePromptUsingOpenAI($this->prompt);
+        $prompt = $emailGenerationService->generatePromptUsingOpenAI($this->template . ' ' . $this->prompt);
         $this->email = $emailGenerationService->generateEmailFromPrompt($prompt);
 
         $data = [
@@ -57,14 +59,14 @@ class EmailGenerate extends Component
 
         $product = Product::create($data);
 
-        $order = Order::create([
+        $this->order = Order::create([
             'product_id' => $product->id,
             'user_id' => auth()->id(),
             'price' => $product->price,
         ]);
 
         $timestamp = now()->timestamp;
-        $orderDirectory = 'orders/' . $order->id . '/';
+        $orderDirectory = 'orders/' . $this->order->id . '/';
         $zipFileName = $orderDirectory . $timestamp . '.zip';
         $zipPath = storage_path('app/' . $timestamp . '.zip');
 

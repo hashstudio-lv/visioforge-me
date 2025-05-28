@@ -3,15 +3,19 @@
         <div>
             {!! nl2br(e($agreement)) !!}
         </div>
-        <div>
-            <a href="{{ route('orders.generate-email') }}" class="btn-main btn-fullwidth mt-4">
+        <div class="mt-5">
+            <a href="{{ $order->url }}" download target="_blank"
+               class="text-sm md:text-size-15 text-whiteColor bg-primaryColor border border-primaryColor px-25px py-15px hover:text-primaryColor hover:bg-whiteColor rounded inline-block dark:hover:bg-whiteColor-dark dark:hover:text-whiteColor">
+                {{ __('Download') }}
+            </a>
+            <a href="{{ route('services.show', 'generate-agreement') }}" class="whitespace-nowrap text-size-15 text-whiteColor bg-secondaryColor px-25px py-10px border border-secondaryColor hover:text-secondaryColor hover:bg-whiteColor inline-block rounded dark:hover:bg-whiteColor-dark dark:hover:text-whiteColor">
                 {{ __('Generate another one') }}
             </a>
         </div>
     @else
         <label class="font-bold mb-10px block">{{ __('Templates') }}</label>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6" x-data="{ selected: '' }">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
             @foreach([
                 [
                     'title' => 'Freelance & Services',
@@ -54,7 +58,7 @@
                                 {{--                                </p>--}}
                                 <label
                                     class="flex items-center space-x-2 cursor-pointer text-sm font-medium text-contentColor dark:text-contentColor-dark leading-1.8">
-                                    <input type="radio" name="template" value="{{ $item['value'] }}" x-model="selected"
+                                    <input type="radio" name="template" value="{{ $item['value'] }}" wire:model.live="template"
                                            class="text-primaryColor">
                                     <span class="text-sm text-contentColor ml-2">{{ $item['title'] }}</span>
                                 </label>
