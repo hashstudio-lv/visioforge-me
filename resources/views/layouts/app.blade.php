@@ -1659,6 +1659,10 @@
                     <img src="{{ asset('assets/images/ma_symbol_opt_73_2x.png') }}"
                          style="width: 3rem;">
                 </div>
+				<div>
+                    <img src="{{ asset('assets/images/PngItem_7569533.png') }}"
+                         style="width: 3rem;">
+                </div>
             </div>
         </div>
         <!-- footer copyright  -->
