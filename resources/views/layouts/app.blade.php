@@ -1651,6 +1651,10 @@
 
             <div class="flex items-center">
                 <div class="mr-2">
+                    <img src="{{ asset('assets/images/PngItem_7569533.png') }}"
+                         style="width: 3rem;">
+                </div>
+                <div class="mr-2">
                     <img src="{{ asset('assets/images/Visa_Brandmark_Blue_RGB_2021.png') }}"
                          style="width: 3rem;">
                 </div>
