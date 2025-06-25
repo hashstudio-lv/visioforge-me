@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
+    @stack('custom-styles')
 </head>
 <body
     class="relative font-inter font-normal text-base leading-[1.8] bg-bodyBg dark:bg-bodyBg-dark"
@@ -1660,6 +1661,10 @@
                 </div>
                 <div>
                     <img src="{{ asset('assets/images/ma_symbol_opt_73_2x.png') }}"
+                         style="width: 3rem;">
+                </div>
+				<div>
+                    <img src="{{ asset('assets/images/PngItem_7569533.png') }}"
                          style="width: 3rem;">
                 </div>
             </div>

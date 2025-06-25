@@ -9,6 +9,10 @@ return [
         'en' => ['name' => 'English', 'script' => 'Latn', 'native' => 'English', 'regional' => 'en_GB'],
         'es' => ['name' => 'Spanish', 'script' => 'Latn', 'native' => 'español', 'regional' => 'es_ES'],
         'fr' => ['name' => 'French', 'script' => 'Latn', 'native' => 'français', 'regional' => 'fr_FR'],
+        'lv' => ['name' => 'Latvian', 'script' => 'Latn', 'native' => 'latviešu', 'regional' => 'lv_LV'],
+		'nl' => ['name' => 'Dutch', 'script' => 'Latn', 'native' => 'Nederlands', 'regional' => 'nl_NL'],
+		'pl' => ['name' => 'Polish', 'script' => 'Latn', 'native' => 'Polski', 'regional' => 'pl_PL'],
+        'it' => ['name' => 'Italian', 'script' => 'Latn', 'native' => 'Italiano', 'regional' => 'it_IT'], 
     ],
 
     // Requires middleware `LaravelSessionRedirect.php`.
