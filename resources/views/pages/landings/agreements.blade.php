@@ -34,8 +34,7 @@
                             <input
                                 type="text"
                                 name="prompt"
-								id="prompt"
-                                placeholder=@js(__("Enter key details for your contract..."))
+                                placeholder="Enter key details for your contract..."
                                 class="placeholder:text-darkdeep4 w-full ml-2 text-xs sm:text-sm md:text-base focus:outline-none"
                             >
                             <div class="self-end ml-auto">
@@ -54,19 +53,19 @@
                             <li>
                                 <p class="text-whiteColor">
                                     <i class="icofont-check-alt"></i
-                                    ><span class="ml-5px">{{ __('Over 9k Agreements Created') }}</span>
+                                    ><span class="ml-5px">Over 9k Agreements Created</span>
                                 </p>
                             </li>
                             <li>
                                 <p class="text-whiteColor">
                                     <i class="icofont-check-alt"></i
-                                    ><span class="ml-5px">{{ __('1.2k Ready-to-Sign Use Cases') }}</span>
+                                    ><span class="ml-5px">1.2k Ready-to-Sign Use Cases</span>
                                 </p>
                             </li>
                             <li>
                                 <p class="text-whiteColor">
                                     <i class="icofont-check-alt"></i
-                                    ><span class="ml-5px">{{ __('150+ Business Professionals Trust Us') }}</span>
+                                    ><span class="ml-5px">150+ Business Professionals Trust Us</span>
                                 </p>
                             </li>
                         </ul>
@@ -110,23 +109,23 @@
                             <h3
                                 class="uppercase text-secondaryColor text-size-15 mb-5px md:mb-15px font-inter tracking-[4px] font-semibold"
                             >
-                                {{ __('Hear from our users') }}
+                                Hear from our users
                             </h3>
                             <h1
                                 class="text-3xl text-blackColor md:text-size-35 lg:text-size-42 2xl:text-size-47 leading-10 md:leading-45px lg:leading-12 2xl:leading-50px dark:text-blackColor-dark font-bold mb-15px"
                             >
-                                {{ __('Trusted by Freelancers, Startups & Businesses Alike') }}
+                                Trusted by Freelancers, Startups & Businesses Alike
                             </h1>
 
                             <!-- Swiper -->
                             <div class="swiper testimonial-2">
                                 <div class="swiper-wrapper">
                                     @foreach([
-    ['review' => __("I needed a freelance contract urgently — the AI generated a complete, professional document in minutes. Saved me a ton of time."), 'name' => __('Laura M.'), 'position' => __('Freelance Graphic Designer')],
-    ['review' => __("As a startup founder, drafting NDAs and service agreements used to be a pain. Now I can create them instantly without legal fees."), 'name' => __('Adam P.'), 'position' => __('Startup Founder')],
-    ['review' => __("We use the platform for client contracts and internal agreements. The AI handles the heavy lifting, and we just review and sign."), 'name' => __('Michelle T.'), 'position' => __('Operations Manager')],
-    ['review' => __("We don’t have an in-house lawyer, so this tool helps us stay compliant and professional without the cost."), 'name' => __('Rahul S.'), 'position' => __('E-commerce Store Owner')],
-    ['review' => __("Our HR team uses it for employment agreements and offer letters. It’s intuitive, fast, and saves hours of admin work."), 'name' => __('Nina K.'), 'position' => __('HR Coordinator')],
+    ['review' => 'I needed a freelance contract urgently — the AI generated a complete, professional document in minutes. Saved me a ton of time.', 'name' => 'Laura M.', 'position' => 'Freelance Graphic Designer'],
+    ['review' => 'As a startup founder, drafting NDAs and service agreements used to be a pain. Now I can create them instantly without legal fees.', 'name' => 'Adam P.', 'position' => 'Startup Founder'],
+    ['review' => 'We use the platform for client contracts and internal agreements. The AI handles the heavy lifting, and we just review and sign.', 'name' => 'Michelle T.', 'position' => 'Operations Manager'],
+    ['review' => 'We don’t have an in-house lawyer, so this tool helps us stay compliant and professional without the cost.', 'name' => 'Rahul S.', 'position' => 'E-commerce Store Owner'],
+    ['review' => 'Our HR team uses it for employment agreements and offer letters. It’s intuitive, fast, and saves hours of admin work.', 'name' => 'Nina K.', 'position' => 'HR Coordinator'],
 ] as $item)
                                         <div class="swiper-slide">
                                             <div>

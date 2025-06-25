@@ -12,11 +12,11 @@
                             {{ __('AI BUSINESS TOOLS') }}
                         </h3>
                         <h1 class="text-size-35 md:text-size-65 lg:text-5xl 2xl:text-size-65 leading-42px md:leading-18 lg:leading-15 2xl:leading-18 text-blackColor dark:text-blackColor-dark md:tracking-half lg:tracking-normal 2xl:tracking-half font-bold mb-15px">
-                            <span class="text-secondaryColor">{{ __("Smart Solutions") }}</span> {{ __('for Agreements, Emails & Images') }}
+                            <span class="text-secondaryColor">Smart Solutions</span> for Agreements, Emails & Images
                         </h1>
                         <p class="text-size-15 md:text-lg text-blackColor dark:text-blackColor-dark font-medium">
-                            {{ __('Boost your productivity with AI-generated legal documents,') }} <br>
-                            {{ __('professional emails, and ready-to-use stock images — all in one platform.') }}
+                            Boost your productivity with AI-generated legal documents, <br>
+                            professional emails, and ready-to-use stock images — all in one platform.
                         </p>
 
                         <div class="mt-30px">
@@ -36,14 +36,15 @@
                                 {{ __('AI Email Generations') }}
                             </span>
                             <div class="text-sm">
-                                {{ __('Create professional, legally-sound agreements in seconds — just input key details, and let AI handle the formatting and clauses.') }}
+                                Create professional, legally-sound agreements in seconds — just input key details, and
+                                let AI handle the formatting and clauses.
                             </div>
                         </div>
                     </li>
                     <li>
                         <a class="whitespace-nowrap text-size-15 text-whiteColor bg-secondaryColor px-25px py-10px border border-secondaryColor hover:text-secondaryColor hover:bg-whiteColor inline-block rounded dark:hover:bg-whiteColor-dark dark:hover:text-whiteColor"
                            href="{{ route('pages.emails') }}">
-                            {{ __('Generate Email') }} <i class="icofont-long-arrow-right"></i>
+                            Generate Email <i class="icofont-long-arrow-right"></i>
                         </a>
                     </li>
                 </ul>
@@ -56,14 +57,15 @@
                                 {{ __('AI Agreement Generations') }}
                             </span>
                             <div class="text-sm">
-                                {{ __('Craft clear, polished emails for any situation — from business proposals to customer support — with AI-powered tone and structure.') }}
+                                Craft clear, polished emails for any situation — from business proposals to customer
+                                support — with AI-powered tone and structure.
                             </div>
                         </div>
                     </li>
                     <li>
                         <a class="whitespace-nowrap text-size-15 text-whiteColor bg-secondaryColor px-25px py-10px border border-secondaryColor hover:text-secondaryColor hover:bg-whiteColor inline-block rounded dark:hover:bg-whiteColor-dark dark:hover:text-whiteColor"
                            href="{{ route('pages.agreements') }}">
-                            {{ __('Generate Agreement') }} <i class="icofont-long-arrow-right"></i>
+                            Generate Agreement <i class="icofont-long-arrow-right"></i>
                         </a>
                     </li>
                 </ul>
@@ -76,14 +78,15 @@
                                 {{ __('Stock Image Library') }}
                             </span>
                             <div class="text-sm">
-                                {{ __('Access a curated collection of high-quality stock images for websites, ads, and presentations — royalty-free and ready to use.') }}
+                                Access a curated collection of high-quality stock images for websites, ads, and
+                                presentations — royalty-free and ready to use.
                             </div>
                         </div>
                     </li>
                     <li>
                         <a class="whitespace-nowrap text-size-15 text-whiteColor bg-secondaryColor px-25px py-10px border border-secondaryColor hover:text-secondaryColor hover:bg-whiteColor inline-block rounded dark:hover:bg-whiteColor-dark dark:hover:text-whiteColor"
                            href="{{ route('products.index') }}">
-                            {{ __('Explore') }} <i class="icofont-long-arrow-right"></i>
+                            Explore <i class="icofont-long-arrow-right"></i>
                         </a>
                     </li>
                 </ul>
@@ -109,35 +112,34 @@
                         <div data-aos="fade-up" class="aos-init aos-animate">
                             <span
                                 class="text-sm font-semibold text-primaryColor bg-whitegrey3 px-6 py-5px mb-5 rounded-full inline-block">
-                                {{ __('AI Email Generation') }}
+                                AI Email Generation
                             </span>
                             <h3 class="text-3xl md:text-size-45 leading-10 md:leading-2xl font-bold text-blackColor dark:text-blackColor-dark pb-25px">
-                                {{ __('Welcome to the Future of') }}
+                                Welcome to the Future of
                                 <span
-                                    class="relative after:w-full after:h-[7px] after:bg-secondaryColor z-0 after:absolute after:left-0 after:bottom-3 md:after:bottom-5 md:after:-z-1">
-                                    {{ __('Email Writing') }}
-                                </span>
+                                    class="relative after:w-full after:h-[7px] after:bg-secondaryColor z-0 after:absolute after:left-0 after:bottom-3 md:after:bottom-5 md:after:-z-1">Email Writing</span>
                             </h3>
                             <p class="text-sm md:text-base leading-7 text-contentColor dark:text-contentColor-dark mb-6 pl-3 border-l-2 border-primaryColor">
-                                {{ __('AI-powered tools to help you write clear, professional, and effective emails for any situation — instantly and effortlessly.') }}
+                                AI-powered tools to help you write clear, professional, and effective emails for any
+                                situation — instantly and effortlessly.
                             </p>
                             <ul class="space-y-5">
                                 <li class="flex items-center group">
                                     <i class="icofont-check text-primaryColor mr-15px border border-primaryColor rounded-full"></i>
                                     <p class="text-sm md:text-base text-blackColor dark:text-blackColor-dark">
-                                        {{ __('Compose emails in seconds with AI assistance') }}
+                                        Compose emails in seconds with AI assistance
                                     </p>
                                 </li>
                                 <li class="flex items-center group">
                                     <i class="icofont-check text-primaryColor mr-15px border border-primaryColor rounded-full"></i>
                                     <p class="text-sm md:text-base text-blackColor dark:text-blackColor-dark">
-                                        {{ __('Perfect for outreach, support, and daily communication') }}
+                                        Perfect for outreach, support, and daily communication
                                     </p>
                                 </li>
                                 <li class="flex items-center group">
                                     <i class="icofont-check text-primaryColor mr-15px border border-primaryColor rounded-full"></i>
                                     <p class="text-sm md:text-base text-blackColor dark:text-blackColor-dark">
-                                        {{ __('Boost reply rates and save writing time') }}
+                                        Boost reply rates and save writing time
                                     </p>
                                 </li>
                             </ul>
@@ -151,7 +153,7 @@
                                                 <span data-countup-number="27">27</span><span>k+</span>
                                             </p>
                                             <p class="uppercase text-blackColor font-medium leading-[18px] dark:text-blackColor-dark">
-                                                {{ __('Emails') }}<br>{{ __('Generated') }}
+                                                Emails<br>Generated
                                             </p>
                                         </div>
                                     </div>
@@ -164,7 +166,7 @@
                                                 <span data-countup-number="145">145</span><span>+</span>
                                             </p>
                                             <p class="uppercase text-blackColor font-medium leading-[18px] dark:text-blackColor-dark">
-                                                {{ __('Business') }}<br>{{ __('Users') }}
+                                                Business<br>Users
                                             </p>
                                         </div>
                                     </div>
@@ -177,7 +179,7 @@
                                                 <span data-countup-number="10">10</span><span>k</span>
                                             </p>
                                             <p class="uppercase text-blackColor font-medium leading-[18px] dark:text-blackColor-dark">
-                                                {{ __('Saved') }}<br>{{ __('Hours') }}
+                                                Saved<br>Hours
                                             </p>
                                         </div>
                                     </div>
@@ -204,35 +206,33 @@
                         <!-- about right -->
                         <div data-aos="fade-up" class="aos-init aos-animate">
                     <span class="text-sm font-semibold text-primaryColor bg-whitegrey3 px-6 py-5px mb-5 rounded-full inline-block">
-                        {{ __('AI Agreement Generation') }}
+                        AI Agreement Generation
                     </span>
                             <h3 class="text-3xl md:text-size-45 leading-10 md:leading-2xl font-bold text-blackColor dark:text-blackColor-dark pb-25px">
-                                {{ __('Effortless Creation of') }}<br>
+                                Effortless Creation of<br>
                                 <span
-                                    class="relative after:w-full after:h-[7px] after:bg-secondaryColor z-0 after:absolute after:left-0 after:bottom-3 md:after:bottom-5 md:after:-z-1">
-                                    {{ __('Legal Documents') }}
-                                </span>
+                                    class="relative after:w-full after:h-[7px] after:bg-secondaryColor z-0 after:absolute after:left-0 after:bottom-3 md:after:bottom-5 md:after:-z-1">Legal Documents</span>
                             </h3>
                             <p class="text-sm md:text-base leading-7 text-contentColor dark:text-contentColor-dark mb-6 pl-3 border-l-2 border-primaryColor">
-                                {{ __('Use AI to generate contracts, agreements, and legal forms with ease — accurate, customizable, and ready in seconds.') }}
+                                Use AI to generate contracts, agreements, and legal forms with ease — accurate, customizable, and ready in seconds.
                             </p>
                             <ul class="space-y-5">
                                 <li class="flex items-center group">
                                     <i class="icofont-check text-primaryColor mr-15px border border-primaryColor rounded-full"></i>
                                     <p class="text-sm md:text-base text-blackColor dark:text-blackColor-dark">
-                                        {{ __('Generate legal agreements in just a few clicks') }}
+                                        Generate legal agreements in just a few clicks
                                     </p>
                                 </li>
                                 <li class="flex items-center group">
                                     <i class="icofont-check text-primaryColor mr-15px border border-primaryColor rounded-full"></i>
                                     <p class="text-sm md:text-base text-blackColor dark:text-blackColor-dark">
-                                        {{ __('Ideal for freelancers, startups, and businesses') }}
+                                        Ideal for freelancers, startups, and businesses
                                     </p>
                                 </li>
                                 <li class="flex items-center group">
                                     <i class="icofont-check text-primaryColor mr-15px border border-primaryColor rounded-full"></i>
                                     <p class="text-sm md:text-base text-blackColor dark:text-blackColor-dark">
-                                        {{ __('Save hours on drafting and reviewing documents') }}
+                                        Save hours on drafting and reviewing documents
                                     </p>
                                 </li>
                             </ul>
@@ -245,7 +245,7 @@
                                                 <span data-countup-number="9">9</span><span>k+</span>
                                             </p>
                                             <p class="uppercase text-blackColor font-medium leading-[18px] dark:text-blackColor-dark">
-                                                {{ __('Agreements') }}<br>{{ __('Created') }}
+                                                Agreements<br>Created
                                             </p>
                                         </div>
                                     </div>
@@ -257,7 +257,7 @@
                                                 <span data-countup-number="120">120</span><span>+</span>
                                             </p>
                                             <p class="uppercase text-blackColor font-medium leading-[18px] dark:text-blackColor-dark">
-                                                {{ __('Legal Use') }}<br>{{ __('Cases') }}
+                                                Legal Use<br>Cases
                                             </p>
                                         </div>
                                     </div>
@@ -269,7 +269,7 @@
                                                 <span data-countup-number="8">8</span><span>k</span>
                                             </p>
                                             <p class="uppercase text-blackColor font-medium leading-[18px] dark:text-blackColor-dark">
-                                                {{ __('Hours') }}<br>{{ __('Saved') }}
+                                                Hours<br>Saved
                                             </p>
                                         </div>
                                     </div>
@@ -312,12 +312,12 @@
                         <h3
                             class="text-3xl md:text-[35px] lg:text-size-38 3xl:text-size-42 leading-10 mf:leading-45px 2xl:leading-50px 3xl:leading-2xl font-bold text-blackColor dark:text-blackColor-dark text-center"
                         >
-                            {{ __('High-Quality') }}
+                            High-Quality
                             <span class="relative after:w-full after:h-[7px] z-0 after:bg-secondaryColor after:absolute after:left-0 after:bottom-3 md:after:bottom-5 after:z-[-1]">
-                                {{ __('Images') }}
+                                Images
                             </span>
                             <br>
-                            {{ __('for Your Projects') }}
+                            for Your Projects
                         </h3>
                     </div>
 
@@ -329,7 +329,7 @@
                                     data-filter="*"
                                     class="is-checked relative px-10px lg:px-3 2xl:px-15px py-10px md:py-4 lg:py-3 3xl:py-22px mx-10px md:mx-2 lg:mx-3 2xl:mx-15px text-base md:text-xs lg:text-base text-contentColor font-medium hover:text-primaryColor dark:text-contentColor-dark dark:hover:text-primaryColor after:w-0.5 after:h-15px after:absolute after:right-[-15px] after:bottom-1/2 after:translate-y-1/2 after:bg-contentColor before:w-0 before:h-0.5 before:absolute before:-bottom-0.5 lg:before:bottom-0 before:left-0 before:bg-primaryColor hover:before:w-full before:transition-all before:duration-300"
                                 >
-                                    {{ __('All') }}
+                                    All
                                 </button>
                             </li>
                             @foreach([
@@ -433,20 +433,22 @@
                         <div class="relative">
                 <span
                     class="text-sm font-semibold text-primaryColor bg-whitegrey3 px-6 py-5px mb-5 rounded-full inline-block">
-                  {{ __('Reviews') }}
+                  Reviews
                 </span>
                             <h3 class="text-3xl md:text-size-35 2xl:text-size-38 3xl:text-size-42 leading-10 md:leading-45px 2xl:leading-50px 3xl:leading-2xl font-bold text-blackColor pb-25px dark:text-blackColor-dark">
-                                {{ __('What Our Users Say') }}
+                                What Our Users Say
                             </h3>
                             <p class="text-sm md:text-base text-contentColor mb-5 2xl:mb-45px dark:text-contentColor-dark">
-                                {{ __('Discover how our AI tools are transforming productivity. Hear from professionals who streamline their work with smart email, agreement, and image solutions.') }}
+                                Discover how our AI tools are transforming productivity. Hear from professionals who
+                                streamline their work with smart email, agreement, and image solutions.
                             </p>
                         </div>
                     </div>
                     <div data-aos="fade-up" class="aos-init aos-animate">
                         <div class="bg-whiteColor px-25px py-50px mb-22px relative dark:bg-whiteColor-dark">
                             <p class="text-base lg:text-sm 2xl:text-base text-contentColor dark:text-contentColor-dark">
-                                {{ __("The AI agreement generator helped me create a solid freelance contract in under 5 minutes. It's accurate, fast, and professional.") }}
+                                The AI agreement generator helped me create a solid freelance contract in under 5
+                                minutes. It’s accurate, fast, and professional.
                             </p>
 
                             <div
@@ -460,10 +462,10 @@
                         <div class="flex items-center gap-5 2xl:gap-20">
                             <div>
                                 <h4 class="text-xl lg:text-lg 2xl:text-xl font-semibold text-blackColor dark:text-blackColor-dark">
-                                    {{ __('Samantha R.') }}
+                                    Samantha R.
                                 </h4>
                                 <p class="text-base lg:text-size-15 2xl:text-base text-lightGrey9 dark:text-lightGrey9-dark">
-                                    {{ __('Freelance Designer') }}
+                                    Freelance Designer
                                 </p>
                             </div>
                         </div>
@@ -471,7 +473,8 @@
                     <div data-aos="fade-up" class="aos-init aos-animate">
                         <div class="bg-whiteColor px-25px py-50px mb-22px relative dark:bg-whiteColor-dark">
                             <p class="text-base lg:text-sm 2xl:text-base text-contentColor dark:text-contentColor-dark">
-                                {{ __('Writing client emails used to take me forever. Now, I just input a few key points and the AI drafts a professional message instantly!') }}
+                                Writing client emails used to take me forever. Now, I just input a few key points and
+                                the AI drafts a professional message instantly!
                             </p>
 
                             <div
@@ -485,10 +488,10 @@
                         <div class="flex items-center gap-5 2xl:gap-20">
                             <div>
                                 <h4 class="text-xl lg:text-lg 2xl:text-xl font-semibold text-blackColor dark:text-blackColor-dark">
-                                    {{ __('James K.') }}
+                                    James K.
                                 </h4>
                                 <p class="text-base lg:text-size-15 2xl:text-base text-lightGrey9 dark:text-lightGrey9-dark">
-                                    {{ __('Customer Support Lead') }}
+                                    Customer Support Lead
                                 </p>
                             </div>
                         </div>

@@ -18,7 +18,7 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
             @foreach([
                 [
-                    'title' => __('Freelance & Services'),
+                    'title' => 'Freelance & Services',
                     'items' => [
                         ['title' => 'Freelance Work Agreement', 'value' => 'Freelance Work Agreement'],
                         ['title' => 'Service Agreement for Client', 'value' => 'Service Agreement for Client'],
@@ -26,7 +26,7 @@
                     ]
                 ],
                 [
-                    'title' => __('Business & Operations'),
+                    'title' => 'Business & Operations',
                     'items' => [
                         ['title' => 'Non-Disclosure Agreement (NDA)', 'value' => 'Non-Disclosure Agreement (NDA)'],
                         ['title' => 'Partnership Agreement', 'value' => 'Partnership Agreement'],
@@ -35,7 +35,7 @@
                     ]
                 ],
                 [
-                    'title' => __('HR & Employment'),
+                    'title' => 'HR & Employment',
                     'items' => [
                         ['title' => 'Employment Agreement', 'value' => 'Employment Agreement'],
                         ['title' => 'Internship Agreement', 'value' => 'Internship Agreement'],
