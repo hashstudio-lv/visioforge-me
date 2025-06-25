@@ -33,7 +33,7 @@
                             <input
                                 type="text"
                                 name="prompt"
-                                placeholder="Enter key details for your email..."
+                                placeholder=@js(__("Enter key details for your email..."))
                                 class="placeholder:text-darkdeep4 w-full ml-2 text-xs sm:text-sm md:text-base focus:outline-none"
                             >
 
@@ -53,19 +53,19 @@
                             <li>
                                 <p class="text-whiteColor">
                                     <i class="icofont-check-alt"></i>
-                                    <span class="ml-5px">Over 27k Emails Generated</span>
+                                    <span class="ml-5px">{{ __('Over 27k Emails Generated') }}</span>
                                 </p>
                             </li>
                             <li>
                                 <p class="text-whiteColor">
                                     <i class="icofont-check-alt"></i>
-                                    <span class="ml-5px">Used in 1.4k Business Scenarios</span>
+                                    <span class="ml-5px">{{ __('Used in 1.4k Business Scenarios') }}</span>
                                 </p>
                             </li>
                             <li>
                                 <p class="text-whiteColor">
                                     <i class="icofont-check-alt"></i>
-                                    <span class="ml-5px">Trusted by 145+ Teams Worldwide</span>
+                                    <span class="ml-5px">{{ __('Trusted by 145+ Teams Worldwide') }}</span>
                                 </p>
                             </li>
                         </ul>
@@ -109,22 +109,22 @@
                             <h3
                                 class="uppercase text-secondaryColor text-size-15 mb-5px md:mb-15px font-inter tracking-[4px] font-semibold"
                             >
-                                Hear from our users
+                                {{ __('Hear from our users') }}
                             </h3>
                             <h1
                                 class="text-3xl text-blackColor md:text-size-35 lg:text-size-42 2xl:text-size-47 leading-10 md:leading-45px lg:leading-12 2xl:leading-50px dark:text-blackColor-dark font-bold mb-15px"
                             >
-                                Trusted by Freelancers, Startups & Businesses Alike
+                                {{ __('Trusted by Freelancers, Startups & Businesses Alike') }}
                             </h1>
 
                             <!-- Swiper -->
                             <div class="swiper testimonial-2">
                                 <div class="swiper-wrapper">
                                     @foreach([
-    ['review' => 'Writing cold emails used to take me forever. Now I just enter a few details and get a polished email ready to go.', 'name' => 'Jason L.', 'position' => 'Sales Manager'],
-    ['review' => 'This tool has completely transformed how I handle customer support. It saves time and keeps our tone consistent.', 'name' => 'Emily R.', 'position' => 'Support Lead'],
-    ['review' => 'Our marketing emails now sound sharp, clear, and on-brand — with zero effort. Total game-changer.', 'name' => 'Carlos M.', 'position' => 'Marketing Strategist'],
-    ['review' => 'As a non-native English speaker, this platform helps me sound more confident and professional in every message.', 'name' => 'Yuki H.', 'position' => 'Freelance Consultant'],
+    ['review' => __('Writing cold emails used to take me forever. Now I just enter a few details and get a polished email ready to go.'), 'name' => 'Jason L.', 'position' => __('Sales Manager')],
+    ['review' => __('This tool has completely transformed how I handle customer support. It saves time and keeps our tone consistent.'), 'name' => 'Emily R.', 'position' => __('Support Lead')],
+    ['review' => __('Our marketing emails now sound sharp, clear, and on-brand — with zero effort. Total game-changer.'), 'name' => 'Carlos M.', 'position' => __('Marketing Strategist')],
+    ['review' => __('As a non-native English speaker, this platform helps me sound more confident and professional in every message.'), 'name' => 'Yuki H.', 'position' => __('Freelance Consultant')],
     ['review' => 'We use it across the team for internal updates and external communications. It saves us hours each week.', 'name' => 'Angela B.', 'position' => 'Project Manager'],
 ] as $item)
                                         <div class="swiper-slide">
