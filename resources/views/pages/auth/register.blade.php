@@ -106,7 +106,7 @@
                                             value="{{ old('email') }}"
                                             id="input-email"
                                             name="email"
-                                            placeholder="Your email"
+                                            placeholder="{{ __('Your email') }}"
                                             class="w-full h-52px leading-52px pl-5 bg-transparent text-sm focus:outline-none text-contentColor dark:text-contentColor-dark border border-borderColor dark:border-borderColor-dark placeholder:text-placeholder placeholder:opacity-80 font-medium rounded"
                                         >
                                         @error('email')

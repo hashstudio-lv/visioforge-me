@@ -100,7 +100,7 @@
                             <h3
                                 class="text-2xl font-semibold text-blackColor dark:text-blackColor-dark leading-38px"
                             >
-                                Mail address
+                                {{ __('Mail address') }}
                             </h3>
                             <p
                                 class="text-size-13 lg:text-size-15 text-contentColor dark:text-contentColor-dark leaing-5"
@@ -139,7 +139,7 @@
                             <h3
                                 class="text-2xl font-semibold text-blackColor dark:text-blackColor-dark leading-38px"
                             >
-                                Office address
+                                {{ __('Office address') }}
                             </h3>
                             <p
                                 class="text-size-13 lg:text-size-15 text-contentColor dark:text-contentColor-dark leaing-5"
@@ -178,7 +178,7 @@
                             <h3
                                 class="text-2xl font-semibold text-blackColor dark:text-blackColor-dark leading-38px"
                             >
-                                Phone Number
+                                {{ __('Phone Number') }}
                             </h3>
                             <p
                                 class="text-size-13 lg:text-size-15 text-contentColor dark:text-contentColor-dark leaing-5"
@@ -213,17 +213,17 @@
                             <!-- Example input (keep yours as-is) -->
                             <div class="grid grid-cols-1 xl:grid-cols-2 mb-30px gap-30px">
                                 <div class="relative" data-aos="fade-up">
-                                    <input type="text" placeholder="Enter your name*"
+                                    <input type="text" placeholder=@js(__("Enter your name*"))
                                            class="w-full pl-26px h-15 rounded border"/>
                                 </div>
                                 <div class="relative" data-aos="fade-up">
-                                    <input type="email" placeholder="Enter Email Address*"
+                                    <input type="email" placeholder=@js(__("Enter Email Address*"))
                                            class="w-full pl-26px h-15 rounded border"/>
                                 </div>
                             </div>
 
                             <div class="relative" data-aos="fade-up">
-                                <textarea placeholder="Enter your Message here"
+                                <textarea placeholder=@js(__("Enter your Message here"))
                                           class="w-full pt-3 pl-26px rounded border" rows="5"></textarea>
                             </div>
 
