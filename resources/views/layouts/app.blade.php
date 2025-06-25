@@ -65,10 +65,10 @@
                     <div class="hidden lg:block lg:col-start-3 lg:col-span-7">
                         <ul class="nav-list flex justify-center">
                             @foreach([
-                                ['title' => __('Home'), 'url' => route('home'), 'is_active' => request()->route()->getName() == 'home'],
-                                ['title' => __('Generate Agreements'), 'url' => route('pages.agreements'), 'is_active' => request()->route()->getName() == 'pages.agreements'],
-                                ['title' => __('Generate Emails'), 'url' => route('pages.emails'), 'is_active' => request()->route()->getName() == 'pages.emails'],
-                                ['title' => __('Image Stock'), 'url' => route('products.index'), 'is_active' => request()->route()->getName() == 'products.index'],
+                                ['title' => 'Home', 'url' => route('home'), 'is_active' => request()->route()->getName() == 'home'],
+                                ['title' => 'Generate Agreements', 'url' => route('pages.agreements'), 'is_active' => request()->route()->getName() == 'pages.agreements'],
+                                ['title' => 'Generate Emails', 'url' => route('pages.emails'), 'is_active' => request()->route()->getName() == 'pages.emails'],
+                                ['title' => 'Image Stock', 'url' => route('products.index'), 'is_active' => request()->route()->getName() == 'products.index'],
                             ] as $item)
                                 <li class="nav-item group">
                                     <a href="{{ $item['url'] }}"
@@ -1502,14 +1502,14 @@
                         >
                             <input
                                 type="email"
-                                placeholder="{{ __('Enter your email here') }}"
+                                placeholder="Enter your email here"
                                 class="text-whiteColor h-62px pl-15px focus:outline-none border border-deepgray focus:border-whitegrey bg-transparent rounded w-full"
                             >
                             <button
                                 type="submit"
                                 class="px-3 md:px-10px lg:px-5 bg-primaryColor hover:bg-deepgray text-xs lg:text-size-15 text-whiteColor border border-primaryColor block rounded absolute right-0 top-0 h-full"
                             >
-                                {{ __('Subscribe Now') }}
+                                Subscribe Now
                             </button>
                         </form>
 
@@ -1518,7 +1518,7 @@
                             x-transition
                             class="mt-4 text-whiteColor bg-green-600 px-4 py-3 rounded text-sm"
                         >
-                            {{ __('Thank you for subscribing!') }}
+                            Thank you for subscribing!
                         </div>
                     </div>
                 </div>
@@ -1663,6 +1663,10 @@
                     <img src="{{ asset('assets/images/ma_symbol_opt_73_2x.png') }}"
                          style="width: 3rem;">
                 </div>
+				<div>
+                    <img src="{{ asset('assets/images/PngItem_7569533.png') }}"
+                         style="width: 3rem;">
+                </div>
             </div>
         </div>
         <!-- footer copyright  -->
@@ -1672,7 +1676,7 @@
             >
                 <div>
                     <p class="text-base text-darkgray">
-                        {{ __('© 2024 Powered by') }}
+                        © 2024 Powered by
                         <a href="{{ route('home') }}" class="hover:text-primaryColor">{{ config('app.name') }}</a>.
                         {{ __('All Rights Reserved.') }}
                     </p>
