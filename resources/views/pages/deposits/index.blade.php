@@ -20,10 +20,10 @@
             <table class="w-full text-left text-nowrap">
                 <thead class="text-sm md:text-base text-blackColor dark:text-blackColor-dark bg-lightGrey5 dark:bg-whiteColor-dark leading-1.8 md:leading-1.8">
                 <tr>
-                    <th class="px-5px py-10px md:px-5">Date</th>
-                    <th class="px-5px py-10px md:px-5">Tokens</th>
-                    <th class="px-5px py-10px md:px-5">Status</th>
-                    <th class="px-5px py-10px md:px-5">Price</th>
+                    <th class="px-5px py-10px md:px-5">{{ __('Date') }}</th>
+                    <th class="px-5px py-10px md:px-5">{{ __('Tokens') }}</th>
+                    <th class="px-5px py-10px md:px-5">{{ __('Status') }}</th>
+                    <th class="px-5px py-10px md:px-5">{{ __('Price') }}</th>
                 </tr>
                 </thead>
                 <tbody class="text-size-13 md:text-base text-contentColor dark:text-contentColor-dark font-normal">
