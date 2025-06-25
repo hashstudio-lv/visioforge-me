@@ -105,12 +105,7 @@
                             <p
                                 class="text-size-13 lg:text-size-15 text-contentColor dark:text-contentColor-dark leaing-5"
                             >
-                                techbootmail@gmail.com
-                            </p>
-                            <p
-                                class="text-size-15 text-contentColor dark:text-contentColor-dark leaing-26px"
-                            >
-                                998757478492
+                                {{ env('COMPANY_EMAIL') }}
                             </p>
                         </div>
                     </div>
@@ -149,12 +144,7 @@
                             <p
                                 class="text-size-13 lg:text-size-15 text-contentColor dark:text-contentColor-dark leaing-5"
                             >
-                                Digital Agency Network 2024
-                            </p>
-                            <p
-                                class="text-size-15 text-contentColor dark:text-contentColor-dark leaing-26px"
-                            >
-                                Eastbourne Terrace
+                                {{ env('COMPANY_ADDRESS') }}
                             </p>
                         </div>
                     </div>
@@ -193,12 +183,7 @@
                             <p
                                 class="text-size-13 lg:text-size-15 text-contentColor dark:text-contentColor-dark leaing-5"
                             >
-                                +880 123 456 789 , 99874
-                            </p>
-                            <p
-                                class="text-size-15 text-contentColor dark:text-contentColor-dark leaing-26px"
-                            >
-                                +880 123 456 789
+                                {{ env('COMPANY_PHONE') }}
                             </p>
                         </div>
                     </div>
