@@ -201,23 +201,23 @@
 
             <form
                 class="card-body"
-				method="POST"
-				action="{{ route("deposits.store") }}"
+                method="POST"
+                action="{{ route('deposits.store') }}"
                 x-data="{
                     amount: 0, // for ui input
                     isAgree: false,
                     isSubmitted: false,
                     exchangeRate: {{ $exchangeRatioToART }},
                     currency: '{{ $currentCurrency }}',
-
+                
                     get isSubmitAllow() {
-                        return this.isAgree && this.cost !== null && ! this.isSubmitted;
+                        return this.isAgree && this.cost !== null && !this.isSubmitted;
                     },
-
+                
                     handleFormSubmit() {
                         this.isSubmitted = true;
                     },
-
+                
                     // Deposits logic
                     showCustomAmountInput: false,
                     cost: null,
@@ -227,88 +227,84 @@
                     exchangeRate: @js($exchangeRatioToART),
                     selectedCurrency: @js($currentCurrency),
                     tokenPriceEUR: @js($tokenPriceEUR),
-
+                
                     updateLocation(event) {
                         window.location.href = event.target.value;
                     },
-
+                
                     chooseAmount(selectedAmount) {
                         if (selectedAmount === 'custom') {
                             this.showCustomAmountInput = true;
                             this.amount = null;
                             this.cost = null;
-
+                
                             return;
                         }
-
+                
                         this.inputAmount(selectedAmount);
-
+                
                         this.showCustomAmountInput = false;
                         this.warning = null;
                     },
-
+                
                     inputAmount(selectedAmount, from) {
                         this.amount = selectedAmount;
-
+                
                         if (selectedAmount < 5) {
                             this.cost = null;
                             this.warning = `Minimum 5 tokens required (Current: ${Number(selectedAmount)} tokens)`;
-
+                
                             return;
                         } else {
                             // because we are taking amount from input, we must not hide it
                             if (from !== 'input') {
                                 this.showCustomAmountInput = false;
                             }
-
+                
                             this.warning = null;
                         }
-
+                
                         // Calculation logic
                         if (this.isCurrenciesFromConfig) {
                             const currentCurrencyRate = this.currenciesRate[this.selectedCurrency];
-
+                
                             // user selected the wrong currency
-                            if (! currentCurrencyRate) {
+                            if (!currentCurrencyRate) {
                                 return;
                             }
-
+                
                             this.cost = currentCurrencyRate.rate[selectedAmount];
-
-                            if (! this.cost) {
+                
+                            if (!this.cost) {
                                 this.cost = selectedAmount * currentCurrencyRate['one_token_price'];
                             }
-
+                
                         } else {
                             this.cost = selectedAmount * (this.selectedCurrency !== 'EUR' ? this.tokenPriceEUR * this.exchangeRate : this.tokenPriceEUR);
                         }
-
-                        if (! this.cost) {
+                
+                        if (!this.cost) {
                             return;
                         }
-
+                
                         this.cost = this.cost.toFixed(2);
                     },
                 }"
                 @submit="handleFormSubmit"
             >
-				@csrf
+                @csrf
                 <div class="form-section">
                     <label class="form-label">
                         @if ($isCurrenciesFromConfig)
-                            {{
-                                __(
-                                    "Choose currency: (:amount :currency = 1 VFT)",
-                                    ["currency" => $currentCurrency, "amount" => $currenciesRate[$currentCurrency]['one_token_price']]
-                                )
-                            }}
+                            {{ __('Choose currency: (:amount :currency = 1 VFT)', [
+                                'currency' => $currentCurrency,
+                                'amount' => $currenciesRate[$currentCurrency]['one_token_price'],
+                            ]) }}
                         @else
-                            {{
-                                __(
-                                    "Choose currency: (:amount :currency = 1 VFT)",
-                                    ["currency" => $currentCurrency, "amount" => $exchangeRatioToART]
-                                )
-                            }}
+                            {{ __('Choose currency: (:amount :currency = 1 VFT)', [
+                                'currency' => $currentCurrency,
+                                'amount' => $exchangeRatioToART,
+                            ]) }}
                         @endif
                     </label>
                     <select
@@ -317,7 +313,7 @@
                     >
                         @foreach ($currenciesList as $cur)
                             <option
-                                value="{{ route("deposits.create", ["currency" => $cur]) }}"
+                                value="{{ route('deposits.create', ['currency' => $cur]) }}"
                                 @selected($currentCurrency === $cur)
                             >
                                 {{ $cur }}
@@ -369,14 +365,15 @@
                         type="text"
                         class="custom-amount"
                         placeholder="{{ __('Enter custom tokens amount') }}"
-						name="amount"
+                        name="amount"
                         @input="inputAmount(event.target.value, 'input')"
                     >
 
-					<input 
-						type="hidden" 
-						name="currency" 
-						value="{{ $currentCurrency }}">
+                    <input
+                        type="hidden"
+                        name="currency"
+                        value="{{ $currentCurrency }}"
+                    >
                 </div>
 
                 <div
@@ -386,7 +383,7 @@
                 >
                 </div>
 
-                @error("amount")
+                @error('amount')
                     <p class="mb-0 mt-2 text-sm font-normal text-red-600">{{ $message }}</p>
                 @enderror
                 <p
@@ -395,7 +392,11 @@
                 ></p>
 
                 <div class="terms-check">
-                    <input x-model="isAgree" type="checkbox" id="terms-agreement">
+                    <input
+                        id="terms-agreement"
+                        x-model="isAgree"
+                        type="checkbox"
+                    >
                     <label for="terms-agreement">
                         {{ __('I agree to the') }}
                         <a href="{{ route('pages.show', 'privacy-policy') }}">
@@ -420,6 +421,31 @@
 
                 <div class="footer">
                     &copy; {{ now()->format('Y') }} {{ env('COMPANY_NAME') }}. {{ __('All rights reserved') }}
+                </div>
+
+				<div class="divider"></div>
+
+				<div class="footer">
+                    <div class="flex items-center justify-center">
+                        <div class="mr-2">
+                            <img
+                                src="{{ asset('assets/images/Visa_Brandmark_Blue_RGB_2021.png') }}"
+                                style="width: 3rem;"
+                            >
+                        </div>
+                        <div>
+                            <img
+                                src="{{ asset('assets/images/ma_symbol_opt_73_2x.png') }}"
+                                style="width: 3rem;"
+                            >
+                        </div>
+                        <div>
+                            <img
+                                src="{{ asset('assets/images/PngItem_7569533.png') }}"
+                                style="width: 3rem;"
+                            >
+                        </div>
+                    </div>
                 </div>
             </form>
         </div>
