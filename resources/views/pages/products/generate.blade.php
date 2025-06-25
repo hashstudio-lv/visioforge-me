@@ -15,25 +15,25 @@
                         <img src="{{ asset('/assets2/images/lazy') }}"
                             data-src="{{ asset('/assets2/images/shape/shape_25') }}" alt=""
                             class="lazy-img shapes line-shape absolute z-[-1] left-[3%] top-[45%] md:!hidden sm:!hidden xsm:!hidden">
-                        Create your <span
-                            class="relative inline-block z-[1] before:content-[''] before:absolute before:-translate-y-2/4 before:w-[73%] before:h-[81%] before:z-[-1] before:left-[31%] before:top-2/4 before:bg-[#FFEBE5]">workspace</span>
-                        & make life easier.</h1>
+                        {{ __('Create your') }} <span
+                            class="relative inline-block z-[1] before:content-[''] before:absolute before:-translate-y-2/4 before:w-[73%] before:h-[81%] before:z-[-1] before:left-[31%] before:top-2/4 before:bg-[#FFEBE5]">{{ __('workspace') }}</span>
+                        & {{ __('make life easier.') }}</h1>
                     <p
                         class=" text-[24px] 2xl:text-[22px] lg:text-[19px] md:text-[19px] sm:text-[19px] xsm:text-[19px] leading-[1.67em] mb-[75px] pt-5 lg:mb-[50px] md:mb-[50px] sm:mb-[50px] xsm:mb-[50px] lg:pt-[10px] md:pt-[10px] sm:pt-[10px] xsm:pt-[10px]">
-                        Janu is your online team mangement tool that easy and promot</p>
+                        {{ __('Janu is your online team mangement tool that easy and promot') }}</p>
                     <div class="flex xsm:block justify-center items-center">
                         <a href="contact-us.html"
                             class="tran3s text-[17px] font-medium btn-three mb-[25px] ml-[.5rem] !mr-[1rem] text-white leading-[52px] relative transition-all duration-[0.3s] ease-[ease-in-out] p-[0_40px] rounded-[28px] bg-[var(--prime-two)] hover:bg-[#090F32] md:p-[0_35px] md:leading-[48px] sm:p-[0_35px] sm:leading-[48px] xsm:p-[0_35px] xsm:leading-[48px] lg:text-[15px] md:text-[15px] sm:text-[15px] xsm:text-[15px]">Try
-                            Free Now</a>
+                            {{ __('Free Now') }}</a>
                         <a class="fancybox video-icon tran3s mb-[25px] ml-[.5rem] !mr-[1rem] flex items-center justify-center group"
                             data-fancybox="" href="https://www.youtube.com/embed/aXFSJTjVjw0">
                             <i
                                 class="fas fa-play w-[52px] h-[52px] border leading-[50px] text-[20px] transition-all duration-[0.3s] ease-[ease-in-out] text-[color:var(--prime-two)] pl-[5px] rounded-[50%] border-solid border-[#eaeaeb] group-hover:text-white group-hover:border-[#090F32] group-hover:bg-[#090F32]"></i>
                             <div class="!pl-[1rem] text-left ">
-                                <span class="block text-[color:var(--prime-two)]">Watch</span>
+                                <span class="block text-[color:var(--prime-two)]">{{ __('Watch') }}</span>
                                 <strong
                                     class=" text-[18px] lg:text-[16px] md:text-[16px] sm:text-[16px] xsm:text-[16px] leading-[1.67em] font-medium text-black block">Intro
-                                    video</strong>
+                                    {{ __('video') }}</strong>
                             </div>
                         </a>
                     </div>
@@ -74,19 +74,19 @@
                         <div class="title-style-three">
                             <div
                                 class="sc-title uppercase text-[14px] lg:text-[13px] md:text-[13px] sm:text-[13px] xsm:text-[13px] tracking-[1px] text-[rgba(0,0,0,0.3)] pb-2.5">
-                                Integrates your tools</div>
+                                {{ __('Integrates your tools') }}</div>
                             <h2
                                 class="main-title font-normal text-[64px] leading-[1.15em] tracking-[0px] m-0 font-Recoleta 2xl:text-[58px] lg:text-[48px] md:text-[34px] md:leading-[1.2em] sm:text-[34px] sm:leading-[1.2em] xsm:text-[34px] xsm:leading-[1.2em]">
-                                Connect jano with the <span class="inline-block relative z-[1]">software <span
+                                {{ __('Connect jano with the') }} <span class="inline-block relative z-[1]">{{ __('software') }} <span
                                         class="mark-bg absolute left-[-5px] -translate-y-2/4 w-[98%] h-[50px] z-[-1] top-2/4 md:h-[34px] sm:h-[34px] xsm:h-[34px]"
-                                        style="background-color:#D6F9EF;"></span></span> you use.</h2>
+                                        style="background-color:#D6F9EF;"></span></span> {{ __('you use.') }}</h2>
                         </div> <!-- /.title-style-three -->
                         <p
                             class=" text-[24px] 2xl:text-[22px] lg:text-[19px] md:text-[19px] sm:text-[19px] xsm:text-[19px] leading-[1.67em] mt-[25px] mb-[60px] lg:mb-10 md:mb-10 sm:mb-10 xsm:mb-10">
-                            The EMV roll out was clumsy, expensive and failed to consider.</p>
+                            {{ __('The EMV roll out was clumsy, expensive and failed to consider.') }}</p>
                         <a href="feature(sass).html"
                             class="btn-four font-medium text-white leading-[52px] relative transition-all duration-[0.3s] ease-[ease-in-out] p-[0_40px] rounded-[7px] bg-[var(--prime-two)] hover:bg-[#090F32] lg:leading-[48px] lg:text-[15px] lg:p-[0_35px] md:leading-[48px] md:text-[15px] md:p-[0_35px] sm:leading-[48px] sm:text-[15px] sm:p-[0_35px] xsm:leading-[48px] xsm:text-[15px] xsm:p-[0_35px]">Learn
-                            More</a>
+                            {{ __('More') }}</a>
                     </div> <!-- /.block-style-two -->
                 </div>
 
@@ -141,13 +141,13 @@
                     <div class="title-style-three">
                         <h2
                             class="main-title font-normal text-[64px] leading-[1.15em] tracking-[0px] m-0 font-Recoleta 2xl:text-[58px] lg:text-[48px] md:text-[34px] md:leading-[1.2em] sm:text-[34px] sm:leading-[1.2em] xsm:text-[34px] xsm:leading-[1.2em]">
-                            Bring all team <span class="inline-block relative z-[1]">managment <span
+                            {{ __('Bring all team') }} <span class="inline-block relative z-[1]">{{ __('managment') }} <span
                                     class="mark-bg absolute left-[-5px] -translate-y-2/4 w-[98%] h-[50px] z-[-1] top-2/4 md:h-[34px] sm:h-[34px] xsm:h-[34px]"
-                                    style="background-color:#F7E4FF;"></span></span> & task togather</h2>
+                                    style="background-color:#F7E4FF;"></span></span> & {{ __('task togather') }}</h2>
                     </div> <!-- /.title-style-three -->
                     <p
                         class=" text-[24px] 2xl:text-[22px] lg:text-[19px] md:text-[19px] sm:text-[19px] xsm:text-[19px] leading-[1.67em] mt-10 mb-[100px] lg:mt-5 md:mt-5 sm:mt-5 xsm:mt-5 lg:mb-[50px] md:mb-[50px] sm:mb-[50px] xsm:mb-[50px]">
-                        After a thorough review of a client’s circumstances and needs.</p>
+                        {{ __('After a thorough review of a client’s circumstances and needs.') }}</p>
                 </div>
             </div>
 
@@ -157,22 +157,22 @@
                     role="presentation">
                     <button
                         class="nav-link w-full text-[22px] leading-[1.41em] text-black m-0 p-[29px_20%] rounded-none border-b-[5px] border-b-transparent border-0 border-solid lg:text-[17px] lg:p-[15px_30px] md:text-[17px] md:p-[15px_30px] sm:text-[17px] sm:p-[22px_15px] xsm:text-[17px] xsm:p-[22px_15px] active"
-                        data-bs-toggle="tab" data-bs-target="#sp1" type="button" role="tab">Create task <span
-                            class=" hidden xl:inline-block lg:inline-block">for any team person</span></button>
+                        data-bs-toggle="tab" data-bs-target="#sp1" type="button" role="tab">{{ __('Create task') }} <span
+                            class=" hidden xl:inline-block lg:inline-block">{{ __('for any team person') }}</span></button>
                 </li>
                 <li class="nav-item w-[33.33333%] relative border-r-[#f3f3f3] border-r border-solid before:content-['\f285'] before:w-10 before:h-10 before:border before:text-center before:leading-[38px] before:text-[14px] before:absolute before:-translate-y-2/4 before:z-[1] before:rounded-[50%] before:border-solid before:border-[#D9D9D9] before:-right-5 before:top-2/4 last:border-0 last:before:hidden before:font-Bootstrap before:bg-white sm:w-full sm:border-r-0 sm:border-b-[#f3f3f3] sm:border-b sm:border-solid xsm:w-full xsm:border-r-0 xsm:border-b-[#f3f3f3] xsm:border-b xsm:border-solid md:before:w-[35px] md:before:h-[35px] md:before:leading-[35px] sm:before:w-[35px] sm:before:h-[35px] sm:before:leading-[35px] xsm:before:w-[35px] xsm:before:h-[35px] xsm:before:leading-[35px] sm:bottom-[-17px] sm:-translate-x-2/4 sm:before:translate-y-0 sm:before:rotate-90 sm:before:left-2/4 sm:before:top-auto xsm:before:bottom-[-17px] xsm:before:-translate-x-2/4 xsm:before:translate-y-0 xsm:before:rotate-90 xsm:before:left-2/4 xsm:before:top-auto"
                     role="presentation">
                     <button
                         class="nav-link w-full text-[22px] leading-[1.41em] text-black m-0 p-[29px_20%] rounded-none border-b-[5px] border-b-transparent border-0 border-solid lg:text-[17px] lg:p-[15px_30px] md:text-[17px] md:p-[15px_30px] sm:text-[17px] sm:p-[22px_15px] xsm:text-[17px] xsm:p-[22px_15px]"
-                        data-bs-toggle="tab" data-bs-target="#sp2" type="button" role="tab">Make timeframe <span
-                            class=" hidden xl:inline-block lg:inline-block">for do the task</span></button>
+                        data-bs-toggle="tab" data-bs-target="#sp2" type="button" role="tab">{{ __('Make timeframe') }} <span
+                            class=" hidden xl:inline-block lg:inline-block">{{ __('for do the task') }}</span></button>
                 </li>
                 <li class="nav-item w-[33.33333%] relative border-r-[#f3f3f3] border-r border-solid before:content-['\f285'] before:w-10 before:h-10 before:border before:text-center before:leading-[38px] before:text-[14px] before:absolute before:-translate-y-2/4 before:z-[1] before:rounded-[50%] before:border-solid before:border-[#D9D9D9] before:-right-5 before:top-2/4 last:border-0 last:before:hidden before:font-Bootstrap before:bg-white sm:w-full sm:border-r-0 sm:border-b-[#f3f3f3] sm:border-b sm:border-solid xsm:w-full xsm:border-r-0 xsm:border-b-[#f3f3f3] xsm:border-b xsm:border-solid md:before:w-[35px] md:before:h-[35px] md:before:leading-[35px] sm:before:w-[35px] sm:before:h-[35px] sm:before:leading-[35px] xsm:before:w-[35px] xsm:before:h-[35px] xsm:before:leading-[35px] sm:bottom-[-17px] sm:-translate-x-2/4 sm:before:translate-y-0 sm:before:rotate-90 sm:before:left-2/4 sm:before:top-auto xsm:before:bottom-[-17px] xsm:before:-translate-x-2/4 xsm:before:translate-y-0 xsm:before:rotate-90 xsm:before:left-2/4 xsm:before:top-auto"
                     role="presentation">
                     <button
                         class="nav-link w-full text-[22px] leading-[1.41em] text-black m-0 p-[29px_20%] rounded-none border-b-[5px] border-b-transparent border-0 border-solid lg:text-[17px] lg:p-[15px_30px] md:text-[17px] md:p-[15px_30px] sm:text-[17px] sm:p-[22px_15px] xsm:text-[17px] xsm:p-[22px_15px]"
-                        data-bs-toggle="tab" data-bs-target="#sp3" type="button" role="tab">Get task complated
-                        <span class=" hidden xl:inline-block lg:inline-block">by your member</span></button>
+                        data-bs-toggle="tab" data-bs-target="#sp3" type="button" role="tab">{{ __('Get task complated') }}
+                        <span class=" hidden xl:inline-block lg:inline-block">{{ __('by your member') }}</span></button>
                 </li>
             </ul>
 
@@ -220,20 +220,19 @@
                         <div class="title-style-three">
                             <div
                                 class="sc-title uppercase text-[14px] lg:text-[13px] md:text-[13px] sm:text-[13px] xsm:text-[13px] tracking-[1px] text-[rgba(0,0,0,0.3)] pb-2.5">
-                                Over <span class=" underline " style="color:#FF7B5E;">150,000+ client</span></div>
+                                {{ __('Over') }} <span class=" underline " style="color:#FF7B5E;">150,000+ {{ __('client') }}</span></div>
                             <h2
                                 class="main-title font-normal text-[64px] leading-[1.15em] tracking-[0px] m-0 font-Recoleta 2xl:text-[58px] lg:text-[48px] md:text-[34px] md:leading-[1.2em] sm:text-[34px] sm:leading-[1.2em] xsm:text-[34px] xsm:leading-[1.2em]">
-                                Why you <span class="inline-block relative z-[1]">choose <span
+                                {{ __('Why you') }} <span class="inline-block relative z-[1]">{{ __('choose') }} <span
                                         class="mark-bg absolute left-[-5px] -translate-y-2/4 w-[98%] h-[50px] z-[-1] top-2/4 md:h-[34px] sm:h-[34px] xsm:h-[34px]"
-                                        style="background-color:#D8FFE8;"></span></span> Janu tools.</h2>
+                                        style="background-color:#D8FFE8;"></span></span> {{ __('Janu tools.') }}</h2>
                         </div> <!-- /.title-style-three -->
                         <p
                             class=" text-[24px] 2xl:text-[22px] lg:text-[19px] md:text-[19px] sm:text-[19px] xsm:text-[19px] leading-[1.67em] mt-10 mb-[75px] lg:mt-[30px] lg:mb-[50px] md:mb-[50px] sm:mb-[50px] xsm:mb-[50px]">
-                            The core of our service is based on the objective investment advice we seek to provide support.
+                            {{ __('The core of our service is based on the objective investment advice we seek to provide support.') }}
                         </p>
                         <a href="feature(sass).html"
-                            class="btn-four font-medium text-white leading-[52px] relative transition-all duration-[0.3s] ease-[ease-in-out] p-[0_40px] rounded-[7px] bg-[var(--prime-two)] hover:bg-[#090F32] lg:leading-[48px] lg:text-[15px] lg:p-[0_35px] md:leading-[48px] md:text-[15px] md:p-[0_35px] sm:leading-[48px] sm:text-[15px] sm:p-[0_35px] xsm:leading-[48px] xsm:text-[15px] xsm:p-[0_35px]">Try
-                            free now</a>
+                            class="btn-four font-medium text-white leading-[52px] relative transition-all duration-[0.3s] ease-[ease-in-out] p-[0_40px] rounded-[7px] bg-[var(--prime-two)] hover:bg-[#090F32] lg:leading-[48px] lg:text-[15px] lg:p-[0_35px] md:leading-[48px] md:text-[15px] md:p-[0_35px] sm:leading-[48px] sm:text-[15px] sm:p-[0_35px] xsm:leading-[48px] xsm:text-[15px] xsm:p-[0_35px]">{{ __('Try free now') }}</a>
                     </div> <!-- /.block-style-two -->
                 </div>
 
@@ -247,47 +246,47 @@
                         <div class="h3 !m-0 font-normal text-black ">13+</div>
                         <p
                             class=" text-[24px] 2xl:text-[22px] lg:text-[19px] md:text-[19px] sm:text-[19px] xsm:text-[19px] leading-[1.67em] opacity-50 pb-[25px] lg:pb-[10px] md:pb-[10px] sm:pb-[10px] xsm:pb-[10px]">
-                            Reason to choose us</p>
+                            {{ __('Reason to choose us') }}</p>
                         <ul class="flex flex-wrap items-center mb-0 pl-0 list-none m-[0_-10px]">
                             <li
                                 class=" text-[24px] lg:text-[20px] md:text-[20px] sm:text-[20px] xsm:text-[20px] text-black m-[10px_0] p-[0_10px] lg:m-[5px_0] md:m-[5px_0] sm:m-[5px_0] xsm:m-[5px_0]">
                                 <a class=" text-black text-[18px] lg:text-[15px] md:text-[15px] sm:text-[15px] xsm:text-[15px] lg:p-3 md:p-3 sm:p-3 xsm:p-3 transition-all duration-[0.3s] ease-[ease-in-out] px-[30px] py-[22px] rounded-[10px] hover:shadow-[0_15px_40px_rgba(0,0,0,0.05)] bg-white"
                                     href="#"><span class=" inline-block leading-[25px] p-[0_3px] rounded-[5px]"
-                                        style="background-color: rgba(255, 130, 130, 0.13);">Great Interface</span></a>
+                                        style="background-color: rgba(255, 130, 130, 0.13);">{{ __('Great Interface') }}</span></a>
                             </li>
                             <li
                                 class=" text-[24px] lg:text-[20px] md:text-[20px] sm:text-[20px] xsm:text-[20px] text-black m-[10px_0] p-[0_10px] lg:m-[5px_0] md:m-[5px_0] sm:m-[5px_0] xsm:m-[5px_0]">
                                 <a class=" text-black text-[18px] lg:text-[15px] md:text-[15px] sm:text-[15px] xsm:text-[15px] lg:p-3 md:p-3 sm:p-3 xsm:p-3 transition-all duration-[0.3s] ease-[ease-in-out] px-[30px] py-[22px] rounded-[10px] hover:shadow-[0_15px_40px_rgba(0,0,0,0.05)] bg-white"
                                     href="#"><span class=" inline-block leading-[25px] p-[0_3px] rounded-[5px]"
-                                        style="background-color: rgba(73, 230, 213, 0.13);">Expereinced</span></a></li>
+                                        style="background-color: rgba(73, 230, 213, 0.13);">{{ __('Expereinced') }}</span></a></li>
                             <li
                                 class=" text-[24px] lg:text-[20px] md:text-[20px] sm:text-[20px] xsm:text-[20px] text-black m-[10px_0] p-[0_10px] lg:m-[5px_0] md:m-[5px_0] sm:m-[5px_0] xsm:m-[5px_0]">
                                 <a class=" text-black text-[18px] lg:text-[15px] md:text-[15px] sm:text-[15px] xsm:text-[15px] lg:p-3 md:p-3 sm:p-3 xsm:p-3 transition-all duration-[0.3s] ease-[ease-in-out] px-[30px] py-[22px] rounded-[10px] hover:shadow-[0_15px_40px_rgba(0,0,0,0.05)] bg-white"
                                     href="#"><span class=" inline-block leading-[25px] p-[0_3px] rounded-[5px]"
-                                        style="background-color: rgba(73, 179, 230, 0.13);">Low Price</span></a></li>
+                                        style="background-color: rgba(73, 179, 230, 0.13);">{{ __('Low Price') }}</span></a></li>
                             <li
                                 class=" text-[24px] lg:text-[20px] md:text-[20px] sm:text-[20px] xsm:text-[20px] text-black m-[10px_0] p-[0_10px] lg:m-[5px_0] md:m-[5px_0] sm:m-[5px_0] xsm:m-[5px_0]">
                                 <a class=" text-black text-[18px] lg:text-[15px] md:text-[15px] sm:text-[15px] xsm:text-[15px] lg:p-3 md:p-3 sm:p-3 xsm:p-3 transition-all duration-[0.3s] ease-[ease-in-out] px-[30px] py-[22px] rounded-[10px] hover:shadow-[0_15px_40px_rgba(0,0,0,0.05)] bg-white"
                                     href="#"><span class=" inline-block leading-[25px] p-[0_3px] rounded-[5px]"
-                                        style="background-color: rgba(251, 208, 80, 0.15);">Customizable</span></a></li>
+                                        style="background-color: rgba(251, 208, 80, 0.15);">{{ __('Customizable') }}</span></a></li>
                             <li
                                 class=" text-[24px] lg:text-[20px] md:text-[20px] sm:text-[20px] xsm:text-[20px] text-black m-[10px_0] p-[0_10px] lg:m-[5px_0] md:m-[5px_0] sm:m-[5px_0] xsm:m-[5px_0]">
                                 <a class=" text-black text-[18px] lg:text-[15px] md:text-[15px] sm:text-[15px] xsm:text-[15px] lg:p-3 md:p-3 sm:p-3 xsm:p-3 transition-all duration-[0.3s] ease-[ease-in-out] px-[30px] py-[22px] rounded-[10px] hover:shadow-[0_15px_40px_rgba(0,0,0,0.05)] bg-white"
                                     href="#"><span class=" inline-block leading-[25px] p-[0_3px] rounded-[5px]"
-                                        style="background-color: rgba(213, 126, 255, 0.15);">Trusted</span></a></li>
+                                        style="background-color: rgba(213, 126, 255, 0.15);">{{ __('Trusted') }}</span></a></li>
                             <li
                                 class=" text-[24px] lg:text-[20px] md:text-[20px] sm:text-[20px] xsm:text-[20px] text-black m-[10px_0] p-[0_10px] lg:m-[5px_0] md:m-[5px_0] sm:m-[5px_0] xsm:m-[5px_0]">
                                 <a class=" text-black text-[18px] lg:text-[15px] md:text-[15px] sm:text-[15px] xsm:text-[15px] lg:p-3 md:p-3 sm:p-3 xsm:p-3 transition-all duration-[0.3s] ease-[ease-in-out] px-[30px] py-[22px] rounded-[10px] hover:shadow-[0_15px_40px_rgba(0,0,0,0.05)] bg-white"
                                     href="#"><span class=" inline-block leading-[25px] p-[0_3px] rounded-[5px]"
-                                        style="background-color: rgba(189, 231, 122, 0.15);">Great Support</span></a></li>
+                                        style="background-color: rgba(189, 231, 122, 0.15);">{{ __('Great Support') }}</span></a></li>
                             <li
                                 class=" text-[24px] lg:text-[20px] md:text-[20px] sm:text-[20px] xsm:text-[20px] text-black m-[10px_0] p-[0_10px] lg:m-[5px_0] md:m-[5px_0] sm:m-[5px_0] xsm:m-[5px_0]">
                                 <a class=" text-black text-[18px] lg:text-[15px] md:text-[15px] sm:text-[15px] xsm:text-[15px] lg:p-3 md:p-3 sm:p-3 xsm:p-3 transition-all duration-[0.3s] ease-[ease-in-out] px-[30px] py-[22px] rounded-[10px] hover:shadow-[0_15px_40px_rgba(0,0,0,0.05)] bg-white"
                                     href="#"><span class=" inline-block leading-[25px] p-[0_3px] rounded-[5px]"
-                                        style="background-color: rgba(255, 152, 152, 0.15);">Safe</span></a></li>
+                                    style="background-color: rgba(255, 152, 152, 0.15);">{{ __('Safe') }}</span></a></li>
                             <li
                                 class=" text-[24px] lg:text-[20px] md:text-[20px] sm:text-[20px] xsm:text-[20px] text-black m-[10px_0] p-[0_10px] lg:m-[5px_0] md:m-[5px_0] sm:m-[5px_0] xsm:m-[5px_0]">
-                                & more…</li>
+                                & {{ __('more…') }}</li>
                         </ul>
                     </div>
                 </div>
@@ -307,13 +306,12 @@
                     <div class="title-style-three mb-[65px] lg:mb-10 md:mb-10 sm:mb-10 xsm:mb-10">
                         <h2
                             class="main-title font-normal text-[64px] leading-[1.15em] tracking-[0px] m-0 font-Recoleta 2xl:text-[58px] lg:text-[48px] md:text-[34px] md:leading-[1.2em] sm:text-[34px] sm:leading-[1.2em] xsm:text-[34px] xsm:leading-[1.2em]">
-                            Let’s <br> <span class="inline-block relative z-[1]">Discover <span
+                            {{ __('Let’s') }} <br> <span class="inline-block relative z-[1]">{{ __('Discover') }} <span
                                     class="mark-bg absolute left-[-5px] -translate-y-2/4 w-[98%] h-[50px] z-[-1] top-2/4 md:h-[34px] sm:h-[34px] xsm:h-[34px]"
-                                    style="background-color:#E1EDFF;"></span></span> our all features</h2>
+                                    style="background-color:#E1EDFF;"></span></span> {{ __('our all features') }}</h2>
                     </div> <!-- /.title-style-three -->
                     <a href="service-v1.html"
-                        class="btn-five tran3s font-medium text-[17px] lg:text-[15px] md:text-[15px] sm:text-[15px] xsm:text-[15px] underline hover:underline text-[color:var(--prime-two)] hover:text-[#090F32]">Click
-                        here for more info <i class="bi bi-chevron-right inline-block text-[14px]"></i></a>
+                        class="btn-five tran3s font-medium text-[17px] lg:text-[15px] md:text-[15px] sm:text-[15px] xsm:text-[15px] underline hover:underline text-[color:var(--prime-two)] hover:text-[#090F32]">{{ __('Click here for more info') }} <i class="bi bi-chevron-right inline-block text-[14px]"></i></a>
                 </div>
                 <div class="xl:w-4/12 lg:w-4/12 md:w-6/12 mt-10 w-full flex-[0_0_auto] px-[12px] max-w-full wow fadeInUp"
                     data-wow-delay="0.1s">
@@ -324,9 +322,8 @@
                                 class="lazy-img max-h-full"></div>
                         <h4
                             class="mt-[25px] mb-5 2xl:text-[22px] lg:text-[20px] md:text-[20px] sm:text-[20px] xsm:text-[20px]">
-                            File sharing</h4>
-                        <p class="mb-[50px]">Our deep understanding of project and program management has enabled the
-                            success of our clients.</p>
+                            {{ __('File sharing') }}</h4>
+                        <p class="mb-[50px]">{{ __('Our deep understanding of project and program management has enabled the success of our clients.') }}</p>
                         <a href="service-details.html"><img src="{{ asset('/assets2/images/lazy') }}"
                                 data-src="{{ asset('/assets2/images/icon/icon_18') }}" alt=""
                                 class="lazy-img"></a>
@@ -341,9 +338,8 @@
                                 class="lazy-img max-h-full"></div>
                         <h4
                             class="mt-[25px] mb-5 2xl:text-[22px] lg:text-[20px] md:text-[20px] sm:text-[20px] xsm:text-[20px]">
-                            Team Managment</h4>
-                        <p class="mb-[50px]">Our deep understanding of project and program management has enabled the
-                            success of our clients.</p>
+                            {{ __('Team Managment') }}</h4>
+                        <p class="mb-[50px]">{{ __('Our deep understanding of project and program management has enabled the success of our clients.') }}</p>
                         <a href="service-details.html"><img src="{{ asset('/assets2/images/lazy') }}"
                                 data-src="{{ asset('/assets2/images/icon/icon_18') }}" alt=""
                                 class="lazy-img"></a>
@@ -358,9 +354,8 @@
                                 class="lazy-img max-h-full"></div>
                         <h4
                             class="mt-[25px] mb-5 2xl:text-[22px] lg:text-[20px] md:text-[20px] sm:text-[20px] xsm:text-[20px]">
-                            Time Tracking</h4>
-                        <p class="mb-[50px]">Our deep understanding of project and program management has enabled the
-                            success of our clients.</p>
+                            {{ __('Time Tracking') }}</h4>
+                        <p class="mb-[50px]">{{ __('Our deep understanding of project and program management has enabled the success of our clients.') }}</p>
                         <a href="service-details.html"><img src="{{ asset('/assets2/images/lazy') }}"
                                 data-src="{{ asset('/assets2/images/icon/icon_18') }}" alt=""
                                 class="lazy-img"></a>
@@ -375,9 +370,8 @@
                                 class="lazy-img max-h-full"></div>
                         <h4
                             class="mt-[25px] mb-5 2xl:text-[22px] lg:text-[20px] md:text-[20px] sm:text-[20px] xsm:text-[20px]">
-                            Voice & video call</h4>
-                        <p class="mb-[50px]">Our deep understanding of project and program management has enabled the
-                            success of our clients.</p>
+                            {{ __('	Voice & video call') }}</h4>
+                        <p class="mb-[50px]">{{ __('Our deep understanding of project and program management has enabled the success of our clients.') }}</p>
                         <a href="service-details.html"><img src="{{ asset('/assets2/images/lazy') }}"
                                 data-src="{{ asset('/assets2/images/icon/icon_18') }}" alt=""
                                 class="lazy-img"></a>
@@ -392,9 +386,8 @@
                                 class="lazy-img max-h-full"></div>
                         <h4
                             class="mt-[25px] mb-5 2xl:text-[22px] lg:text-[20px] md:text-[20px] sm:text-[20px] xsm:text-[20px]">
-                            Cloud storage</h4>
-                        <p class="mb-[50px]">Our deep understanding of project and program management has enabled the
-                            success of our clients.</p>
+                            {{ __('Cloud storage') }}</h4>
+                        <p class="mb-[50px]">{{ __('Our deep understanding of project and program management has enabled the success of our clients.') }}</p>
                         <a href="service-details.html"><img src="{{ asset('/assets2/images/lazy') }}"
                                 data-src="{{ asset('/assets2/images/icon/icon_18') }}" alt=""
                                 class="lazy-img"></a>
@@ -434,9 +427,9 @@
                         </div>
                         <h2
                             class="main-title font-normal text-[64px] leading-[1.15em] tracking-[0px] m-0 font-Recoleta 2xl:text-[58px] lg:text-[48px] md:text-[34px] md:leading-[1.2em] sm:text-[34px] sm:leading-[1.2em] xsm:text-[34px] xsm:leading-[1.2em]">
-                            Check what’s our <span class="inline-block relative z-[1]">client <span
+                            {{ __('Check what’s our') }} <span class="inline-block relative z-[1]">{{ __('client') }} <span
                                     class="mark-bg absolute left-[-5px] -translate-y-2/4 w-[98%] h-[50px] z-[-1] top-2/4"
-                                    style="background-color:#BCF8F1;"></span></span> say about us.</h2>
+                                    style="background-color:#BCF8F1;"></span></span> {{ __('say about us.') }}</h2>
                     </div> <!-- /.title-style-three -->
                 </div>
             </div>
@@ -448,26 +441,22 @@
                             <div class="feedback-block-two text-center">
                                 <p
                                     class="mb-20 lg:mb-10 md:mb-10 sm:mb-10 xsm:mb-10 text-[28px] 2xl:text-[25px] lg:text-[22px] md:text-[22px] sm:text-[22px] xsm:text-[20px] leading-[1.85em]">
-                                    Having a home based business is a wonderful asset to your life. The problem still stands
-                                    it comes timeadvertise your business for a cheap cost. I know you have looked answer
-                                    everywhere.</p>
+                                    {{ __('Having a home based business is a wonderful asset to your life. The problem still stands it comes timeadvertise your business for a cheap cost. I know you have looked answer everywhere.') }}</p>
                                 <h4
                                     class="!m-0 text-[24px] leading-[1.54em] 2xl:text-[22px] lg:text-[20px] md:text-[20px] sm:text-[20px] xsm:text-[20px]">
-                                    Rashed kabir</h4>
-                                <span class="opacity-75">Designer</span>
+                                    {{ __('Rashed kabir') }}</h4>
+                                <span class="opacity-75">{{ __('Designer') }}</span>
                             </div> <!-- /.feedback-block-two -->
                         </div>
                         <div class="item">
                             <div class="feedback-block-two text-center">
                                 <p
                                     class="mb-20 lg:mb-10 md:mb-10 sm:mb-10 xsm:mb-10 text-[28px] 2xl:text-[25px] lg:text-[22px] md:text-[22px] sm:text-[22px] xsm:text-[20px] leading-[1.85em]">
-                                    Having a home based business is a wonderful asset to your life. The problem still stands
-                                    it comes timeadvertise your business for a cheap cost. I know you have looked answer
-                                    everywhere.</p>
+                                    {{ __('Having a home based business is a wonderful asset to your life. The problem still stands it comes timeadvertise your business for a cheap cost. I know you have looked answer everywhere.') }}</p>
                                 <h4
                                     class="!m-0 text-[24px] leading-[1.54em] 2xl:text-[22px] lg:text-[20px] md:text-[20px] sm:text-[20px] xsm:text-[20px]">
-                                    Rashed kabir</h4>
-                                <span class="opacity-75">Designer</span>
+                                    {{ __('Rashed kabir') }}</h4>
+                                <span class="opacity-75">{{ __('Designer') }}</span>
                             </div> <!-- /.feedback-block-two -->
                         </div>
                     </div> <!-- /.feedback_slider_two -->
@@ -522,12 +511,12 @@
                         class="title-style-three text-center mb-[100px] lg:mb-[30px] md:mb-[30px] sm:mb-[30px] xsm:mb-[30px] wow fadeInUp">
                         <div
                             class="sc-title uppercase text-[14px] lg:text-[13px] md:text-[13px] sm:text-[13px] xsm:text-[13px] tracking-[1px] text-[rgba(0,0,0,0.3)] pb-2.5">
-                            Our partners</div>
+                            {{ __('Our partners') }}</div>
                         <h2
                             class="main-title font-normal text-[64px] leading-[1.15em] tracking-[0px] m-0 font-Recoleta 2xl:text-[58px] lg:text-[48px] md:text-[34px] md:leading-[1.2em] sm:text-[34px] sm:leading-[1.2em] xsm:text-[34px] xsm:leading-[1.2em]">
-                            Our trusted partners <span class="inline-block relative">support <span
+                            {{ __('Our trusted partners') }} <span class="inline-block relative">{{ __('support') }} <span
                                     class="mark-bg absolute left-[-5px] -translate-y-2/4 w-[98%] h-[50px] z-[-1] top-2/4 md:h-[34px] sm:h-[34px] xsm:h-[34px]"
-                                    style="background-color:#FFF3C6;"></span></span> us always</h2>
+                                    style="background-color:#FFF3C6;"></span></span> {{ __('us always') }}</h2>
                     </div> <!-- /.title-style-three -->
                 </div>
             </div>
@@ -640,7 +629,7 @@
                     <div class="title-style-three text-center mb-[60px] lg:mb-10 wow fadeInUp">
                         <div
                             class="sc-title uppercase text-[14px] lg:text-[13px] md:text-[13px] sm:text-[13px] xsm:text-[13px] tracking-[1px] text-[rgba(0,0,0,0.3)] pb-2.5">
-                            Pricng Plan</div>
+                            Pricing Plan</div>
                         <h2
                             class="main-title font-normal text-[64px] leading-[1.15em] tracking-[0px] m-0 font-Recoleta 2xl:text-[58px] lg:text-[48px] md:text-[34px] md:leading-[1.2em] sm:text-[34px] sm:leading-[1.2em] xsm:text-[34px] xsm:leading-[1.2em]">
                             No hidden charges! <span class="inline-block relative z-[1]">choose <span
