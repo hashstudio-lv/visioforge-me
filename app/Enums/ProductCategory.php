@@ -6,17 +6,16 @@ use Illuminate\Support\Arr;
 
 enum ProductCategory: string
 {
-    case NATURE_LANDSCAPES = 'Nature & Landscapes';
-
-    case PEOPLE_PORTRAITS = 'People & Portraits';
-    case ARCHITECTURE_URBAN = 'Architecture & Urban';
-    case ABSTRACT_FINE_ART = 'Abstract & Fine Art';
-    case TRAVEL_ADVENTURE = 'Travel & Adventure';
-    case BUSINESS_TECHNOLOGY = 'Business & Technology';
-    case FOOD_DRINK = 'Food & Drink';
-    case FASHION_BEAUTY = 'Fashion & Beauty';
-    case SPORTS_FITNESS = 'Sports & Fitness';
-    case ANIMALS_PETS = 'Animals & Pets';
+    case NATURE_LANDSCAPES = 'Natural Scenery & Landscapes';
+    case PEOPLE_PORTRAITS = 'Human Subjects & Portraits';
+    case ARCHITECTURE_URBAN = 'Urban Design & Architecture';
+    case ABSTRACT_FINE_ART = 'Contemporary & Abstract Art';
+    case TRAVEL_ADVENTURE = 'Exploration & Adventure Travel';
+    case BUSINESS_TECHNOLOGY = 'Corporate & Technological Innovations';
+    case FOOD_DRINK = 'Culinary & Beverages';
+    case FASHION_BEAUTY = 'Style & Aesthetics';
+    case SPORTS_FITNESS = 'Athletics & Physical Wellness';
+    case ANIMALS_PETS = 'Wildlife & Domestic Animals';
 
     public function details(): string
     {

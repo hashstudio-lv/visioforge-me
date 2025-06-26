@@ -26,7 +26,7 @@ class ImagineArtService
     public function generateImageFromText(string $prompt, ?string $style = null): array
     {
         if (!$style) {
-            $style = 'flux-dev';
+            $style = 'imagine-turbo';
         }
 
         $url = $this->baseUrl . '/image/generations';
@@ -53,7 +53,7 @@ class ImagineArtService
     public function generateImageFromPng(string $prompt, ?string $style = null): array
     {
         if (!$style) {
-            $style = 'flux-dev';
+            $style = 'imagine-turbo';
         }
 
         $url = $this->baseUrl . '/image/generations/transparent';

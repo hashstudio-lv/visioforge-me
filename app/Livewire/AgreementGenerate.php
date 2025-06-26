@@ -4,8 +4,6 @@ namespace App\Livewire;
 
 use App\Enums\ProductCategory;
 use App\Enums\ProductStyle;
-use App\Enums\ProductType;
-use App\Enums\Service;
 use App\Models\Order;
 use App\Models\Product;
 use App\Services\AgreementGenerationService;
@@ -24,8 +22,6 @@ class AgreementGenerate extends Component
     public $balance;
     public $prompt;
     public $agreement;
-    public $order;
-    public $template;
 
     protected $rules = [
         'prompt' => 'required',
@@ -41,15 +37,16 @@ class AgreementGenerate extends Component
     {
         $this->balance -= 1;
 
+        // Validate the input (this will apply the rules set in the $rules property)
         $this->validate();
 
-        $prompt = $agreementGenerationService->generateAgreementPromptUsingOpenAI($this->template . ' ' . $this->prompt);
+        $prompt = $agreementGenerationService->generateAgreementPromptUsingOpenAI($this->prompt);
         $this->agreement = $agreementGenerationService->generateAgreementFromPrompt($prompt);
 
         $data = [
             'price' => 1.00,
             'prompt' => $prompt,
-            'type' => ProductType::AGREEMENT
+            'type' => 'agreement'
         ];
 
         foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties) {
@@ -61,21 +58,19 @@ class AgreementGenerate extends Component
 
         $product = Product::create($data);
 
-        $this->order = Order::create([
+        $order = Order::create([
             'product_id' => $product->id,
             'user_id' => auth()->id(),
             'price' => $product->price,
         ]);
 
         $timestamp = now()->timestamp;
-        $orderDirectory = 'orders/' . $this->order->id . '/';
-        $zipFileName = $orderDirectory . $timestamp . '.zip';
-        $zipPath = storage_path('app/' . $timestamp . '.zip'); // Temporary local path
+        $orderDirectory = 'orders/' . $order->id . '/';
+        $zipFileName = $orderDirectory . $timestamp . '-files.zip';
+        $zipPath = storage_path('app/' . $timestamp . '-files.zip'); // Temporary local path
 
-        $product->update(['path' => $timestamp . '.zip']);
-
+// Create a new ZIP archive
         $zip = new ZipArchive;
-
         if ($zip->open($zipPath, ZipArchive::CREATE) === TRUE) {
             // Add the prompt file
             $zip->addFromString($timestamp . '-prompt.txt', $prompt);
@@ -87,13 +82,18 @@ class AgreementGenerate extends Component
             $zip->close();
         }
 
-        Storage::disk('public')->put($zipFileName, file_get_contents($zipPath));
+// Upload ZIP file to S3
+        Storage::disk('s3')->put($zipFileName, file_get_contents($zipPath));
 
-        $zipFileUrl = Storage::disk('public')->url($zipFileName);
+// Generate public URL for the ZIP file
+        $zipFileUrl = Storage::disk('s3')->url($zipFileName);
 
+// Delete the temporary ZIP file from local storage
         unlink($zipPath);
 
+// Dispatch event for download link
         $this->dispatch('fileDownload', $zipFileUrl);
+
     }
 
     public function render()

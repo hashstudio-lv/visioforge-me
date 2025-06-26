@@ -14,9 +14,6 @@ enum Service: string
     case AI_RESIZE = 'ai-resize';
     case RETOUCH = 'retouch';
     case AI_BACKGROUND = 'ai-background';
-    case GENERATE_EMAIL = 'generate-email';
-
-    case GENERATE_AGREEMENT = 'generate-agreement';
 
     public function name(): string
     {
@@ -29,8 +26,6 @@ enum Service: string
             Service::AI_RESIZE => 'AI Resize',
             Service::RETOUCH => 'Retouch',
             Service::AI_BACKGROUND => 'AI Background',
-            Service::GENERATE_EMAIL => 'Email Generation',
-            Service::GENERATE_AGREEMENT => 'Agreement Generation',
         };
     }
 

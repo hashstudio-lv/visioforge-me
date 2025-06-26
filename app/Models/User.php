@@ -56,6 +56,7 @@ class User extends Authenticatable
 
     public function getBalanceAttribute(): float
     {
-        return $this->deposits->where('status', DepositStatus::APPROVED)->sum('amount') - $this->orders->sum('price');
+         return $this->deposits->where('status', DepositStatus::APPROVED)->sum('amount') - $this->orders->sum('price');
+//        return 100.0;
     }
 }

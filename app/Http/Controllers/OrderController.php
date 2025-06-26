@@ -8,13 +8,8 @@ use App\Services\ImageService;
 use App\Services\ImagineArtService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Intervention\Image\Drivers\Gd\Encoders\JpegEncoder;
-use Intervention\Image\Drivers\Gd\Encoders\PngEncoder;
-use Intervention\Image\Drivers\Gd\Encoders\WebpEncoder;
-use Intervention\Image\ImageManager;
 use Intervention\Image\Laravel\Facades\Image;
 use ZipArchive;
-use Intervention\Image\Drivers\Gd\Driver;
 
 class OrderController extends Controller
 {
@@ -61,19 +56,12 @@ class OrderController extends Controller
         $zipFileName = $orderDirectory.$order->id.'-'.$timestamp.'.zip';
         $zipPath = storage_path('app/'.$order->id.'-'.$timestamp.'.zip'); // Temporary ZIP file
 
-        $manager = new ImageManager(new Driver());
-        $image = $manager->read(Storage::get($order->product->path));
-
+// Fetch the image from S3 and resize it
+        $image = Image::make(Storage::disk('s3')->get($order->product->image_path));
         $image->resize($width, $height);
-        $encoder = match (strtolower($format)) {
-            'jpg', 'jpeg' => new JpegEncoder(),
-            'png' => new PngEncoder(),
-            'webp' => new WebpEncoder(),
-            default => throw new \Exception("Unsupported image format: $format"),
-        };
+        $resizedImageContent = (string) $image->encode($format);
 
-        $resizedImageContent = (string) $image->encode($encoder);
-
+// Create ZIP file in memory
         $zip = new ZipArchive;
         if ($zip->open($zipPath, ZipArchive::CREATE) === true) {
             // Add the prompt text file to ZIP
@@ -86,9 +74,17 @@ class OrderController extends Controller
             $zip->close();
         }
 
-        Storage::disk('public')->put($zipFileName, file_get_contents($zipPath));
+// Upload ZIP file to S3
+        Storage::disk('s3')->put($zipFileName, file_get_contents($zipPath));
 
-        return response()->download($zipPath)->deleteFileAfterSend();
+// Generate public URL for the ZIP file
+        $zipFileUrl = Storage::disk('s3')->url($zipFileName);
+
+// Delete temporary ZIP file from local storage
+        unlink($zipPath);
+
+// Return the S3 ZIP file link
+        return response()->json(['download_url' => $zipFileUrl]);
     }
 
     public function textToVideo(ImagineArtService $imagineService)
