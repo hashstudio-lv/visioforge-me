@@ -30,13 +30,11 @@
 <body
     class="relative font-inter font-normal text-base leading-[1.8] bg-bodyBg dark:bg-bodyBg-dark"
 >
-<!-- theme fixed shadow -->
 <div>
     <div class="fixed-shadow left-[-250px]"></div>
     <div class="fixed-shadow right-[-250px]"></div>
 </div>
 
-<!-- scroll up button -->
 <div>
     <button
         class="scroll-up w-50px h-50px leading-50px text-center text-primaryColor bg-white hover:text-whiteColor hover:bg-primaryColor rounded-full fixed right-5 bottom-[60px] shadow-scroll-up z-medium text-xl dark:text-whiteColor dark:bg-primaryColor dark:hover:text-whiteColor-dark hidden"
@@ -44,9 +42,7 @@
         <i class="icofont-rounded-up"></i>
     </button>
 </div>
-<!--======= Header area start =======-->
 <header>
-    <!-- navbar start -->
     <div
         class="transition-all duration-500 sticky-header z-medium dark:bg-whiteColor-dark lg:border-b border-borderColor dark:border-borderColor-dark"
     >
@@ -1525,12 +1521,10 @@
             </div>
         </div>
 
-        <!-- footer main -->
         <section>
             <div
                 class="grid grid-cols-12 gap-30px md:gap-y-5 lg:gap-y-0 pt-60px pb-50px md:pt-30px md:pb-30px lg:pt-110px lg:pb-20 mb-5"
             >
-                <!-- left -->
                 <div
                     class="col-start-1 col-span-12 md:col-span-6 lg:col-span-4 mr-30px"
                     data-aos="fade-up"
@@ -1672,7 +1666,7 @@
             >
                 <div>
                     <p class="text-base text-darkgray">
-                        {{ __('© 2024 Powered by') }}
+                        {{ __('© :year Powered by', ['year' => now()->format('Y')]) }}
                         <a href="{{ route('home') }}" class="hover:text-primaryColor">{{ config('app.name') }}</a>.
                         {{ __('All Rights Reserved.') }}
                     </p>

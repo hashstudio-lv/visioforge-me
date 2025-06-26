@@ -2,8 +2,6 @@
 
 namespace App\Enums;
 
-use Illuminate\Support\Arr;
-
 enum Service: string
 {
     case TEXT_TO_IMAGE = 'text-to-image';
@@ -21,29 +19,29 @@ enum Service: string
     public function name(): string
     {
         return match ($this) {
-            Service::TEXT_TO_IMAGE => 'Text to Image',
-            Service::TEXT_TO_PNG => 'Text to PNG',
-            Service::BACKGROUND_REMOVER => 'Background Remover',
-            Service::IMAGE_UPSCALE => 'Image Upscale',
-            Service::GENERATIVE_FILL => 'Generative Fill',
-            Service::AI_RESIZE => 'AI Resize',
-            Service::RETOUCH => 'Retouch',
-            Service::AI_BACKGROUND => 'AI Background',
-            Service::GENERATE_EMAIL => 'Email Generation',
-            Service::GENERATE_AGREEMENT => 'Agreement Generation',
+            self::TEXT_TO_IMAGE => __('Text to Image'),
+            self::TEXT_TO_PNG => __('Text to PNG'),
+            self::BACKGROUND_REMOVER => __('Background Remover'),
+            self::IMAGE_UPSCALE => __('Image Upscale'),
+            self::GENERATIVE_FILL => __('Generative Fill'),
+            self::AI_RESIZE => __('AI Resize'),
+            self::RETOUCH => __('Retouch'),
+            self::AI_BACKGROUND => __('Retouch'),
+            self::GENERATE_EMAIL => __('Email Generation'),
+            self::GENERATE_AGREEMENT => __('Agreement Generation'),
         };
     }
 
     public function description(): string
     {
         return match ($this) {
-            Service::TEXT_TO_IMAGE => 'Text to Image',
-            Service::TEXT_TO_PNG => 'Text to PNG',
-            Service::BACKGROUND_REMOVER => 'Background Remover',
-            Service::IMAGE_UPSCALE => 'Image Upscale',
-            Service::GENERATIVE_FILL => 'Generative Fill',
-            Service::AI_RESIZE => 'AI Resize',
-            Service::RETOUCH => 'Retouch',
+            self::TEXT_TO_IMAGE => __('Text to Image'),
+            self::TEXT_TO_PNG => __('Text to PNG'),
+            self::BACKGROUND_REMOVER => __('Background Remover'),
+            self::IMAGE_UPSCALE => __('Image Upscale'),
+            self::GENERATIVE_FILL => __('Generative Fill'),
+            self::AI_RESIZE => __('AI Resize'),
+            self::RETOUCH => __('Retouch'),
         };
     }
 }

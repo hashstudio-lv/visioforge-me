@@ -121,12 +121,12 @@
                             <div class="swiper testimonial-2">
                                 <div class="swiper-wrapper">
                                     @foreach([
-    ['review' => __('Writing cold emails used to take me forever. Now I just enter a few details and get a polished email ready to go.'), 'name' => 'Jason L.', 'position' => __('Sales Manager')],
-    ['review' => __('This tool has completely transformed how I handle customer support. It saves time and keeps our tone consistent.'), 'name' => 'Emily R.', 'position' => __('Support Lead')],
-    ['review' => __('Our marketing emails now sound sharp, clear, and on-brand — with zero effort. Total game-changer.'), 'name' => 'Carlos M.', 'position' => __('Marketing Strategist')],
-    ['review' => __('As a non-native English speaker, this platform helps me sound more confident and professional in every message.'), 'name' => 'Yuki H.', 'position' => __('Freelance Consultant')],
-    ['review' => 'We use it across the team for internal updates and external communications. It saves us hours each week.', 'name' => 'Angela B.', 'position' => 'Project Manager'],
-] as $item)
+                                        ['review' => __('Writing cold emails used to take me forever. Now I just enter a few details and get a polished email ready to go.'), 'name' => 'Jason L.', 'position' => __('Sales Manager')],
+                                        ['review' => __('This tool has completely transformed how I handle customer support. It saves time and keeps our tone consistent.'), 'name' => 'Emily R.', 'position' => __('Support Lead')],
+                                        ['review' => __('Our marketing emails now sound sharp, clear, and on-brand — with zero effort. Total game-changer.'), 'name' => 'Carlos M.', 'position' => __('Marketing Strategist')],
+                                        ['review' => __('As a non-native English speaker, this platform helps me sound more confident and professional in every message.'), 'name' => 'Yuki H.', 'position' => __('Freelance Consultant')],
+                                        ['review' => __('We use it across the team for internal updates and external communications. It saves us hours each week.'), 'name' => 'Angela B.', 'position' => __('Project Manager')],
+                                    ] as $item)
                                         <div class="swiper-slide">
                                             <div>
                                                 <p class="md:text-xl md:leading-10 text-lightGrey dark:text-whiteColor">
@@ -138,12 +138,13 @@
                                                 <div class="flex items-center pt-10">
                                                     <div>
                                                         <h4>
-                                                            <span href="#"
-                                                                  class="text-size-22 font-semibold text-contentColor hover:text-primaryColor dark:hover:text-primaryColor dark:text-contentColor-dark">
-                                                            {{ $item['name'] }}
+                                                            <span
+                                                                class="text-size-22 font-semibold text-contentColor hover:text-primaryColor dark:hover:text-primaryColor dark:text-contentColor-dark"
+                                                            >
+                                                                {{ $item['name'] }}
                                                             </span>
                                                         </h4>
-                                                        <span href="#" class="text-primaryColor">
+                                                        <span class="text-primaryColor">
                                                             {{ $item['position'] }}
                                                         </span>
                                                     </div>
@@ -151,10 +152,7 @@
                                             </div>
                                         </div>
                                     @endforeach
-                                    <!-- testimonial 2 -->
-
                                 </div>
-                                <!-- slide controller -->
                                 <div class="absolute bottom-0 right-0 flex flex-row-reverse gap-0.5">
                                     <div
                                         class="static swiper-button-next w-15 h-15 bg-whiteColor text-blackColor transition-all duration-300 text-3xl hover:bg-primaryColor hover:text-whiteColor dark:hover:bg-secondaryColor after:hidden before:hidden">

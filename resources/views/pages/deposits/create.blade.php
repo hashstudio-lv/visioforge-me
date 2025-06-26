@@ -209,15 +209,15 @@
                     isSubmitted: false,
                     exchangeRate: {{ $exchangeRatioToART }},
                     currency: '{{ $currentCurrency }}',
-                
+
                     get isSubmitAllow() {
                         return this.isAgree && this.cost !== null && !this.isSubmitted;
                     },
-                
+
                     handleFormSubmit() {
                         this.isSubmitted = true;
                     },
-                
+
                     // Deposits logic
                     showCustomAmountInput: false,
                     cost: null,
@@ -227,66 +227,66 @@
                     exchangeRate: @js($exchangeRatioToART),
                     selectedCurrency: @js($currentCurrency),
                     tokenPriceEUR: @js($tokenPriceEUR),
-                
+
                     updateLocation(event) {
                         window.location.href = event.target.value;
                     },
-                
+
                     chooseAmount(selectedAmount) {
                         if (selectedAmount === 'custom') {
                             this.showCustomAmountInput = true;
                             this.amount = null;
                             this.cost = null;
-                
+
                             return;
                         }
-                
+
                         this.inputAmount(selectedAmount);
-                
+
                         this.showCustomAmountInput = false;
                         this.warning = null;
                     },
-                
+
                     inputAmount(selectedAmount, from) {
                         this.amount = selectedAmount;
-                
+
                         if (selectedAmount < 5) {
                             this.cost = null;
-                            this.warning = `Minimum 5 tokens required (Current: ${Number(selectedAmount)} tokens)`;
-                
+                            this.warning = `{{ __('Minimum 5 tokens required') }} ({{ __('Current') }}: ${Number(selectedAmount)} {{ __('tokens') }})`;
+
                             return;
                         } else {
                             // because we are taking amount from input, we must not hide it
                             if (from !== 'input') {
                                 this.showCustomAmountInput = false;
                             }
-                
+
                             this.warning = null;
                         }
-                
+
                         // Calculation logic
                         if (this.isCurrenciesFromConfig) {
                             const currentCurrencyRate = this.currenciesRate[this.selectedCurrency];
-                
+
                             // user selected the wrong currency
                             if (!currentCurrencyRate) {
                                 return;
                             }
-                
+
                             this.cost = currentCurrencyRate.rate[selectedAmount];
-                
+
                             if (!this.cost) {
                                 this.cost = selectedAmount * currentCurrencyRate['one_token_price'];
                             }
-                
+
                         } else {
                             this.cost = selectedAmount * (this.selectedCurrency !== 'EUR' ? this.tokenPriceEUR * this.exchangeRate : this.tokenPriceEUR);
                         }
-                
+
                         if (!this.cost) {
                             return;
                         }
-                
+
                         this.cost = this.cost.toFixed(2);
                     },
                 }"
@@ -378,7 +378,7 @@
 
                 <div
                     x-show="cost"
-                    x-text="`Price: ${cost} {{ $currentCurrency }}`"
+                    x-text="`{{ __('Price') }}: ${cost} {{ $currentCurrency }}`"
                     class="text-center font-bold"
                 >
                 </div>

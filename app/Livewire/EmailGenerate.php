@@ -2,19 +2,13 @@
 
 namespace App\Livewire;
 
-use App\Enums\ProductCategory;
-use App\Enums\ProductStyle;
 use App\Models\Order;
 use App\Models\Product;
 use App\Services\EmailGenerationService;
-use App\Services\ImageGenerationService;
-use App\Services\ImageService;
 use Illuminate\Support\Facades\Storage;
-use Intervention\Image\Laravel\Facades\Image;
 use Livewire\Component;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use ZipArchive;
-
 
 class EmailGenerate extends Component
 {
