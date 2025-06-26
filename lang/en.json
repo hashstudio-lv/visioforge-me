@@ -510,7 +510,7 @@
     "video": "video",
     "workspace": "workspace",
     "you use.": "you use.",
-    "© 2024 Powered by": "© 2024 Powered by",
+    "© :year Powered by": "© :year Powered by",
     "Minimum 5 tokens required": "Minimum 5 tokens required",
     "Current": "Current",
     "tokens": "tokens",
