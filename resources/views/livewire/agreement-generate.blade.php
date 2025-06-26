@@ -24,19 +24,19 @@
 
         <div class="mb-6 grid grid-cols-1 gap-6 md:grid-cols-3">
             @foreach ([
-        [
-            'title' => __('Freelance & Services'),
-            'items' => [['title' => 'Freelance Work Agreement', 'value' => 'Freelance Work Agreement'], ['title' => 'Service Agreement for Client', 'value' => 'Service Agreement for Client'], ['title' => 'Consulting Agreement', 'value' => 'Consulting Agreement']],
-        ],
-        [
-            'title' => __('Business & Operations'),
-            'items' => [['title' => 'Non-Disclosure Agreement (NDA)', 'value' => 'Non-Disclosure Agreement (NDA)'], ['title' => 'Partnership Agreement', 'value' => 'Partnership Agreement'], ['title' => 'Vendor Contract', 'value' => 'Vendor Contract'], ['title' => 'Sales Agreement', 'value' => 'Sales Agreement']],
-        ],
-        [
-            'title' => __('HR & Employment'),
-            'items' => [['title' => 'Employment Agreement', 'value' => 'Employment Agreement'], ['title' => 'Internship Agreement', 'value' => 'Internship Agreement'], ['title' => 'Contractor Agreement', 'value' => 'Contractor Agreement'], ['title' => 'Termination of Employment Letter', 'value' => 'Termination of Employment Letter']],
-        ],
-    ] as $group)
+                [
+                    'title' => __('Freelance & Services'),
+                    'items' => [['title' => __('Freelance Work Agreement'), 'value' => 'Freelance Work Agreement'], ['title' => __('Service Agreement for Client'), 'value' => 'Service Agreement for Client'], ['title' => __('Consulting Agreement'), 'value' => 'Consulting Agreement']],
+                ],
+                [
+                    'title' => __('Business & Operations'),
+                    'items' => [['title' => __('Non-Disclosure Agreement (NDA)'), 'value' => 'Non-Disclosure Agreement (NDA)'], ['title' => __('Partnership Agreement'), 'value' => 'Partnership Agreement'], ['title' => __('Vendor Contract'), 'value' => 'Vendor Contract'], ['title' => __('Sales Agreement'), 'value' => 'Sales Agreement']],
+                ],
+                [
+                    'title' => __('HR & Employment'),
+                    'items' => [['title' => __('Employment Agreement'), 'value' => 'Employment Agreement'], ['title' => __('Internship Agreement'), 'value' => 'Internship Agreement'], ['title' => __('Contractor Agreement'), 'value' => 'Contractor Agreement'], ['title' => __('Termination of Employment Letter'), 'value' => 'Termination of Employment Letter']],
+                ],
+            ] as $group)
                 <div>
                     <h4
                         class="leading-1 text-contentColor dark:text-contentColor-dark bg-lightGrey5 dark:bg-whiteColor-dark p-10px pb-7px mb-10px text-sm font-semibold uppercase">
@@ -69,7 +69,9 @@
             <label
                 class="mb-10px block font-bold"
                 for="input-prompt"
-            >{{ __('Enter key details for your agreement...') }}</label>
+            >
+                {{ __('Enter key details for your agreement...') }}
+            </label>
             <textarea
                 id="input-prompt"
                 rows="5"
