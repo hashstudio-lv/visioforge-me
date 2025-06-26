@@ -13,31 +13,10 @@ class DepositController extends Controller
 {
     public function create(ExchangeRateService $exchangeRateService)
     {
-        if (request()->get('apple-pay')) {
-            $client = new Client([
-                'base_uri' => 'https://apple-pay-gateway.apple.com',
-                'expect' => false,
-            ]);
-
-            $response = $client->post('/paymentservices/paymentSession', [
-                'cert' => [storage_path('certs/merchant_id_fullchain.pem'), ''],
-                'ssl_key' => [storage_path('certs/apple_pay_identity.key'), ''],
-                'json' => [
-                    'merchantIdentifier' => 'merchant.pro.videocreator',
-                    'displayName' => 'Video Creator',
-                    'initiative' => 'web',
-                    'initiativeContext' => 'video-creator.pro',
-                ]
-            ]);
-
-           // dd($response->getBody()->getContents());
-        }
-
         $user = auth()->user();
 
         $countries = Country::whereIn('country_code', [
-            'AU', 'AT', 'BE', 'CA', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IS', 'IE', 'IL', 'IT',
-            'JP',
+            'AU', 'AT', 'BE', 'CA', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IS', 'IE', 'IL', 'IT', 'JP',
             'LV', 'LT', 'LU', 'MT', 'NL', 'NZ', 'NO', 'PL', 'PT', 'RO', 'SG', 'SK', 'KR', 'ES', 'SE', 'CH'
         ])->get();
 
@@ -60,7 +39,7 @@ class DepositController extends Controller
             }
         }
 
-        return view('pages.deposits.create', [
+        return view('themes.itsol.pages.deposits.create', [
             'user' => $user,
             'countries' => $countries,
             'currentCurrency' => $currentCurrency,
@@ -95,6 +74,7 @@ class DepositController extends Controller
                 $exchangeRatioToART = $exchangeRateService->getExchangeRate('EUR', $currentCurrency);
             }
         }
+
         $user = auth()->user();
         $data = $request->validated();
         $data['status'] = DepositStatus::PENDING;
@@ -117,7 +97,7 @@ class DepositController extends Controller
     {
         $user = auth()->user();
 
-        return view('pages.deposits.index', [
+        return view('themes.itsol.pages.deposits.index', [
             'user' => $user,
             'deposits' => $user->deposits
         ]);

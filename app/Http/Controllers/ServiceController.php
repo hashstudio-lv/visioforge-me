@@ -27,8 +27,8 @@ class ServiceController extends Controller
             abort(404);
         }
 
-        return view('pages.services.show', [
-            'service' => $service
+        return view('themes.itsol.pages.services.show', [
+            'service' => Service::tryFrom($slug)
         ]);
     }
 }
