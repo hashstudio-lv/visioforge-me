@@ -504,5 +504,10 @@
 	"Subscribe Now": "Suscríbete ahora",
 	"Enter your name*": "Ingresa tu nombre*",
 	"Enter Email Address*": "Ingresa tu correo electrónico*",
-	"Enter your Message here": "Ingresa tu mensaje aquí"
+	"Enter your Message here": "Ingresa tu mensaje aquí",
+    "Minimum 5 tokens required": "Mínimo 5 tokens requeridos",
+    "Current": "Actual",
+    "tokens": "tokens",
+    "We use it across the team for internal updates and external communications. It saves us hours each week.": "Lo usamos en todo el equipo para actualizaciones internas y comunicaciones externas. Nos ahorra horas cada semana.",
+    "Project Manager": "Gerente de Proyecto"
 }

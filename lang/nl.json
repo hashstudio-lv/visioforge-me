@@ -505,5 +505,10 @@
 	"The AI agreement generator helped me create a solid freelance contract in under 5 minutes. It's accurate, fast, and professional.": "De AI-overeenkomstgenerator hielp me om in minder dan 5 minuten een solide freelancecontract te maken. Het is nauwkeurig, snel en professioneel.",
 	"Enter your name*": "Voer je naam in*",
 	"Enter Email Address*": "Voer je e-mailadres in*",
-	"Enter your Message here": "Voer je bericht hier in"
+	"Enter your Message here": "Voer je bericht hier in",
+    "Minimum 5 tokens required": "Minimaal 5 tokens vereist",
+    "Current": "Huidig",
+    "tokens": "tokens",
+    "We use it across the team for internal updates and external communications. It saves us hours each week.": "We gebruiken het binnen het hele team voor interne updates en externe communicatie. Het bespaart ons uren per week.",
+    "Project Manager": "Projectmanager"
 }

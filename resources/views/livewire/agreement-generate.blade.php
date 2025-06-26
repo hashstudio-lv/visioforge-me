@@ -1,69 +1,63 @@
 <div>
-    @if(!empty($agreement))
+    @if (!empty($agreement))
         <div>
             {!! nl2br(e($agreement)) !!}
         </div>
         <div class="mt-5">
-            <a href="{{ $order->url }}" download target="_blank"
-               class="text-sm md:text-size-15 text-whiteColor bg-primaryColor border border-primaryColor px-25px py-15px hover:text-primaryColor hover:bg-whiteColor rounded inline-block dark:hover:bg-whiteColor-dark dark:hover:text-whiteColor">
+            <a
+                href="{{ $order->url }}"
+                download
+                target="_blank"
+                class="md:text-size-15 text-whiteColor bg-primaryColor border-primaryColor px-25px py-15px hover:text-primaryColor hover:bg-whiteColor dark:hover:bg-whiteColor-dark dark:hover:text-whiteColor inline-block rounded border text-sm"
+            >
                 {{ __('Download') }}
             </a>
-            <a href="{{ route('services.show', 'generate-agreement') }}" class="whitespace-nowrap text-size-15 text-whiteColor bg-secondaryColor px-25px py-10px border border-secondaryColor hover:text-secondaryColor hover:bg-whiteColor inline-block rounded dark:hover:bg-whiteColor-dark dark:hover:text-whiteColor">
+            <a
+                href="{{ route('services.show', 'generate-agreement') }}"
+                class="text-size-15 text-whiteColor bg-secondaryColor px-25px py-10px border-secondaryColor hover:text-secondaryColor hover:bg-whiteColor dark:hover:bg-whiteColor-dark dark:hover:text-whiteColor inline-block whitespace-nowrap rounded border"
+            >
                 {{ __('Generate another one') }}
             </a>
         </div>
     @else
-        <label class="font-bold mb-10px block">{{ __('Templates') }}</label>
+        <label class="mb-10px block font-bold">{{ __('Templates') }}</label>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-            @foreach([
-                [
-                    'title' => __('Freelance & Services'),
-                    'items' => [
-                        ['title' => 'Freelance Work Agreement', 'value' => 'Freelance Work Agreement'],
-                        ['title' => 'Service Agreement for Client', 'value' => 'Service Agreement for Client'],
-                        ['title' => 'Consulting Agreement', 'value' => 'Consulting Agreement'],
-                    ]
-                ],
-                [
-                    'title' => __('Business & Operations'),
-                    'items' => [
-                        ['title' => 'Non-Disclosure Agreement (NDA)', 'value' => 'Non-Disclosure Agreement (NDA)'],
-                        ['title' => 'Partnership Agreement', 'value' => 'Partnership Agreement'],
-                        ['title' => 'Vendor Contract', 'value' => 'Vendor Contract'],
-                        ['title' => 'Sales Agreement', 'value' => 'Sales Agreement'],
-                    ]
-                ],
-                [
-                    'title' => __('HR & Employment'),
-                    'items' => [
-                        ['title' => 'Employment Agreement', 'value' => 'Employment Agreement'],
-                        ['title' => 'Internship Agreement', 'value' => 'Internship Agreement'],
-                        ['title' => 'Contractor Agreement', 'value' => 'Contractor Agreement'],
-                        ['title' => 'Termination of Employment Letter', 'value' => 'Termination of Employment Letter'],
-                    ]
-                ]
-            ] as $group)
-                <!-- Sales & Marketing -->
+        <div class="mb-6 grid grid-cols-1 gap-6 md:grid-cols-3">
+            @foreach ([
+        [
+            'title' => __('Freelance & Services'),
+            'items' => [['title' => 'Freelance Work Agreement', 'value' => 'Freelance Work Agreement'], ['title' => 'Service Agreement for Client', 'value' => 'Service Agreement for Client'], ['title' => 'Consulting Agreement', 'value' => 'Consulting Agreement']],
+        ],
+        [
+            'title' => __('Business & Operations'),
+            'items' => [['title' => 'Non-Disclosure Agreement (NDA)', 'value' => 'Non-Disclosure Agreement (NDA)'], ['title' => 'Partnership Agreement', 'value' => 'Partnership Agreement'], ['title' => 'Vendor Contract', 'value' => 'Vendor Contract'], ['title' => 'Sales Agreement', 'value' => 'Sales Agreement']],
+        ],
+        [
+            'title' => __('HR & Employment'),
+            'items' => [['title' => 'Employment Agreement', 'value' => 'Employment Agreement'], ['title' => 'Internship Agreement', 'value' => 'Internship Agreement'], ['title' => 'Contractor Agreement', 'value' => 'Contractor Agreement'], ['title' => 'Termination of Employment Letter', 'value' => 'Termination of Employment Letter']],
+        ],
+    ] as $group)
                 <div>
-                    <h4 class="text-sm leading-1 font-semibold uppercase text-contentColor dark:text-contentColor-dark bg-lightGrey5 dark:bg-whiteColor-dark p-10px pb-7px mb-10px">{{ $group['title'] }}</h4>
+                    <h4
+                        class="leading-1 text-contentColor dark:text-contentColor-dark bg-lightGrey5 dark:bg-whiteColor-dark p-10px pb-7px mb-10px text-sm font-semibold uppercase">
+                        {{ $group['title'] }}</h4>
                     <ul>
-                        @foreach($group['items'] as $item)
-                            <li class="flex items-center justify-between py-10px border-b border-borderColor dark:border-borderColor-dark">
-                                {{--                                <p class="text-sm font-medium text-contentColor dark:text-contentColor-dark leading-1.8">--}}
-                                {{--                                    Instructor:--}}
-                                {{--                                </p>--}}
-                                {{--                                <p class="text-xs text-contentColor dark:text-contentColor-dark px-10px py-6px bg-borderColor dark:bg-borderColor-dark rounded-full leading-13px">--}}
-                                {{--                                    D. Willaim--}}
-                                {{--                                </p>--}}
+                        @foreach ($group['items'] as $item)
+                            <li
+                                class="py-10px border-borderColor dark:border-borderColor-dark flex items-center justify-between border-b">
                                 <label
-                                    class="flex items-center space-x-2 cursor-pointer text-sm font-medium text-contentColor dark:text-contentColor-dark leading-1.8">
-                                    <input type="radio" name="template" value="{{ $item['value'] }}" wire:model.live="template"
-                                           class="text-primaryColor">
-                                    <span class="text-sm text-contentColor ml-2">{{ $item['title'] }}</span>
+                                    class="text-contentColor dark:text-contentColor-dark leading-1.8 flex cursor-pointer items-center space-x-2 text-sm font-medium"
+                                >
+                                    <input
+                                        type="radio"
+                                        name="template"
+                                        value="{{ $item['value'] }}"
+                                        wire:model.live="template"
+                                        class="text-primaryColor"
+                                    >
+                                    <span class="text-contentColor ml-2 text-sm">{{ $item['title'] }}</span>
                                 </label>
                             </li>
-
                         @endforeach
                     </ul>
 
@@ -72,38 +66,49 @@
         </div>
 
         <div class="mb-25px">
-            <label class="font-bold mb-10px block"
-                   for="input-prompt">{{ __('Enter key details for your agreement...') }}</label>
-            <textarea rows="5" wire:model.live="prompt" placeholder=""
-                      id="input-prompt"
-                      class="@if($balance <= 0) cursor-not-allowed @endif w-full pl-5 pt-5 bg-transparent text-sm focus:outline-none text-contentColor dark:text-contentColor-dark border border-borderColor dark:border-borderColor-dark placeholder:text-placeholder placeholder:opacity-80 font-medium rounded"
-                      @if($balance <= 0) disabled @endif></textarea>
+            <label
+                class="mb-10px block font-bold"
+                for="input-prompt"
+            >{{ __('Enter key details for your agreement...') }}</label>
+            <textarea
+                id="input-prompt"
+                rows="5"
+                wire:model.live="prompt"
+                placeholder=""
+                class="@if ($balance <= 0) cursor-not-allowed @endif text-contentColor dark:text-contentColor-dark border-borderColor dark:border-borderColor-dark placeholder:text-placeholder w-full rounded border bg-transparent pl-5 pt-5 text-sm font-medium placeholder:opacity-80 focus:outline-none"
+                @if ($balance <= 0) disabled @endif
+            ></textarea>
         </div>
 
-        @if($balance <= 0)
-            <div class="flex flex-col justify-center items-center">
+        @if ($balance <= 0)
+            <div class="flex flex-col items-center justify-center">
                 <div class="mt-4">
                     {{ __("You don't have enough VFT to make the purchase. Please make a deposit.") }}
                 </div>
 
                 <div class="mt-5">
-                    <a href="{{ route('deposits.create') }}"
-                       class="whitespace-nowrap text-size-15 text-whiteColor bg-secondaryColor px-25px py-10px border border-secondaryColor hover:text-secondaryColor hover:bg-whiteColor inline-block rounded dark:hover:bg-whiteColor-dark dark:hover:text-whiteColor">
+                    <a
+                        href="{{ route('deposits.create') }}"
+                        class="text-size-15 text-whiteColor bg-secondaryColor px-25px py-10px border-secondaryColor hover:text-secondaryColor hover:bg-whiteColor dark:hover:bg-whiteColor-dark dark:hover:text-whiteColor inline-block whitespace-nowrap rounded border"
+                    >
                         {{ __('Make a deposit') }}
                     </a>
                 </div>
             </div>
         @else
-
             <button
-                class="text-size-15 text-whiteColor bg-primaryColor px-25px py-10px w-full border border-primaryColor hover:text-primaryColor hover:bg-whiteColor inline-block rounded group dark:hover:text-whiteColor dark:hover:bg-whiteColor-dark"
+                class="text-size-15 text-whiteColor bg-primaryColor px-25px py-10px border-primaryColor hover:text-primaryColor hover:bg-whiteColor dark:hover:text-whiteColor dark:hover:bg-whiteColor-dark group inline-block w-full rounded border"
                 wire:click="download"
                 wire:loading.attr="disabled"
-                wire:loading.remove>
+                wire:loading.remove
+            >
                 {{ __('Generate') }}
             </button>
 
-            <div class="mt-3" wire:loading>
+            <div
+                class="mt-3"
+                wire:loading
+            >
                 <span>{{ __('Loading... Please wait while your files are being prepared.') }}</span>
             </div>
         @endif

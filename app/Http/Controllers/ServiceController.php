@@ -3,28 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Enums\Service;
-use App\Models\Page;
-use App\Models\Product;
-use App\Repositories\ProductRepository;
-use App\Services\EmailGenerationService;
-use App\Services\ImageGenerationService;
-use App\Services\ImageService;
-use App\Services\ImagineArtService;
-use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpFoundation\Response;
 
 class ServiceController extends Controller
 {
-    public function show($slug, ImagineArtService $imagineArtService)
+    public function show(string $slug)
     {
-//        $response = $imagineArtService->generateImageFromText('judo fight in japan');
-//
-//        Storage::disk('public')->put('test/test.jpeg', $response['body']);
-//
-//        dd();
         $service = Service::tryFrom($slug);
 
         if (!$service) {
-            abort(404);
+            abort(Response::HTTP_NOT_FOUND);
         }
 
         return view('pages.services.show', [

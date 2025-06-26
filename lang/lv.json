@@ -452,7 +452,7 @@
     "Your Phone": "Jūsu tālrunis",
     "Your balance": "Jūsu bilance",
     "Your balance:": "Jūsu bilance:",
-    "Your email": "Jūsu e-pasts",
+    "Your email": "Jusu e-pasts",
     "Your email address is unverified.": "Jūsu e-pasta adrese nav verificēta.",
     "Your email address will not be used for any marketing purposes. Required fields are marked.": "Jūsu e-pasta adrese netiks izmantota mārketinga nolūkiem. Obligātie lauki ir atzīmēti.",
     "Your limit for generating 10 images has been reached.": "Jūsu limits 10 attēlu ģenerēšanai ir sasniegts.",
@@ -505,5 +505,10 @@
 	"The AI agreement generator helped me create a solid freelance contract in under 5 minutes. It's accurate, fast, and professional.": "AI līgumu ģenerators palīdzēja man izveidot stabilu brīvmākslinieka līgumu mazāk nekā 5 minūtēs. Tas ir precīzs, ātrs un profesionāls.",
 	"Enter your name*": "Ievadiet savu vārdu*",
 	"Enter Email Address*": "Ievadiet e-pasta adresi*",
-	"Enter your Message here": "Ievadiet savu ziņojumu šeit"
+	"Enter your Message here": "Ievadiet savu ziņojumu šeit",
+    "Minimum 5 tokens required": "Vismaz 5 tokeni nepieciešami",
+    "Current": "Pašreizējais",
+    "tokens": "tokens",
+    "We use it across the team for internal updates and external communications. It saves us hours each week.": "Mēs to izmantojam visā komandā iekšējiem atjauninājumiem un ārējai komunikācijai. Tas ietaupa mums stundas katru nedēļu.",
+    "Project Manager": "Projektu vadītājs"
 }

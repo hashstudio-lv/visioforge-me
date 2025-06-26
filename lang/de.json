@@ -545,5 +545,10 @@
 	"HR Coordinator": "Personalreferent",
 	"Enter your name*": "Geben Sie Ihren Namen ein*",
 	"Enter Email Address*": "Geben Sie Ihre E-Mail-Adresse ein*",
-	"Enter your Message here": "Geben Sie Ihre Nachricht hier ein"
+	"Enter your Message here": "Geben Sie Ihre Nachricht hier ein",
+    "Minimum 5 tokens required": "Mindestens 5 Token erforderlich",
+    "Current": "Aktuell",
+    "tokens": "token",
+    "We use it across the team for internal updates and external communications. It saves us hours each week.": "Wir nutzen es im gesamten Team für interne Updates und externe Kommunikation. Es spart uns jede Woche Stunden.",
+    "Project Manager": "Projektmanager"
 }

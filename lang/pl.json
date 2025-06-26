@@ -445,14 +445,14 @@
     "You will pay": "Zapłacisz",
     "You will receive an archive containing an image and a prompt, with the selected size and format.": "Otrzymasz archiwum zawierające obraz i podpowiedź, w wybranym rozmiarze i formacie.",
     "Your AI Hub for Creativity, Communication, and Contracts.": "Twoje centrum AI dla kreatywności, komunikacji i kontraktów.",
-    "Your Email": "Twój e-mail",
+    "Your Email": "Twoj e-mail",
     "Your Gateway to AI-powered Business Solutions": "Twoja brama do rozwiązań biznesowych opartych na AI",
     "Your Message": "Twoja wiadomość",
     "Your Name": "Twoje imię",
     "Your Phone": "Twój telefon",
     "Your balance": "Twoje saldo",
     "Your balance:": "Twoje saldo:",
-    "Your email": "Twój e-mail",
+    "Your email": "Twoj e-mail",
     "Your email address is unverified.": "Twój adres e-mail jest niezweryfikowany.",
     "Your email address will not be used for any marketing purposes. Required fields are marked.": "Twój adres e-mail nie będzie używany do celów marketingowych. Wymagane pola są oznaczone.",
     "Your limit for generating 10 images has been reached.": "Osiągnąłeś limit generowania 10 obrazów.",
@@ -505,5 +505,7 @@
 	"The AI agreement generator helped me create a solid freelance contract in under 5 minutes. It's accurate, fast, and professional.": "Generator umów AI pomógł mi stworzyć solidny kontrakt dla freelancera w mniej niż 5 minut. Jest dokładny, szybki i profesjonalny.",
 	"Enter your name*": "wprowadz swoją nazwę*",
 	"Enter Email Address*": "wprowadz adres e-mail*",
-	"Enter your Message here": "wprowadz swoją wiadomość tutaj"
+	"Enter your Message here": "wprowadz swoją wiadomość tutaj",
+    "We use it across the team for internal updates and external communications. It saves us hours each week.": "Używamy tego w całym zespole do wewnętrznych aktualizacji i komunikacji zewnętrznej. Oszczędza nam to godziny każdego tygodnia.",
+    "Project Manager": "Kierownik Projektu"
 }
