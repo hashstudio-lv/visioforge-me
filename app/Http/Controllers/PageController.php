@@ -21,7 +21,7 @@ class PageController extends Controller
 
     public function home()
     {
-        return view('themes.itsol.pages.home');
+        return view('pages.home');
     }
 
     public function show($slug)
@@ -30,18 +30,18 @@ class PageController extends Controller
             return $query->where('slug', $slug);
         })->firstOrFail();
 
-        return view($page->view ?? 'themes.itsol.pages.content', [
+        return view($page->view ?? 'pages.static', [
             'page' => $page,
         ]);
     }
 
-    public function imageEditing()
+    public function agreements()
     {
-        return view('themes.itsol.pages.landings.image-editing');
+        return view('pages.landings.agreements');
     }
 
-    public function imageGeneration()
+    public function emails()
     {
-        return view('themes.itsol.pages.landings.image-generation');
+        return view('pages.landings.emails');
     }
 }

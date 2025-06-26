@@ -18,6 +18,10 @@ enum ProductType: string
 
     case AI_BACKGROUND = 'ai-background';
 
+    case AGREEMENT = 'agreement';
+
+    case EMAIL = 'email';
+
     public function name(): string
     {
         return match ($this) {
@@ -28,6 +32,8 @@ enum ProductType: string
             self::IMAGE => 'Image',
             self::TEXT_TO_IMAGE => 'Text to Image',
             self::TEXT_TO_PNG => 'Text to PNG',
+            self::AGREEMENT => 'Agreement',
+            self::EMAIL => 'Email',
         };
     }
 
