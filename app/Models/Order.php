@@ -29,11 +29,11 @@ class Order extends Model
         if ($this->product->type == ProductType::IMAGE) {
             return $this->product->getThumbnailUrl();
         }
-//        if ($this->product->type == ProductType::TEXT_TO_IMAGE) {
-//            return '';//$this->product->getThumbnailUrl();
+
+//        if ($this->product->type == ProductType::AGREEMENT) {
+//            return $this->product->getThumbnailUrl();
 //        }
 
         return url('storage/orders/' . $this->id . '/' . $this->product->path);
     }
 }
-

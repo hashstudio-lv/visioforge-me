@@ -21,12 +21,8 @@ class ProductController extends Controller
 
     public function index()
     {
-//        GenerateProduct::dispatch(ProductCategory::PEOPLE_PORTRAITS, ProductStyle::PHOTO_REALISM);
-        $products = $this->productRepository->get(request()->all()); // ready
-        // $products = Product::query()->simplePaginate(5); // FOR DEV ONLY
-
-        return view('themes.itsol.pages.products.index', [
-            'products' => $products,
+        return view('pages.products.index', [
+            'products' => $this->productRepository->get(request()->all()),
         ]);
     }
 
@@ -34,18 +30,14 @@ class ProductController extends Controller
     {
         $product = $this->productRepository->find($slug);
 
-        $previousProduct = Product::public()->inRandomOrder()->where('id', '!=', $product->id)->first();
-        $nextProduct = Product::public()->inRandomOrder()->whereNotIn('id', [$product->id, $previousProduct->id])->first();
-
-        return view('themes.itsol.pages.products.show', [
+        return view('pages.products.show', [
             'product' => $product,
-            'previousProduct' => $previousProduct,
-            'nextProduct' => $nextProduct,
         ]);
     }
 
     public function purchase($slug, ProductService $productService)
     {
+
         if (request()->method() == 'POST') {
             $user = auth()->user();
             $product = $this->productRepository->find($slug);
@@ -60,6 +52,6 @@ class ProductController extends Controller
 
     public function generate()
     {
-        return view('themes.itsol.pages.products.generate');
+        return view('themes.new.pages.products.generate');
     }
 }
