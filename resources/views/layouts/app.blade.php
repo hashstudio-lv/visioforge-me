@@ -109,6 +109,27 @@
                                     </a>
                                 </li>
                             @endif
+                                <li class="relative">
+                                    <button class="text-contentColor dark:text-contentColor-dark pl-15px flex items-center uppercase">
+                                        {{ app()->getLocale() }}
+                                        <i class="icofont-rounded-down"></i>
+                                    </button>
+                                    <!-- dropdown menu -->
+                                    <div class="dropdown absolute left-0 translate-y-10 z-medium hidden opacity-0" style="transition: 0.3s; display: none; opacity: 0; transform: translateY(20px);">
+                                        <div class="shadow-dropdown3 max-w-dropdown2 w-2000 rounded-standard bg-white dark:bg-whiteColor-dark">
+                                            <ul>
+                                                @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                                    <li>
+                                                        <a href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}"
+                                                           class=" capitalize flex items-center text-size-13 text-blackColor p-10px transition duration-300 hover:bg-darkdeep4 hover:text-whiteColor dark:text-blackColor-dark dark:hover:text-whiteColor-dark dark:hover:bg-darkdeep4">
+                                                            {{ $properties['native'] }}
+                                                        </a>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
                             <li class="block lg:hidden">
                                 <button
                                     class="open-mobile-menu text-3xl text-darkdeep1 hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor">
