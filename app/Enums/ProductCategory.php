@@ -91,70 +91,17 @@ enum ProductCategory: string
 
     public function translatedValue(): string
     {
-        $locale = app()->getLocale();
-
-        return match($locale) {
-            'lv' => match($this) {
-                self::NATURE_LANDSCAPES => 'Daba un Ainavas',
-                self::PEOPLE_PORTRAITS => 'Cilvēki un Portreti',
-                self::ARCHITECTURE_URBAN => 'Arhitektūra un Pilsētas',
-                self::ABSTRACT_FINE_ART => 'Abstraktā un Smalkā māksla',
-                self::TRAVEL_ADVENTURE => 'Ceļojumi un Piedzīvojumi',
-                self::BUSINESS_TECHNOLOGY => 'Bizness un Tehnoloģijas',
-                self::FOOD_DRINK => 'Ēdiens un Dzērieni',
-                self::FASHION_BEAUTY => 'Mode un Skaistums',
-                self::SPORTS_FITNESS => 'Sports un Fitness',
-                self::ANIMALS_PETS => 'Dzīvnieki un Mājdzīvnieki'
-            },
-            'es' => match($this) {
-                self::NATURE_LANDSCAPES => 'Naturaleza y Paisajes',
-                self::PEOPLE_PORTRAITS => 'Personas y Retratos',
-                self::ARCHITECTURE_URBAN => 'Arquitectura y Urbanismo',
-                self::ABSTRACT_FINE_ART => 'Arte Abstracto y Bellas Artes',
-                self::TRAVEL_ADVENTURE => 'Viajes y Aventuras',
-                self::BUSINESS_TECHNOLOGY => 'Negocios y Tecnología',
-                self::FOOD_DRINK => 'Comida y Bebida',
-                self::FASHION_BEAUTY => 'Moda y Belleza',
-                self::SPORTS_FITNESS => 'Deportes y Fitness',
-                self::ANIMALS_PETS => 'Animales y Mascotas'
-            },
-            'de' => match($this) {
-                self::NATURE_LANDSCAPES => 'Natur und Landschaften',
-                self::PEOPLE_PORTRAITS => 'Menschen und Porträts',
-                self::ARCHITECTURE_URBAN => 'Architektur und Städte',
-                self::ABSTRACT_FINE_ART => 'Abstrakte und Schöne Kunst',
-                self::TRAVEL_ADVENTURE => 'Reisen und Abenteuer',
-                self::BUSINESS_TECHNOLOGY => 'Geschäft und Technologie',
-                self::FOOD_DRINK => 'Essen und Trinken',
-                self::FASHION_BEAUTY => 'Mode und Schönheit',
-                self::SPORTS_FITNESS => 'Sport und Fitness',
-                self::ANIMALS_PETS => 'Tiere und Haustiere'
-            },
-            'fr' => match($this) {
-                self::NATURE_LANDSCAPES => 'Nature et Paysages',
-                self::PEOPLE_PORTRAITS => 'Personnes et Portraits',
-                self::ARCHITECTURE_URBAN => 'Architecture et Urbain',
-                self::ABSTRACT_FINE_ART => 'Art Abstrait et Beaux-Arts',
-                self::TRAVEL_ADVENTURE => 'Voyage et Aventure',
-                self::BUSINESS_TECHNOLOGY => 'Affaires et Technologie',
-                self::FOOD_DRINK => 'Nourriture et Boisson',
-                self::FASHION_BEAUTY => 'Mode et Beauté',
-                self::SPORTS_FITNESS => 'Sports et Fitness',
-                self::ANIMALS_PETS => 'Animaux et Animaux de compagnie'
-            },
-            'ar' => match($this) {
-                self::NATURE_LANDSCAPES => 'الطبيعة والمناظر الطبيعية',
-                self::PEOPLE_PORTRAITS => 'الناس واللوحات',
-                self::ARCHITECTURE_URBAN => 'العمارة والحضرية',
-                self::ABSTRACT_FINE_ART => 'الفن التجريدي والفن الراقي',
-                self::TRAVEL_ADVENTURE => 'السفر والمغامرة',
-                self::BUSINESS_TECHNOLOGY => 'الأعمال والتكنولوجيا',
-                self::FOOD_DRINK => 'الطعام والشراب',
-                self::FASHION_BEAUTY => 'الموضة والجمال',
-                self::SPORTS_FITNESS => 'الرياضة واللياقة البدنية',
-                self::ANIMALS_PETS => 'الحيوانات والحيوانات الأليفة'
-            },
-            default => $this->value
+        return match ($this) {
+            self::NATURE_LANDSCAPES => __('Nature & Landscapes'),
+            self::PEOPLE_PORTRAITS => __('People & Portraits'),
+            self::ARCHITECTURE_URBAN => __('Architecture & Urban'),
+            self::ABSTRACT_FINE_ART => __('Abstract & Fine Art'),
+            self::TRAVEL_ADVENTURE => __('Travel & Adventure'),
+            self::BUSINESS_TECHNOLOGY => __('Business & Technology'),
+            self::FOOD_DRINK => __('Food & Drink'),
+            self::FASHION_BEAUTY => __('Fashion & Beauty'),
+            self::SPORTS_FITNESS => __('Sports & Fitness'),
+            self::ANIMALS_PETS => __('Animals & Pets'),
         };
     }
 }

@@ -29,6 +29,21 @@ enum ProductStyle: string
         };
     }
 
+    public function translatedValue(): string
+    {
+        return match($this) {
+            self::PHOTO_REALISM => __('Photo Realism'),
+            self::IMPRESSIONIST => __('Impressionist'),
+            self::SURREALISM => __('Surrealism'),
+            self::MINIMALIST => __('Minimalist'),
+            self::ABSTRACT => __('Abstract'),
+            self::COMICS => __('Comics'),
+            self::POP_ART => __('Pop Art'),
+            self::VINTAGE_RETRO => __('Vintage/Retro'),
+            self::THREE_D_RENDERING => __('3D Rendering'),
+        };
+    }
+
     public function details(): string
     {
         return match($this) {
@@ -77,70 +92,6 @@ enum ProductStyle: string
                 'Glossy metallic finishes', 'High-resolution details', 'Realistic fabric textures', 'Transparent materials',
                 'Photorealistic lighting effects', 'Complex geometric shapes', 'Perfect symmetry', 'Dynamic particle simulations'
             ])
-        };
-    }
-
-    public function translatedValue(): string
-    {
-        $locale = app()->getLocale();
-
-        return match($locale) {
-            'lv' => match($this) {
-                self::PHOTO_REALISM => 'Foto-reālisms',
-                self::IMPRESSIONIST => 'Impresionisms',
-                self::SURREALISM => 'Sirreālisms',
-                self::MINIMALIST => 'Minimālisms',
-                self::ABSTRACT => 'Abstrakts',
-                self::COMICS => 'Komiksi',
-                self::POP_ART => 'Pop Art',
-                self::VINTAGE_RETRO => 'Vintage/Retro',
-                self::THREE_D_RENDERING => '3D Attēlošana'
-            },
-            'es' => match($this) {
-                self::PHOTO_REALISM => 'Foto-realismo',
-                self::IMPRESSIONIST => 'Impresionismo',
-                self::SURREALISM => 'Surrealismo',
-                self::MINIMALIST => 'Minimalismo',
-                self::ABSTRACT => 'Abstracto',
-                self::COMICS => 'Cómics',
-                self::POP_ART => 'Arte Pop',
-                self::VINTAGE_RETRO => 'Vintage/Retro',
-                self::THREE_D_RENDERING => 'Renderizado 3D'
-            },
-            'de' => match($this) {
-                self::PHOTO_REALISM => 'Fotorealismus',
-                self::IMPRESSIONIST => 'Impressionismus',
-                self::SURREALISM => 'Surrealismus',
-                self::MINIMALIST => 'Minimalismus',
-                self::ABSTRACT => 'Abstrakt',
-                self::COMICS => 'Comics',
-                self::POP_ART => 'Pop-Art',
-                self::VINTAGE_RETRO => 'Vintage/Retro',
-                self::THREE_D_RENDERING => '3D-Rendering'
-            },
-            'fr' => match($this) {
-                self::PHOTO_REALISM => 'Photo-réalisme',
-                self::IMPRESSIONIST => 'Impressionnisme',
-                self::SURREALISM => 'Surréalisme',
-                self::MINIMALIST => 'Minimalisme',
-                self::ABSTRACT => 'Abstrait',
-                self::COMICS => 'Bandes dessinées',
-                self::POP_ART => 'Pop Art',
-                self::VINTAGE_RETRO => 'Vintage/Rétro',
-                self::THREE_D_RENDERING => 'Rendu 3D'
-            },
-            'ar' => match($this) {
-                self::PHOTO_REALISM => 'الواقعية التصويرية',
-                self::IMPRESSIONIST => 'الانطباعية',
-                self::SURREALISM => 'السريالية',
-                self::MINIMALIST => 'التبسيطية',
-                self::ABSTRACT => 'التجريدية',
-                self::COMICS => 'القصص المصورة',
-                self::POP_ART => 'فن البوب',
-                self::VINTAGE_RETRO => 'الطراز العتيق/الرجعي',
-                self::THREE_D_RENDERING => 'التصيير ثلاثي الأبعاد'
-            },
-            default => $this->value
         };
     }
 }
