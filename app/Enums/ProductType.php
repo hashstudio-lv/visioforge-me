@@ -37,6 +37,22 @@ enum ProductType: string
         };
     }
 
+    public function translatedValue(): string
+    {
+        return match($this) {
+            self::VIDEO_FROM_IMAGE => __('Video from Image'),
+            self::VIDEO_FROM_TEXT => __('Video from Text'),
+            self::IMAGE_UPSCALE => __('Image Upscale'),
+            self::IMAGE_BG_REMOVED => __('Background Removal'),
+            self::IMAGE => __('Image'),
+            self::TEXT_TO_IMAGE => __('Text to Image'),
+            self::TEXT_TO_PNG => __('Text to PNG'),
+            self::AI_BACKGROUND => __('AI Background'),
+            self::AGREEMENT => __('Agreement'),
+            self::EMAIL => __('Email'),
+        };
+    }
+
     public static function getPublicTypes()
     {
         return [

@@ -71,27 +71,11 @@
             </div>
         </section>
 
-        <!--blog details section -->
         <section>
             <div class="container py-50px md:py-70px lg:py-20 2xl:py-100px">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-30px">
                     <div class="lg:col-start-1 lg:col-span-8 space-y-[35px]">
-                        <!-- event heading -->
-                        {{--                        <div>--}}
-                        {{--                            <p--}}
-                        {{--                                class="text-sm text-whiteColor bg-indigo rounded leading-25px px-2 mb-30px inline-block"--}}
-                        {{--                                data-aos="fade-up">--}}
-                        {{--                                {{ $product->category }}--}}
-                        {{--                            </p>--}}
-                        {{--                            <p--}}
-                        {{--                                class="text-sm text-white bg-secondaryColor rounded leading-25px px-2 mb-30px inline-block"--}}
-                        {{--                                data-aos="fade-up">--}}
-                        {{--                                {{ $product->style }}--}}
-                        {{--                            </p>--}}
-                        {{--                        </div>--}}
-                        <!-- event 1 -->
                         <div data-aos="fade-up" class="mb-30px">
-                            <!-- blog thumbnail -->
                             <div class="overflow-hidden relative mb-35px">
                                 <img
                                     src="{{ asset('storage/' . $product->getThumbnailPath()) }}"
@@ -99,13 +83,12 @@
                                     class="w-full"
                                 >
                             </div>
-                            <!-- blog content -->
                             <div>
                                 <h4
                                     class="text-size-26 font-bold text-blackColor dark:text-blackColor-dark mb-15px !leading-30px"
                                     data-aos="fade-up"
                                 >
-                                    Description
+                                    {{ __('Description') }}
                                 </h4>
                                 <p
                                     class="text-darkdeep4 mb-15px !leading-29px"
@@ -115,6 +98,7 @@
                                 </p>
                             </div>
                         </div>
+
                         <div
                             class="flex justify-between items-center flex-wrap py-10 mb-10 border-y border-borderColor2 dark:border-borderColor2-dark gap-y-10px"
                             data-aos="fade-up"
@@ -125,23 +109,28 @@
                                         <p
                                             class="text-lg md:text-size-22 leading-7 md:leading-30px text-blackColor dark:text-blackColor-dark font-bold"
                                         >
-                                            Tag
+                                            {{ __('Tag') }}
                                         </p>
                                     </li>
-                                    <li>
-                                        <a
-                                            href="{{ route('products.index', ['category' => [$product->category]]) }}"
-                                            class="px-2 py-5px md:px-3 md:py-9px text-contentColor text-size-11 md:text-xs font-medium uppercase border border-borderColor2 hover:text-whiteColor hover:bg-primaryColor hover:border-primaryColor dark:text-contentColor-dark dark:border-borderColor2-dark dark:hover:text-whiteColor dark:hover:bg-primaryColor dark:hover:border-primaryColor rounded"
-                                        >{{ $product->category }}</a
-                                        >
-                                    </li>
-                                    <li>
-                                        <a
-                                            href="{{ route('products.index', ['style' => [$product->style]]) }}"
-                                            class="px-2 py-5px md:px-3 md:py-9px text-contentColor text-size-11 md:text-xs font-medium uppercase border border-borderColor2 hover:text-whiteColor hover:bg-primaryColor hover:border-primaryColor dark:text-contentColor-dark dark:border-borderColor2-dark dark:hover:text-whiteColor dark:hover:bg-primaryColor dark:hover:border-primaryColor rounded"
-                                        >{{ $product->style }}
-                                        </a>
-                                    </li>
+                                    @isset($product->category)
+                                        <li>
+                                            <a
+                                                href="{{ route('products.index', ['category' => [$product->category]]) }}"
+                                                class="px-2 py-5px md:px-3 md:py-9px text-contentColor text-size-11 md:text-xs font-medium uppercase border border-borderColor2 hover:text-whiteColor hover:bg-primaryColor hover:border-primaryColor dark:text-contentColor-dark dark:border-borderColor2-dark dark:hover:text-whiteColor dark:hover:bg-primaryColor dark:hover:border-primaryColor rounded"
+                                            >{{ $product->category->translatedValue() }}</a
+                                            >
+                                        </li>
+                                    @endisset
+
+                                    @isset($product->style)
+                                        <li>
+                                            <a
+                                                href="{{ route('products.index', ['style' => [$product->style]]) }}"
+                                                class="px-2 py-5px md:px-3 md:py-9px text-contentColor text-size-11 md:text-xs font-medium uppercase border border-borderColor2 hover:text-whiteColor hover:bg-primaryColor hover:border-primaryColor dark:text-contentColor-dark dark:border-borderColor2-dark dark:hover:text-whiteColor dark:hover:bg-primaryColor dark:hover:border-primaryColor rounded"
+                                            >{{ $product->style->translatedValue() }}
+                                            </a>
+                                        </li>
+                                    @endisset
                                 </ul>
                             </div>
                         </div>
@@ -162,20 +151,24 @@
                                 <li class="flex items-center gap-x-10px mb-25px pb-22px border-b border-borderColor dark:border-borderColor-dark">
                                     <div>
                                         <p class="text-sm font-medium text-contentColor dark:text-contentColor-dark">
-                                            <span class="mr-7px text-blackColor dark:text-blackColor-dark">
-                                              Category:
-                                            </span>
-                                            {{ $product->category }}
+                                            @isset($product->category)
+                                                <span class="mr-7px text-blackColor dark:text-blackColor-dark">
+                                                {{ __('Category') }}:
+                                                </span>
+                                                {{ $product->category->translatedValue() }}
+                                            @endisset
                                         </p>
                                     </div>
                                 </li>
                                 <li class="flex items-center gap-x-10px mb-25px pb-22px border-b border-borderColor dark:border-borderColor-dark">
                                     <div>
                                         <p class="text-sm font-medium text-contentColor dark:text-contentColor-dark">
-                                            <span class="mr-7px text-blackColor dark:text-blackColor-dark">
-                                              Style:
-                                            </span>
-                                            {{ $product->style }}
+                                            @isset($product->style)
+                                                <span class="mr-7px text-blackColor dark:text-blackColor-dark">
+                                                {{ __('Style') }}:
+                                                </span>
+                                                {{ $product->style->translatedValue() }}
+                                            @endisset
                                         </p>
                                     </div>
                                 </li>
@@ -203,7 +196,9 @@
                                         >
                                             @csrf
 
-                                            <div class="mb-2">Are you sure?</div>
+                                            <div class="mb-2">
+                                                {{ __('Are you sure?') }}
+                                            </div>
                                             <button
                                                 type="submit"
                                                 class="whitespace-nowrap text-size-15 text-whiteColor bg-secondaryColor px-25px py-10px border border-secondaryColor hover:text-secondaryColor hover:bg-whiteColor inline-block rounded dark:hover:bg-whiteColor-dark dark:hover:text-whiteColor"
@@ -221,7 +216,9 @@
                                         {{ __('Buy') }}
                                     </button>
                                     <div>
-                                        <h3 class="text-secondaryColor mt-1">{!! __('You need to be <a href=' . route('login') . ' class="font-bold underline">logged in</a>.') !!} </h3>
+                                        <h3 class="text-secondaryColor mt-1">
+                                            {{ __('You need to be') }} <a href="{{ route('login') }}" class="font-bold underline">{{ __('logged in') }}</a>
+                                        </h3>
                                     </div>
                                 @endif
                             </div>
