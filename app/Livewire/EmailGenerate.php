@@ -39,7 +39,7 @@ class EmailGenerate extends Component
         $this->email = $emailGenerationService->generateEmailFromPrompt($prompt);
 
         $data = [
-            'price' => 1.00,
+            'price' => 10.00,
             'prompt' => $prompt,
             'type' => 'email'
         ];

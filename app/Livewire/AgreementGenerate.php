@@ -47,7 +47,7 @@ class AgreementGenerate extends Component
         $this->agreement = $agreementGenerationService->generateAgreementFromPrompt($prompt);
 
         $data = [
-            'price' => 1.00,
+            'price' => 10.00,
             'prompt' => $prompt,
             'type' => ProductType::AGREEMENT
         ];
