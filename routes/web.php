@@ -24,6 +24,12 @@ Route::group(
 //        Route::get('/products/generate', [ProductController::class, 'generate'])->name('products.generate');
     //    Route::get('/dashboard', [\App\Http\Controllers\DashboardController::class, 'show'])->name('dashboard');
         Route::get('/dashboard/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::get('/dashboard/deposits/set-webhook', [\App\Http\Controllers\DepositController::class, 'setWebhooks'])->name('deposits.setWebhooks');
+        Route::get('/dashboard/deposits/success', [\App\Http\Controllers\DepositController::class, 'success'])->name('deposits.success');
+        Route::any('/merchant/apple-pay/validate', [\App\Http\Controllers\DepositController::class, 'appleValidateMerchant'])->name('apple-pay.validate');
+        Route::post('/merchant/apple-pay/process', [\App\Http\Controllers\DepositController::class, 'appleProcessPayment'])->name('apple-pay.process');
+        Route::post('/merchant/google-pay/validate', [\App\Http\Controllers\DepositController::class, 'validateGooglePayForm'])->name('google-pay.validate');
+        Route::post('/merchant/google-pay/process', [\App\Http\Controllers\DepositController::class, 'googleProcessPayment'])->name('google-pay.process');
         Route::get('/dashboard/deposits/create', [\App\Http\Controllers\DepositController::class, 'create'])->name('deposits.create');
         Route::get('/dashboard/deposits', [\App\Http\Controllers\DepositController::class, 'index'])->name('deposits.index');
         Route::post('/dashboard/deposits', [\App\Http\Controllers\DepositController::class, 'store'])->name('deposits.store');

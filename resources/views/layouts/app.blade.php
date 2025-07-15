@@ -540,6 +540,7 @@
     <script src="{{ asset('assets/js/vanilla-tilt.js') }}?t={{ now()->timestamp }}"></script>
     <script src="{{ asset('assets/js/aos.js') }}?t={{ now()->timestamp }}"></script>
     <script src="{{ asset('assets/js/main.js') }}?t={{ now()->timestamp }}"></script>
+    @stack('scripts')
 </body>
 
 </html>

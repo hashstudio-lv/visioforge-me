@@ -27,6 +27,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        if (str_contains(request()->getHttpHost(), 'ngrok-free.app')) {
+            \URL::forceScheme('https');
+            $this->app['request']->server->set('HTTPS', 'on');
+        }
     }
 }
