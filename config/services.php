@@ -56,6 +56,18 @@ return [
         'failure_redirect' => env('DECTA_FAILURE_REDIRECT', ''),
     ],
 
+    'payadmit' => [
+        'api_key' => env('PAYADMIT_SECRET_KEY', ''),
+        'base_url' => env('PAYADMIT_URL', ''),
+    ],
+
+    'exactly' => [
+        'project_id' => env('EXACTLY_PROJECT_ID', ''),
+        'base_url' => env('EXACTLY_URL', ''),
+        'api_key' => env('EXACTLY_API_KEY', ''),
+        'signing_secret' => env('EXACTLY_SIGNING_SECRET', ''),
+    ],
+
     'imagine' => [
         'api_key' => env('IMAGINE_API_KEY', ''),
     ],

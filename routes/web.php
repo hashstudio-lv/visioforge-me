@@ -30,6 +30,12 @@ Route::group(
         Route::post('/merchant/apple-pay/process', [\App\Http\Controllers\DepositController::class, 'appleProcessPayment'])->name('apple-pay.process');
         Route::post('/merchant/google-pay/validate', [\App\Http\Controllers\DepositController::class, 'validateGooglePayForm'])->name('google-pay.validate');
         Route::post('/merchant/google-pay/process', [\App\Http\Controllers\DepositController::class, 'googleProcessPayment'])->name('google-pay.process');
+        Route::post('/merchant/bancontact/process', [\App\Http\Controllers\DepositController::class, 'processBancontact'])->name('bancontact.process');
+        Route::post('/merchant/blik/process', [\App\Http\Controllers\DepositController::class, 'processBlik'])->name('blik.process');
+        Route::post('/merchant/ideal/process', [\App\Http\Controllers\DepositController::class, 'processIdeal'])->name('ideal.process');
+        Route::post('/merchant/sofort/process', [\App\Http\Controllers\DepositController::class, 'processSofort'])->name('sofort.process');
+        Route::post('/merchant/mbway/process', [\App\Http\Controllers\DepositController::class, 'processMbway'])->name('mbway.process');
+        Route::post('/merchant/multibanco/process', [\App\Http\Controllers\DepositController::class, 'processMultibanco'])->name('multibanco.process');
         Route::get('/dashboard/deposits/create', [\App\Http\Controllers\DepositController::class, 'create'])->name('deposits.create');
         Route::get('/dashboard/deposits', [\App\Http\Controllers\DepositController::class, 'index'])->name('deposits.index');
         Route::post('/dashboard/deposits', [\App\Http\Controllers\DepositController::class, 'store'])->name('deposits.store');
@@ -53,4 +59,3 @@ Route::group(
 //    Route::get('/image-editing', [\App\Http\Controllers\PageController::class, 'imageEditing'])->name('pages.image-editing');
     Route::get('/{slug?}', [\App\Http\Controllers\PageController::class, 'show'])->name('pages.show');
 });
-

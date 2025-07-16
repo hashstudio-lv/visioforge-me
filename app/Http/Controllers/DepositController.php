@@ -36,8 +36,7 @@ class DepositController extends Controller
                     'initiativeContext' => 'video-creator.pro',
                 ]
             ]);
-
-           // dd($response->getBody()->getContents());
+            // dd($response->getBody()->getContents());
         }
 
         $user = auth()->user();
@@ -55,13 +54,13 @@ class DepositController extends Controller
 
         $currentCurrency = request()->get('currency', 'EUR');
 
-        if (! in_array($currentCurrency, $currenciesList)) {
+        if (!in_array($currentCurrency, $currenciesList)) {
             abort(400);
         }
 
         $exchangeRatioToART = 1;
 
-        if (! $isCurrenciesFromConfig) {
+        if (!$isCurrenciesFromConfig) {
             if ($currentCurrency !== 'EUR') {
                 $exchangeRatioToART = $exchangeRateService->getExchangeRate('EUR', $currentCurrency);
             }
@@ -103,14 +102,16 @@ class DepositController extends Controller
             'merchant_order_id' => $data['order_id'],
         ]);
 
-        return redirect($data['checkout_url']);
+        return response()->json([
+            'success' => true,
+            'redirect' => $data['checkout_url'],
+        ]);
     }
 
     private function prepareStore(
         StoreDepositRequest $request,
         ExchangeRateService $exchangeRateService
-    )
-    {
+    ) {
         $currenciesRate = config('currencies.currencies_rates');
         $isCurrenciesFromConfig = config('currencies.options.from_config');
         $currenciesList = array_keys($currenciesRate);
@@ -191,8 +192,8 @@ class DepositController extends Controller
         PaymentServiceInterface $paymentService,
         GooglePayValidationRequest $request,
         StoreDepositRequest $requestDeposit,
-        ExchangeRateService $exchangeRateService): JsonResponse
-    {
+        ExchangeRateService $exchangeRateService
+    ): JsonResponse {
         $deposit = $this->prepareStore($requestDeposit, $exchangeRateService);
 
         $orderResponse = $paymentService->createOrderForGooglePay($deposit);
@@ -207,7 +208,7 @@ class DepositController extends Controller
         }
 
         $paymentData = $request->input('paymentData');
-        $response = $paymentService->paymentOrderForGooglePay($paymentData,$request,$orderResponse);
+        $response = $paymentService->paymentOrderForGooglePay($paymentData, $request, $orderResponse);
 
         return response()->json([
             'success' => $response->successful(),
@@ -231,11 +232,218 @@ class DepositController extends Controller
         $paymentService->handlerWebhooks($request);
     }
 
-    public function exactlyWebhooks(Request $request, PaymentServiceInterface $paymentService): void
+    public function payadmitWebhooks(Request $request): void
     {
-        Log::info('Exactly Webhook:', $request->all());
+        Log::info('Webhook:', [$request->all()]);
 
         Deposit::where('merchant_order_id', $request->input('id'))
             ->update(['status' => DepositStatus::APPROVED]);
+    }
+
+    public function processBancontact(
+        Request $request,
+        StoreDepositRequest $requestDeposit,
+        ExchangeRateService $exchangeRateService
+    ): JsonResponse {
+        $deposit = $this->prepareStore($requestDeposit, $exchangeRateService);
+
+        $response = Http::withToken(config('services.payadmit.api_key'))
+            ->withHeaders([
+                'Content-Type' => 'application/json',
+                'Accept' => 'application/json',
+            ])->post(
+                config('services.payadmit.base_url') . 'payments',
+                $this->prepareData($deposit, $request, 'BANCONTACT')
+            );
+
+        $data = $response->json();
+
+        Log::info('payment BANCONTACT:', $data);
+
+        $deposit->update([
+            'merchant_order_id' => $data['result']['id'],
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'data' => $data,
+            'redirect' => $data['result']['redirectUrl'] ?? route('deposits.success'),
+        ]);
+    }
+
+    public function processBlik(
+        Request $request,
+        StoreDepositRequest $requestDeposit,
+        ExchangeRateService $exchangeRateService
+    ): JsonResponse {
+        $deposit = $this->prepareStore($requestDeposit, $exchangeRateService);
+
+        $response = Http::withToken(config('services.payadmit.api_key'))
+            ->withHeaders([
+                'Content-Type' => 'application/json',
+                'Accept' => 'application/json',
+            ])->post(
+                config('services.payadmit.base_url') . 'payments',
+                $this->prepareData($deposit, $request, 'BLIK')
+            );
+
+        $data = $response->json();
+
+        Log::info('payment BLIK:', $data);
+
+        $deposit->update([
+            'merchant_order_id' => $data['result']['id'],
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'data' => $data,
+            'redirect' => $data['result']['redirectUrl'] ?? route('deposits.success'),
+        ]);
+    }
+
+    public function processIdeal(
+        Request $request,
+        StoreDepositRequest $requestDeposit,
+        ExchangeRateService $exchangeRateService
+    ): JsonResponse {
+        $deposit = $this->prepareStore($requestDeposit, $exchangeRateService);
+
+        $response = Http::withToken(config('services.payadmit.api_key'))
+            ->withHeaders([
+                'Content-Type' => 'application/json',
+                'Accept' => 'application/json',
+            ])->post(
+                config('services.payadmit.base_url') . 'payments',
+                $this->prepareData($deposit, $request, 'IDEAL')
+            );
+
+        $data = $response->json();
+
+        Log::info('payment IDEAL:', $data);
+
+        $deposit->update([
+            'merchant_order_id' => $data['result']['id'],
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'data' => $data,
+            'redirect' => $data['result']['redirectUrl'] ?? route('deposits.success'),
+        ]);
+    }
+
+    public function processSofort(
+        Request $request,
+        StoreDepositRequest $requestDeposit,
+        ExchangeRateService $exchangeRateService
+    ): JsonResponse {
+        $deposit = $this->prepareStore($requestDeposit, $exchangeRateService);
+
+        $response = Http::withToken(config('services.payadmit.api_key'))
+            ->withHeaders([
+                'Content-Type' => 'application/json',
+                'Accept' => 'application/json',
+            ])->post(
+                config('services.payadmit.base_url') . 'payments',
+                $this->prepareData($deposit, $request, 'SOFORT')
+            );
+
+        $data = $response->json();
+
+        Log::info('payment SOFORT:', $data);
+
+        $deposit->update([
+            'merchant_order_id' => $data['result']['id'],
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'data' => $data,
+            'redirect' => $data['result']['redirectUrl'] ?? route('deposits.success'),
+        ]);
+    }
+
+    public function processMbway(
+        Request $request,
+        StoreDepositRequest $requestDeposit,
+        ExchangeRateService $exchangeRateService
+    ): JsonResponse {
+        $deposit = $this->prepareStore($requestDeposit, $exchangeRateService);
+
+        $response = Http::withToken(config('services.payadmit.api_key'))
+            ->withHeaders([
+                'Content-Type' => 'application/json',
+                'Accept' => 'application/json',
+            ])->post(
+                config('services.payadmit.base_url') . 'payments',
+                $this->prepareData($deposit, $request, 'MBWAY')
+            );
+
+        $data = $response->json();
+
+        Log::info('payment MBWAY:', $data);
+
+        $deposit->update([
+            'merchant_order_id' => $data['result']['id'],
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'data' => $data,
+            'redirect' => $data['result']['redirectUrl'] ?? route('deposits.success'),
+        ]);
+    }
+
+    public function processMultibanco(
+        Request $request,
+        StoreDepositRequest $requestDeposit,
+        ExchangeRateService $exchangeRateService
+    ): JsonResponse {
+        $deposit = $this->prepareStore($requestDeposit, $exchangeRateService);
+
+        $response = Http::withToken(config('services.payadmit.api_key'))
+            ->withHeaders([
+                'Content-Type' => 'application/json',
+                'Accept' => 'application/json',
+            ])->post(
+                config('services.payadmit.base_url') . 'payments',
+                $this->prepareData($deposit, $request, 'MULTIBANCO')
+            );
+
+        $data = $response->json();
+
+        Log::info('payment MULTIBANCO:', $data);
+
+        $deposit->update([
+            'merchant_order_id' => $data['result']['id'],
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'data' => $data,
+            'redirect' => $data['result']['redirectUrl'] ?? route('deposits.success'),
+        ]);
+    }
+
+    private function prepareData(Deposit $deposit, Request $request, string $paymentMethod): array
+    {
+        return [
+            'paymentType' => 'DEPOSIT',
+            'paymentMethod' => $paymentMethod,
+            'amount' => $deposit->amount,
+            'currency' => $deposit->currency,
+            'customer' => [
+                'email' => $deposit->user->email,
+                'ipaddress' => $request->ip()
+            ],
+            'additionalParameters' => [
+                'purpose' => 'payment'
+            ],
+            'successReturnUrl' => route('payadmit-webhook'),
+            'websiteUrl' => env('APP_URL'),
+            'returnUrl' => env('APP_URL'),
+            'declineReturnUrl' => env('APP_URL'),
+        ];
     }
 }
