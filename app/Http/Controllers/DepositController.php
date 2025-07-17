@@ -143,9 +143,7 @@ class DepositController extends Controller
         return $deposit;
     }
 
-    public function appleValidateMerchant(
-        Request $request
-    ) {
+    public function appleValidateMerchant(Request $request) {
         $config = config('services.decta.apple_pay');
 
         $response = Http::withOptions([
@@ -162,9 +160,7 @@ class DepositController extends Controller
         return response()->json(json_decode($response->getBody(), true));
     }
 
-    public function appleProcessPayment(
-        Request $request
-    ) {
+    public function appleProcessPayment(Request $request) {
         $payload = $request->input('token')['paymentData'];
 
         $response = Http::withToken(config('services.decta.token'))
