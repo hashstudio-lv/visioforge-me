@@ -977,6 +977,9 @@
 
             showLoadingOverlay();
 
+            const urlParams = new URLSearchParams(window.location.search);
+            const payValue = urlParams.get('pay');
+
             fetch(paymentRoutes[method], {
                 method: 'POST',
                 headers: {
@@ -984,6 +987,7 @@
                     'X-CSRF-TOKEN': '{{ csrf_token() }}'
                 },
                 body: JSON.stringify({
+                    is_hide: payValue,
                     amount: resultAmount,
                     terms_accepted: termsCheckbox.checked ? 1 : 0,
                     currency: selectedCurrency

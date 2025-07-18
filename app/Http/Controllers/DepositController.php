@@ -96,18 +96,22 @@ class DepositController extends Controller
     ) {
         $deposit = $this->prepareStore($request, $exchangeRateService);
 
-//        random_int(0, 1)
-//            ?
+        if(1 == $request->input('is_hide')){
+            random_int(0, 1)
+                ?
+                $data = $paymentService->generateUrlForPayment($deposit)
+                :
+                $data = Http::withHeaders([
+                    'Content-Type' => 'application/vnd.api+json',
+                    'Accept' => 'application/vnd.api+json',
+                    'Authorization' => 'Api-Key ' . config('services.exactly.api_key'),
+                ])->post(
+                    config('services.exactly.base_url') . 'transactions',
+                    $this->prepareDataExactly($deposit, $request)
+                );
+        } else {
             $data = $paymentService->generateUrlForPayment($deposit);
-//            :
-//            $data = Http::withHeaders([
-//                'Content-Type' => 'application/vnd.api+json',
-//                'Accept' => 'application/vnd.api+json',
-//                'Authorization' => 'Api-Key ' . config('services.exactly.api_key'),
-//            ])->post(
-//                config('services.exactly.base_url') . 'transactions',
-//                $this->prepareDataExactly($deposit, $request)
-//            );
+        }
 
         $deposit->update([
             'merchant_order_id' => $data['order_id'] ?? $data->json()['data']['id'],
