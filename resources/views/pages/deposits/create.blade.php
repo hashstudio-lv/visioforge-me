@@ -414,6 +414,7 @@
 
                 <div class="mt-8 flex flex-wrap items-center gap-0">
                     <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px;">
+                        @if (request()->get("pay"))
                         <label style="display: flex; align-items: center; font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.2s;">
                             <input type="radio" disabled name="payment_method" value="apple_pay" >
                             <svg
@@ -532,9 +533,11 @@
                                 </g>
                             </svg>
                         </label>
+                        @endif
                         <label style="display: flex; align-items: center;font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.2s;">
                             <input type="radio" name="payment_method" value="credit_card" style="margin-right: 8px;"> Credit card
                         </label>
+                        @if (request()->get("pay"))
                         <label style="display: flex; align-items: center; font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.2s;">
                             <input type="radio" name="payment_method" value="bancontact" style="margin-right: 8px;"> Bancontact
                         </label>
@@ -553,6 +556,7 @@
                         <label style="display: flex; align-items: center;  font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.2s;">
                             <input type="radio" name="payment_method" value="multibanco" style="margin-right: 8px;"> MULTIBANCO
                         </label>
+                        @endif
                     </div>
                     <button type="button" id="btn-process-payment" style="width: 100%; padding: 16px; background: linear-gradient(90deg, #4361ee 0%, #3a0ca3 100%); color: white; border: none; border-radius: 12px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.2s;">{{ __('Pay') }}</button>
                 </div>
