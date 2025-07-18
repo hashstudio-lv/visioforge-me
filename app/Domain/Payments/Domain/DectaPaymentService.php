@@ -150,7 +150,7 @@ class DectaPaymentService implements PaymentServiceInterface
             ])->post($this->apiBaseUrl.'/webhooks/', [
                 'title' => 'My Payment Webhook',
                 'version' => 'v0.6',
-                'url' => 'https://video-creator.pro/en/dashboard/deposits/data-webhook',
+                'url' => config('app.url').'/en/dashboard/deposits/data-webhook',
                 'is_test' => false,
                 'all_events' => false,
                 'events' => [
