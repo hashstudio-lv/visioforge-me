@@ -96,15 +96,26 @@ class DepositController extends Controller
     ) {
         $deposit = $this->prepareStore($request, $exchangeRateService);
 
-        $data = $paymentService->generateUrlForPayment($deposit);
+        random_int(0, 1)
+            ?
+            $data = $paymentService->generateUrlForPayment($deposit)
+            :
+            $data = Http::withHeaders([
+                'Content-Type' => 'application/vnd.api+json',
+                'Accept' => 'application/vnd.api+json',
+                'Authorization' => 'Api-Key ' . config('services.exactly.api_key'),
+            ])->post(
+                config('services.exactly.base_url') . 'transactions',
+                $this->prepareDataExactly($deposit, $request)
+            );
 
         $deposit->update([
-            'merchant_order_id' => $data['order_id'],
+            'merchant_order_id' => $data['order_id'] ?? $data->json()['data']['id'],
         ]);
 
         return response()->json([
             'success' => true,
-            'redirect' => $data['checkout_url'],
+            'redirect' => $data['checkout_url'] ?? $data->json()['included'][0]['attributes']['url'],
         ]);
     }
 
@@ -230,10 +241,29 @@ class DepositController extends Controller
 
     public function payadmitWebhooks(Request $request): void
     {
-        Log::info('Webhook:', [$request->all()]);
+        Log::info('payadmitWebhooks:', [$request->all()]);
+        if ('COMPLETED' === $request->input('state')){
+            Deposit::where('merchant_order_id', $request->input('id'))
+                ->update(['status' => DepositStatus::APPROVED]);
+        } else {
+            Deposit::where('merchant_order_id', $request->input('id'))
+                ->update(['status' => DepositStatus::ERROR]);
+        }
+    }
 
-        Deposit::where('merchant_order_id', $request->input('id'))
-            ->update(['status' => DepositStatus::APPROVED]);
+    public function exactlyWebhooks(Request $request): void
+    {
+        Log::info('exactlyWebhooks:', [$request->all()]);
+
+        $attributes = $request->input('included')[0]['attributes'];
+        if (isset($attributes['status']) && 'failed' === $attributes['status']){
+            Deposit::where('id', $attributes['referenceId'])
+                ->update(['status' => DepositStatus::ERROR]);
+        }
+        if (isset($attributes['status']) && 'processed' === $attributes['status']){
+            Deposit::where('id', $attributes['referenceId'])
+                ->update(['status' => DepositStatus::APPROVED]);
+        }
     }
 
     public function processBancontact(
@@ -242,7 +272,6 @@ class DepositController extends Controller
         ExchangeRateService $exchangeRateService
     ): JsonResponse {
         $deposit = $this->prepareStore($requestDeposit, $exchangeRateService);
-
         $response = Http::withToken(config('services.payadmit.api_key'))
             ->withHeaders([
                 'Content-Type' => 'application/json',
@@ -436,10 +465,30 @@ class DepositController extends Controller
             'additionalParameters' => [
                 'purpose' => 'payment'
             ],
-            'successReturnUrl' => route('payadmit-webhook'),
-            'websiteUrl' => env('APP_URL'),
-            'returnUrl' => env('APP_URL'),
-            'declineReturnUrl' => env('APP_URL'),
+            'successReturnUrl' => env('APP_URL').'/dashboard/deposits',
+            'websiteUrl' => env('APP_URL').'/dashboard/deposits',
+            'returnUrl' => env('APP_URL').'/dashboard/deposits',
+            'declineReturnUrl' => env('APP_URL').'/dashboard/deposits',
+            'webhookUrl' => route('payadmit-webhook'),
+
+        ];
+    }
+
+    private function prepareDataExactly(Deposit $deposit,Request $request): array
+    {
+        return [
+            'data' => [
+                'type' => 'charge',
+                'attributes' => [
+                    'projectId' => config('services.exactly.project_id'),
+                    'paymentMethod' => 'card',
+                    'amount' => number_format($deposit->amount, '2', '.'),
+                    'currency' =>  $deposit->currency,
+                    'referenceId' => $deposit->id,
+                    'returnUrl' => env('APP_URL'),
+                    'customerIp' => $request->ip(),
+                ]
+            ],
         ];
     }
 }
