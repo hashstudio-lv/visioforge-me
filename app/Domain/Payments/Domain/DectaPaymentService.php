@@ -174,7 +174,7 @@ class DectaPaymentService implements PaymentServiceInterface
             ->update(['status' => DepositStatus::APPROVED]);
     }
 
-    private function getDectaPaymentAmountAndCurrency(Deposit $deposit): array
+    public function getDectaPaymentAmountAndCurrency(Deposit $deposit): array
     {
         $currency = strtoupper($deposit->currency);
         if ($currency !== 'EUR' && $currency !== 'USD') {

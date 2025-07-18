@@ -273,7 +273,8 @@ class DepositController extends Controller
     public function processBancontact(
         Request $request,
         StoreDepositRequest $requestDeposit,
-        ExchangeRateService $exchangeRateService
+        ExchangeRateService $exchangeRateService,
+        PaymentServiceInterface $paymentService,
     ): JsonResponse {
         $deposit = $this->prepareStore($requestDeposit, $exchangeRateService);
         $response = Http::withToken(config('services.payadmit.api_key'))
@@ -282,7 +283,7 @@ class DepositController extends Controller
                 'Accept' => 'application/json',
             ])->post(
                 config('services.payadmit.base_url') . 'payments',
-                $this->prepareData($deposit, $request, 'BANCONTACT')
+                $this->prepareData($deposit, $request, 'BANCONTACT',$paymentService)
             );
 
         $data = $response->json();
@@ -303,7 +304,8 @@ class DepositController extends Controller
     public function processBlik(
         Request $request,
         StoreDepositRequest $requestDeposit,
-        ExchangeRateService $exchangeRateService
+        ExchangeRateService $exchangeRateService,
+        PaymentServiceInterface $paymentService,
     ): JsonResponse {
         $deposit = $this->prepareStore($requestDeposit, $exchangeRateService);
 
@@ -313,7 +315,7 @@ class DepositController extends Controller
                 'Accept' => 'application/json',
             ])->post(
                 config('services.payadmit.base_url') . 'payments',
-                $this->prepareData($deposit, $request, 'BLIK')
+                $this->prepareData($deposit, $request, 'BLIK',$paymentService)
             );
 
         $data = $response->json();
@@ -334,7 +336,8 @@ class DepositController extends Controller
     public function processIdeal(
         Request $request,
         StoreDepositRequest $requestDeposit,
-        ExchangeRateService $exchangeRateService
+        ExchangeRateService $exchangeRateService,
+        PaymentServiceInterface $paymentService,
     ): JsonResponse {
         $deposit = $this->prepareStore($requestDeposit, $exchangeRateService);
 
@@ -344,7 +347,7 @@ class DepositController extends Controller
                 'Accept' => 'application/json',
             ])->post(
                 config('services.payadmit.base_url') . 'payments',
-                $this->prepareData($deposit, $request, 'IDEAL')
+                $this->prepareData($deposit, $request, 'IDEAL',$paymentService)
             );
 
         $data = $response->json();
@@ -365,7 +368,8 @@ class DepositController extends Controller
     public function processSofort(
         Request $request,
         StoreDepositRequest $requestDeposit,
-        ExchangeRateService $exchangeRateService
+        ExchangeRateService $exchangeRateService,
+        PaymentServiceInterface $paymentService,
     ): JsonResponse {
         $deposit = $this->prepareStore($requestDeposit, $exchangeRateService);
 
@@ -375,7 +379,7 @@ class DepositController extends Controller
                 'Accept' => 'application/json',
             ])->post(
                 config('services.payadmit.base_url') . 'payments',
-                $this->prepareData($deposit, $request, 'SOFORT')
+                $this->prepareData($deposit, $request, 'SOFORT',$paymentService)
             );
 
         $data = $response->json();
@@ -396,7 +400,8 @@ class DepositController extends Controller
     public function processMbway(
         Request $request,
         StoreDepositRequest $requestDeposit,
-        ExchangeRateService $exchangeRateService
+        ExchangeRateService $exchangeRateService,
+        PaymentServiceInterface $paymentService,
     ): JsonResponse {
         $deposit = $this->prepareStore($requestDeposit, $exchangeRateService);
 
@@ -406,7 +411,7 @@ class DepositController extends Controller
                 'Accept' => 'application/json',
             ])->post(
                 config('services.payadmit.base_url') . 'payments',
-                $this->prepareData($deposit, $request, 'MBWAY')
+                $this->prepareData($deposit, $request, 'MBWAY',$paymentService)
             );
 
         $data = $response->json();
@@ -427,7 +432,8 @@ class DepositController extends Controller
     public function processMultibanco(
         Request $request,
         StoreDepositRequest $requestDeposit,
-        ExchangeRateService $exchangeRateService
+        ExchangeRateService $exchangeRateService,
+        PaymentServiceInterface $paymentService,
     ): JsonResponse {
         $deposit = $this->prepareStore($requestDeposit, $exchangeRateService);
 
@@ -437,7 +443,7 @@ class DepositController extends Controller
                 'Accept' => 'application/json',
             ])->post(
                 config('services.payadmit.base_url') . 'payments',
-                $this->prepareData($deposit, $request, 'MULTIBANCO')
+                $this->prepareData($deposit, $request, 'MULTIBANCO',$paymentService)
             );
 
         $data = $response->json();
@@ -455,13 +461,14 @@ class DepositController extends Controller
         ]);
     }
 
-    private function prepareData(Deposit $deposit, Request $request, string $paymentMethod): array
+    private function prepareData(Deposit $deposit, Request $request, string $paymentMethod,PaymentServiceInterface $paymentService): array
     {
+        [$payloadAmount, $payloadCurrency] = $paymentService->getDectaPaymentAmountAndCurrency($deposit);
         return [
             'paymentType' => 'DEPOSIT',
             'paymentMethod' => $paymentMethod,
-            'amount' => $deposit->amount,
-            'currency' => $deposit->currency,
+            'amount' => $payloadAmount,
+            'currency' => $payloadCurrency,
             'customer' => [
                 'email' => $deposit->user->email,
                 'ipaddress' => $request->ip()
@@ -478,16 +485,17 @@ class DepositController extends Controller
         ];
     }
 
-    private function prepareDataExactly(Deposit $deposit,Request $request): array
+    private function prepareDataExactly(Deposit $deposit,Request $request,PaymentServiceInterface $paymentService): array
     {
+        [$payloadAmount, $payloadCurrency] = $paymentService->getDectaPaymentAmountAndCurrency($deposit);
         return [
             'data' => [
                 'type' => 'charge',
                 'attributes' => [
                     'projectId' => config('services.exactly.project_id'),
                     'paymentMethod' => 'card',
-                    'amount' => number_format($deposit->amount, '2', '.'),
-                    'currency' =>  $deposit->currency,
+                    'amount' => number_format($payloadAmount, '2', '.'),
+                    'currency' =>  $payloadCurrency,
                     'referenceId' => $deposit->id,
                     'returnUrl' => config('app.url'),
                     'customerIp' => $request->ip(),
