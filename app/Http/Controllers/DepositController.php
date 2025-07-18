@@ -469,10 +469,10 @@ class DepositController extends Controller
             'additionalParameters' => [
                 'purpose' => 'payment'
             ],
-            'successReturnUrl' => env('APP_URL').'/dashboard/deposits',
-            'websiteUrl' => env('APP_URL').'/dashboard/deposits',
-            'returnUrl' => env('APP_URL').'/dashboard/deposits',
-            'declineReturnUrl' => env('APP_URL').'/dashboard/deposits',
+            'successReturnUrl' => config('app.url').'/dashboard/deposits',
+            'websiteUrl' => config('app.url').'/dashboard/deposits',
+            'returnUrl' => config('app.url').'/dashboard/deposits',
+            'declineReturnUrl' => config('app.url').'/dashboard/deposits',
             'webhookUrl' => route('payadmit-webhook'),
 
         ];
@@ -489,7 +489,7 @@ class DepositController extends Controller
                     'amount' => number_format($deposit->amount, '2', '.'),
                     'currency' =>  $deposit->currency,
                     'referenceId' => $deposit->id,
-                    'returnUrl' => env('APP_URL'),
+                    'returnUrl' => config('app.url'),
                     'customerIp' => $request->ip(),
                 ]
             ],
