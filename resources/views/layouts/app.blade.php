@@ -441,13 +441,7 @@
             <div class="text-darkgray flex flex-col items-center justify-between py-5 text-base sm:flex-row lg:py-10">
                 <div>
                     {{ env('COMPANY_NAME') }},
-                    {{ env('COMPANY_ADDRESS') }},
-                    <a
-                        href="tel:{{ env('COMPANY_PHONE') }}"
-                        class="mobile tran3s xsm:text-[18px] text-[20px] font-medium text-[color:var(--prime-two)] hover:underline sm:text-[18px] md:text-[18px] lg:text-[18px]"
-                    >
-                        {{ env('COMPANY_PHONE') }}
-                    </a>
+                    {{ env('COMPANY_ADDRESS') }}
                 </div>
 
                 <div class="flex items-center">
