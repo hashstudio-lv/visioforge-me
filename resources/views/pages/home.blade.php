@@ -45,34 +45,11 @@
                     <li>
                         <div class="flex flex-col pr-4">
                             <span class="dark:text-blackColor-dark font-bold text-black">
-                                {{ __("AI Agreement Generations") }}
-                            </span>
-                            <div class="text-sm">
-                                {{ __("Craft clear, polished emails for any situation — from business proposals to customer support — with AI-powered tone and structure.") }}
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <a
-                            class="text-size-15 text-whiteColor bg-secondaryColor px-25px py-10px border-secondaryColor hover:text-secondaryColor hover:bg-whiteColor dark:hover:bg-whiteColor-dark dark:hover:text-whiteColor inline-block whitespace-nowrap rounded border"
-                            href="{{ route("pages.agreements") }}"
-                        >
-                            {{ __("Generate Agreement") }} <i class="icofont-long-arrow-right"></i>
-                        </a>
-                    </li>
-                </ul>
-
-                <ul
-                    data-aos="fade-up"
-                    class="px-30px py-23px bg-borderColor dark:bg-borderColor-dark mt-2 rounded-lg2 aos-init aos-animate flex items-center justify-between"
-                >
-                    <li>
-                        <div class="flex flex-col pr-4">
-                            <span class="dark:text-blackColor-dark font-bold text-black">
                                 {{ __("AI Email Generations") }}
                             </span>
+
                             <div class="text-sm">
-                                {{ __("Create professional, legally-sound agreements in seconds — just input key details, and let AI handle the formatting and clauses.") }}
+                                {{ __("Craft clear, polished emails for any situation — from business proposals to customer support — with AI-powered tone and structure.") }}
                             </div>
                         </div>
                     </li>
@@ -82,6 +59,30 @@
                             href="{{ route("pages.emails") }}"
                         >
                             {{ __("Generate Email") }} <i class="icofont-long-arrow-right"></i>
+                        </a>
+                    </li>
+                </ul>
+
+                <ul
+                    data-aos="fade-up"
+                    class="px-30px py-23px bg-borderColor dark:bg-borderColor-dark rounded-lg2 aos-init aos-animate mt-2 flex items-center justify-between"
+                >
+                    <li>
+                        <div class="flex flex-col pr-4">
+                            <span class="dark:text-blackColor-dark font-bold text-black">
+                                {{ __("AI Agreement Generations") }}
+                            </span>
+                            <div class="text-sm">
+                                {{ __("Create professional, legally-sound agreements in seconds — just input key details, and let AI handle the formatting and clauses.") }}
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a
+                            class="text-size-15 text-whiteColor bg-secondaryColor px-25px py-10px border-secondaryColor hover:text-secondaryColor hover:bg-whiteColor dark:hover:bg-whiteColor-dark dark:hover:text-whiteColor inline-block whitespace-nowrap rounded border"
+                            href="{{ route("pages.agreements") }}"
+                        >
+                            {{ __("Generate Agreement") }} <i class="icofont-long-arrow-right"></i>
                         </a>
                     </li>
                 </ul>
