@@ -132,7 +132,7 @@
                                                     <div
                                                         class="text-lg font-semibold text-primaryColor font-inter mb-4"
                                                     >
-                                                        {{ $product->price }} VST
+                                                        {{ $product->price }} VFT
                                                     </div>
                                                 </div>
                                             </div>

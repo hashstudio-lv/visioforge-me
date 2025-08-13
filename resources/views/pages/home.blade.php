@@ -517,7 +517,7 @@
                                                 </a>
                                                 <!-- price -->
                                                 <div class="text-primaryColor font-inter mb-4 text-lg font-semibold">
-                                                    {{ $product->price }} VST
+                                                    {{ $product->price }} VFT
                                                 </div>
                                             </div>
                                         </div>
