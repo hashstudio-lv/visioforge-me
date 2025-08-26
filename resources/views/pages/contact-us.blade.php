@@ -156,12 +156,56 @@
         <!-- comment form section -->
         <section>
             <div class="container pb-100px">
-                <div x-data="{ submitted: false }" x-cloak>
-                    <form @submit.prevent="submitted = true"
+                <div x-data="{
+                    formData: { name: '', email: '', message: '' },
+                    isLoading: false,
+                    isSuccess: false,
+                    error: null,
+                    async submitForm() {
+                        this.isLoading = true;
+                        this.error = null;
+                        try {
+                            const url = @js(route('contact.store'));
+                            const response = await fetch(url, {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'X-CSRF-TOKEN': {{ Js::from(csrf_token()) }}
+                                },
+                                body: JSON.stringify({
+                                    name: this.formData.name,
+                                    email: this.formData.email,
+                                    message: this.formData.message,
+                                })
+                            });
+                            const json = await response.json();
+                            if (json.success) {
+                                this.isSuccess = true;
+                                this.formData = { name: '', email: '', message: '' };
+                            } else {
+                                this.isSuccess = false;
+                                if (json.errors) {
+                                    const firstErrorKey = Object.keys(json.errors)[0];
+                                    this.error = json.errors[firstErrorKey].toString();
+                                } else if (json.message) {
+                                    this.error = json.message;
+                                } else {
+                                    this.error = 'An error occurred.';
+                                }
+                            }
+                        } catch (e) {
+                            this.error = 'An unexpected error occurred.';
+                            this.isSuccess = false;
+                        } finally {
+                            this.isLoading = false;
+                        }
+                    }
+                }" x-cloak>
+                    <form @submit.prevent="submitForm"
                           class="contact-form p-5 md:p-70px md:pt-90px border border-borderColor2 dark:border-transparent dark:shadow-container"
                           data-aos="fade-up"
                     >
-                        <div x-show="!submitted">
+                        <div x-show="!isSuccess">
                             <div class="mb-10">
                                 <h4 class="text-size-23 md:text-size-44 font-bold leading-10 md:leading-70px text-blackColor dark:text-blackColor-dark"
                                     data-aos="fade-up">
@@ -176,29 +220,33 @@
                             <!-- Example input (keep yours as-is) -->
                             <div class="grid grid-cols-1 xl:grid-cols-2 mb-30px gap-30px">
                                 <div class="relative" data-aos="fade-up">
-                                    <input type="text" placeholder=@js(__("Enter your name*"))
+                                    <input id="name" name="name" x-model="formData.name" required type="text" placeholder=@js(__("Enter your name*"))
                                            class="w-full pl-26px h-15 rounded border"/>
                                 </div>
                                 <div class="relative" data-aos="fade-up">
-                                    <input type="email" placeholder=@js(__("Enter Email Address*"))
+                                    <input id="email" name="email" x-model="formData.email" required type="email" placeholder=@js(__("Enter Email Address*"))
                                            class="w-full pl-26px h-15 rounded border"/>
                                 </div>
                             </div>
 
                             <div class="relative" data-aos="fade-up">
-                                <textarea placeholder=@js(__("Enter your Message here"))
+                                <textarea id="message" name="message" x-model="formData.message" required placeholder=@js(__("Enter your Message here"))
                                           class="w-full pt-3 pl-26px rounded border" rows="5"></textarea>
                             </div>
 
+                            <template x-if="error">
+                                <div class="mt-30px text-red-600" x-text="error"></div>
+                            </template>
+
                             <div class="mt-30px" data-aos="fade-up">
-                                <button type="submit"
+                                <button type="submit" :disabled="isLoading"
                                         class="text-white bg-primaryColor px-6 py-2 rounded hover:bg-white hover:text-primaryColor border border-primaryColor">
                                     {{ __('Submit') }}
                                 </button>
                             </div>
                         </div>
 
-                        <div x-show="submitted" class="mt-10 p-5 bg-green-100 text-green-800 rounded text-center">
+                        <div x-show="isSuccess" class="mt-10 p-5 bg-green-100 text-green-800 rounded text-center">
                             {{ __('Thank you! Your message has been received.') }}
                         </div>
                     </form>

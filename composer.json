@@ -18,6 +18,8 @@
         "livewire/livewire": "^3.5",
         "mcamara/laravel-localization": "^2.0",
         "openai-php/laravel": "^0.10.1",
+        "symfony/http-client": "^7.3",
+        "symfony/mailgun-mailer": "^7.3",
         "vemcogroup/laravel-translation": "^3.0",
         "whitecube/laravel-cookie-consent": "^1.2"
     },

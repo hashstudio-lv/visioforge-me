@@ -58,4 +58,6 @@ Route::group(
 //    Route::get('/image-generation', [\App\Http\Controllers\PageController::class, 'imageGeneration'])->name('pages.image-generation');
 //    Route::get('/image-editing', [\App\Http\Controllers\PageController::class, 'imageEditing'])->name('pages.image-editing');
     Route::get('/{slug?}', [\App\Http\Controllers\PageController::class, 'show'])->name('pages.show');
+
+    Route::post("/contact", [\App\Http\Controllers\ContactController::class, "store"])->name("contact.store");
 });
