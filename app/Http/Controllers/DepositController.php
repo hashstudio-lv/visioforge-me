@@ -124,8 +124,8 @@ class DepositController extends Controller
     }
 
     private function prepareStore(
-        StoreDepositRequest $request,
-        ExchangeRateService $exchangeRateService
+    StoreDepositRequest $request,
+    ExchangeRateService $exchangeRateService
     ) {
         $currenciesRate = config('currencies.currencies_rates');
         $isCurrenciesFromConfig = config('currencies.options.from_config');
@@ -139,7 +139,10 @@ class DepositController extends Controller
 
         $exchangeRatioToART = 1;
 
-        if (!$isCurrenciesFromConfig) {
+        $amount = $request->input('amount');
+        if ($currentCurrency === 'GBP' && ($amount == 500 || $amount == 750)) {
+            $exchangeRatioToART = 1;
+        } else if (!$isCurrenciesFromConfig) {
             if ($currentCurrency !== 'EUR') {
                 $exchangeRatioToART = $exchangeRateService->getExchangeRate('EUR', $currentCurrency);
             }

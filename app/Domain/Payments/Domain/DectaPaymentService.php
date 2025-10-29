@@ -177,6 +177,16 @@ class DectaPaymentService implements PaymentServiceInterface
     public function getDectaPaymentAmountAndCurrency(Deposit $deposit): array
     {
         $currency = strtoupper($deposit->currency);
+        
+        if ($currency === 'GBP') {
+            if ($deposit->amount === 500) {
+                return [450.00, 'GBP'];
+            }
+            if ($deposit->amount === 750) {
+                return [640.00, 'GBP'];
+            }
+        }
+        
         if ($currency !== 'EUR' && $currency !== 'USD') {
             $amountEur = ceil(($deposit->amount * $deposit->exchange_rate) * 100) / 100;
             return [$amountEur, 'EUR'];
