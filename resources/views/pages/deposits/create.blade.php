@@ -249,26 +249,34 @@
 
                     inputAmount(selectedAmount, from) {
                         this.amount = selectedAmount;
+                        
+                        selectedAmount = parseFloat(selectedAmount) || 0;
 
                         if (selectedAmount < 1) {
                             this.cost = null;
                             this.warning = `{{ __('Minimum 1 token required') }} ({{ __('Current') }}: ${Number(selectedAmount)} {{ __('tokens') }})`;
-
                             return;
                         } else {
-                            // because we are taking amount from input, we must not hide it
                             if (from !== 'input') {
                                 this.showCustomAmountInput = false;
                             }
-
                             this.warning = null;
                         }
 
-                        // Calculation logic
+                        if (this.selectedCurrency === 'GBP') {
+                            if (selectedAmount === 500) {
+                                this.cost = 450.00;
+                                return;
+                            }
+                            if (selectedAmount === 750) {
+                                this.cost = 640.00;
+                                return;
+                            }
+                        }
+
                         if (this.isCurrenciesFromConfig) {
                             const currentCurrencyRate = this.currenciesRate[this.selectedCurrency];
 
-                            // user selected the wrong currency
                             if (!currentCurrencyRate) {
                                 return;
                             }
@@ -368,7 +376,7 @@
                         class="custom-amount"
                         placeholder="{{ __('Enter custom tokens amount') }}"
                         name="amount"
-                        @input="inputAmount(event.target.value, 'input')"
+                        @input="selectedAmount = parseFloat(event.target.value) || 0; inputAmount(event.target.value, 'input')"
                     >
 
                     <input
@@ -707,21 +715,30 @@
         function calculateFinalCost() {
             let cost = null;
 
+            if (selectedCurrency === 'GBP') {
+                if (selectedAmount === 500) {
+                    return 450.00;
+                }
+                if (selectedAmount === 750) {
+                    return 640.00;
+                }
+            }
+
             if (isCurrenciesFromConfig) {
                 const currentCurrencyRate = currenciesRate[selectedCurrency];
 
-                if (! currentCurrencyRate) {
+                if (!currentCurrencyRate) {
                     return;
                 }
 
                 cost = currentCurrencyRate.rate[selectedAmount];
 
-                if (! cost) {
+                if (!cost) {
                     cost = selectedAmount * currentCurrencyRate['one_token_price'];
                 }
 
             } else {
-                cost = selectedAmount * exchangeRate;
+                cost = selectedAmount * (selectedCurrency !== 'EUR' ? tokenPriceEUR * exchangeRate : tokenPriceEUR);
             }
 
             return cost;
