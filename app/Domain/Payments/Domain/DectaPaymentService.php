@@ -180,10 +180,10 @@ class DectaPaymentService implements PaymentServiceInterface
         
         if ($currency === 'GBP') {
             if ($deposit->amount === 500) {
-                return [450.00, 'GBP'];
+                return [450.00, 'EUR'];
             }
             if ($deposit->amount === 750) {
-                return [640.00, 'GBP'];
+                return [640.00, 'EUR'];
             }
         }
         
