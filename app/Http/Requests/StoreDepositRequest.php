@@ -22,7 +22,7 @@ class StoreDepositRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'amount' => 'required|numeric|min:5',
+            'amount' => 'required|numeric|min:1',
             'currency' => 'required|string',
 //            'first_name' => 'required|string',
 //            'last_name' => 'required|string',

@@ -250,9 +250,9 @@
                     inputAmount(selectedAmount, from) {
                         this.amount = selectedAmount;
 
-                        if (selectedAmount < 5) {
+                        if (selectedAmount < 1) {
                             this.cost = null;
-                            this.warning = `{{ __('Minimum 5 tokens required') }} ({{ __('Current') }}: ${Number(selectedAmount)} {{ __('tokens') }})`;
+                            this.warning = `{{ __('Minimum 1 token required') }} ({{ __('Current') }}: ${Number(selectedAmount)} {{ __('tokens') }})`;
 
                             return;
                         } else {
@@ -730,9 +730,9 @@
         function updateCostDisplay() {
             if (selectedAmount !== null) {
                 const isCustomMode = amountInputContainer && amountInputContainer.style.display === 'block';
-                if (selectedAmount < 5 && isCustomMode) {
+                if (selectedAmount < 1 && isCustomMode) {
                     if (costText) {
-                        costText.innerHTML = `<span class="text-red-500">Minimum 5 tokens required (Current: ${selectedAmount} tokens)</span>`;
+                        costText.innerHTML = `<span class="text-red-500">Minimum 1 token required (Current: ${selectedAmount} tokens)</span>`;
                     }
                 } else {
                     const cost = calculateFinalCost();
@@ -755,7 +755,7 @@
         function toggleDepositButton() {
             if (!depositButton) return;
 
-            const amountValid = selectedAmount !== null && selectedAmount >= 5;
+            const amountValid = selectedAmount !== null && selectedAmount >= 1;
             const termsAccepted = termsCheckbox && termsCheckbox.checked;
             depositButton.disabled = !(amountValid && termsAccepted);
         }
@@ -964,8 +964,8 @@
                 return;
             }
 
-            if (!resultAmount || resultAmount < 5) {
-                alert('Please select a valid amount (minimum 5 tokens)');
+            if (!resultAmount || resultAmount < 1) {
+                alert('Please select a valid amount (minimum 1 token)');
                 return;
             }
 
