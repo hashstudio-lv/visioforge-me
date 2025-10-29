@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Enums\ProductType;
-use App\Enums\Service;
 use App\Traits\HasUuid;
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,7 +17,6 @@ class Order extends Model
         return $this->belongsTo(User::class);
     }
 
-
     public function product()
     {
         return $this->belongsTo(Product::class);
@@ -30,10 +28,10 @@ class Order extends Model
             return $this->product->getThumbnailUrl();
         }
 
-//        if ($this->product->type == ProductType::AGREEMENT) {
-//            return $this->product->getThumbnailUrl();
-//        }
+        //        if ($this->product->type == ProductType::AGREEMENT) {
+        //            return $this->product->getThumbnailUrl();
+        //        }
 
-        return url('storage/orders/' . $this->id . '/' . $this->product->path);
+        return url('storage/orders/'.$this->id.'/'.$this->product->path);
     }
 }

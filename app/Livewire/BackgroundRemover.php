@@ -40,7 +40,7 @@ class BackgroundRemover extends Component
         $data = [
             'price' => 1.00,
             'prompt' => '',
-            'type' => ProductType::IMAGE_BG_REMOVED
+            'type' => ProductType::IMAGE_BG_REMOVED,
         ];
 
         foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties) {
@@ -57,12 +57,12 @@ class BackgroundRemover extends Component
 
         $response = $imagineArtService->removeBackgroundFromImage($this->file);
 
-        $filename = Str::orderedUuid() . '.' . $response['extension'];
+        $filename = Str::orderedUuid().'.'.$response['extension'];
 
-        Storage::disk('public')->put('orders/' . $order->id . '/' . $filename, $response['body']);
+        Storage::disk('public')->put('orders/'.$order->id.'/'.$filename, $response['body']);
 
         $product->update([
-            'path' => $filename
+            'path' => $filename,
         ]);
 
         $this->result = $order->url;

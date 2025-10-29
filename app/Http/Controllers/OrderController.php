@@ -8,13 +8,13 @@ use App\Services\ImageService;
 use App\Services\ImagineArtService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Drivers\Gd\Driver;
 use Intervention\Image\Drivers\Gd\Encoders\JpegEncoder;
 use Intervention\Image\Drivers\Gd\Encoders\PngEncoder;
 use Intervention\Image\Drivers\Gd\Encoders\WebpEncoder;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Laravel\Facades\Image;
 use ZipArchive;
-use Intervention\Image\Drivers\Gd\Driver;
 
 class OrderController extends Controller
 {
@@ -24,21 +24,21 @@ class OrderController extends Controller
             'format' => [
                 'required',
                 function ($attribute, $value, $fail) use ($imageService) {
-                    if (!$imageService->isValidFormat($value)) {
+                    if (! $imageService->isValidFormat($value)) {
                         $fail('Invalid format provided. Available formats: '.implode(', ',
-                                $imageService::AVAILABLE_FORMATS));
+                            $imageService::AVAILABLE_FORMATS));
                     }
-                }
+                },
             ],
             'size' => [
                 'required',
                 function ($attribute, $value, $fail) use ($imageService) {
-                    if (!$imageService->isValidSize($value)) {
+                    if (! $imageService->isValidSize($value)) {
                         $fail('Invalid size provided. Available sizes: '.implode(', ',
-                                array_keys($imageService::AVAILABLE_SIZES)));
+                            array_keys($imageService::AVAILABLE_SIZES)));
                     }
-                }
-            ]
+                },
+            ],
         ]);
 
         $order = Order::findOrFail($uuid);
@@ -48,10 +48,10 @@ class OrderController extends Controller
         }
 
         // Get image path and prompt from the product
-//        $imagePath = storage_path('app/public/'.$order->product->image_path);  // Full path to the image
+        //        $imagePath = storage_path('app/public/'.$order->product->image_path);  // Full path to the image
         $prompt = $order->product->prompt;
 
-// Get the requested format and size from the request
+        // Get the requested format and size from the request
         $format = $request->input('format', 'webp');  // Default to webp if not provided
         $size = $request->input('size', '1024x1024'); // Default size if not provided
         [$width, $height] = explode('x', $size);
@@ -61,14 +61,14 @@ class OrderController extends Controller
         $zipFileName = $orderDirectory.$order->id.'-'.$timestamp.'.zip';
         $zipPath = storage_path('app/'.$order->id.'-'.$timestamp.'.zip'); // Temporary ZIP file
 
-        $manager = new ImageManager(new Driver());
+        $manager = new ImageManager(new Driver);
         $image = $manager->read(Storage::get($order->product->path));
 
         $image->resize($width, $height);
         $encoder = match (strtolower($format)) {
-            'jpg', 'jpeg' => new JpegEncoder(),
-            'png' => new PngEncoder(),
-            'webp' => new WebpEncoder(),
+            'jpg', 'jpeg' => new JpegEncoder,
+            'png' => new PngEncoder,
+            'webp' => new WebpEncoder,
             default => throw new \Exception("Unsupported image format: $format"),
         };
 
@@ -93,30 +93,30 @@ class OrderController extends Controller
 
     public function textToVideo(ImagineArtService $imagineService)
     {
-//        $id = $imagineService->generateVideoFromText('walking dead');
-//        $id = '574d006b-8c00-4a08-9cb5-6a0f8d2174bc';
-//        $file = Storage::get('/IMG_0645.jpeg');
-//        dd($file);
-//        $id = $imagineService->generateVideoFromImage('walking dead');
-//        $video = $imagineService->getVideoStatus($id);
-//        dd($video);
+        //        $id = $imagineService->generateVideoFromText('walking dead');
+        //        $id = '574d006b-8c00-4a08-9cb5-6a0f8d2174bc';
+        //        $file = Storage::get('/IMG_0645.jpeg');
+        //        dd($file);
+        //        $id = $imagineService->generateVideoFromImage('walking dead');
+        //        $video = $imagineService->getVideoStatus($id);
+        //        dd($video);
 
         return view('themes.plurk.pages.services.text-to-video', [
-            'user' => auth()->user()
+            'user' => auth()->user(),
         ]);
     }
 
     public function imageToVideo()
     {
         return view('themes.plurk.pages.services.image-to-video', [
-            'user' => auth()->user()
+            'user' => auth()->user(),
         ]);
     }
 
     public function imageUpscale()
     {
         return view('themes.plurk.pages.services.image-upscale', [
-            'user' => auth()->user()
+            'user' => auth()->user(),
         ]);
     }
 

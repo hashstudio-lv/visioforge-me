@@ -3,8 +3,8 @@
 namespace App\Models;
 
 use Cviebrock\EloquentSluggable\Sluggable;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class ProductTranslation extends Model
@@ -15,12 +15,6 @@ class ProductTranslation extends Model
 
     /**
      * Extend the query to find similar slugs.
-     *
-     * @param Builder $query
-     * @param string $attribute
-     * @param array $config
-     * @param string $slug
-     * @return Builder
      */
     public function scopeFindSimilarSlugs(Builder $query, string $attribute, array $config, string $slug): Builder
     {
@@ -29,7 +23,7 @@ class ProductTranslation extends Model
 
         // Continue with the original query logic
         $separator = $config['separator'];
-        $query->where($attribute, 'LIKE', $slug . '%')
+        $query->where($attribute, 'LIKE', $slug.'%')
             ->where($attribute, '!=', $this->getAttribute($attribute));
 
         return $query;
@@ -41,7 +35,7 @@ class ProductTranslation extends Model
             'slug' => [
                 'source' => 'title',
                 'unique' => true,
-            ]
+            ],
         ];
     }
 }

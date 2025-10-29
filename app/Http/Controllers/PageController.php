@@ -3,12 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Page;
-use App\Models\Product;
 use App\Repositories\ProductRepository;
-use App\Services\EmailGenerationService;
-use App\Services\ImageGenerationService;
-use App\Services\ImageService;
-use Illuminate\Support\Facades\Storage;
 
 class PageController extends Controller
 {

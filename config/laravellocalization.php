@@ -10,9 +10,9 @@ return [
         'es' => ['name' => 'Spanish', 'script' => 'Latn', 'native' => 'español', 'regional' => 'es_ES'],
         'fr' => ['name' => 'French', 'script' => 'Latn', 'native' => 'français', 'regional' => 'fr_FR'],
         'lv' => ['name' => 'Latvian', 'script' => 'Latn', 'native' => 'latviešu', 'regional' => 'lv_LV'],
-		'nl' => ['name' => 'Dutch', 'script' => 'Latn', 'native' => 'Nederlands', 'regional' => 'nl_NL'],
-		'pl' => ['name' => 'Polish', 'script' => 'Latn', 'native' => 'Polski', 'regional' => 'pl_PL'],
-        'it' => ['name' => 'Italian', 'script' => 'Latn', 'native' => 'Italiano', 'regional' => 'it_IT'], 
+        'nl' => ['name' => 'Dutch', 'script' => 'Latn', 'native' => 'Nederlands', 'regional' => 'nl_NL'],
+        'pl' => ['name' => 'Polish', 'script' => 'Latn', 'native' => 'Polski', 'regional' => 'pl_PL'],
+        'it' => ['name' => 'Italian', 'script' => 'Latn', 'native' => 'Italiano', 'regional' => 'it_IT'],
     ],
 
     // Requires middleware `LaravelSessionRedirect.php`.
@@ -46,8 +46,8 @@ return [
     'hideDefaultLocaleInURL' => false,
 
     // If you want to display the locales in particular order in the language selector you should write the order here.
-    //CAUTION: Please consider using the appropriate locale code otherwise it will not work
-    //Example: 'localesOrder' => ['es','en'],
+    // CAUTION: Please consider using the appropriate locale code otherwise it will not work
+    // Example: 'localesOrder' => ['es','en'],
     'localesOrder' => [],
 
     // If you want to use custom language URL segments like 'at' instead of 'de-AT', you can map them to allow the

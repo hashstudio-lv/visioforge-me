@@ -55,7 +55,7 @@ class Product extends Model
      */
     public function getThumbnailPath(): ?string
     {
-        if (!$this->path) {
+        if (! $this->path) {
             return null;  // Return null if no image path is set
         }
 

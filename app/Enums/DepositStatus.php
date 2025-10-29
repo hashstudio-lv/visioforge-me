@@ -2,8 +2,6 @@
 
 namespace App\Enums;
 
-use Illuminate\Support\Arr;
-
 enum DepositStatus: string
 {
     case PENDING = 'pending';

@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Events\VideoReady;
 use App\Models\Product;
 use App\Services\ImagineArtService;
 use Illuminate\Bus\Queueable;
@@ -9,14 +10,13 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Support\Facades\Log;
-use App\Events\VideoReady;
 
 class CheckImagineArtVideoStatus implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     public Product $product;
+
     public int $tries = 20; // Optional: max attempts before giving up
 
     public function __construct(Product $product)

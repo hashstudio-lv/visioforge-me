@@ -16,11 +16,14 @@ class VideoFromTextGenerate extends Component
     public $balance;
 
     public ?string $externalId = null;
+
     public ?array $videoStatus = null;
+
     public bool $isVideoReady = false;
+
     public bool $isVideoInProgress = false;
 
-//    protected $rules = [];
+    //    protected $rules = [];
 
     public function mount()
     {
@@ -34,7 +37,7 @@ class VideoFromTextGenerate extends Component
         $data = [
             'price' => 1.00,
             'prompt' => $this->prompt,
-            'type' => ProductType::VIDEO_FROM_TEXT
+            'type' => ProductType::VIDEO_FROM_TEXT,
         ];
 
         foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties) {
@@ -62,7 +65,7 @@ class VideoFromTextGenerate extends Component
 
     public function checkVideoStatus(ImagineArtService $imagineArtService)
     {
-        if (!$this->externalId || $this->isVideoReady) {
+        if (! $this->externalId || $this->isVideoReady) {
             return;
         }
 

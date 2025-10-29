@@ -11,12 +11,12 @@ class ServiceController extends Controller
     {
         $service = Service::tryFrom($slug);
 
-        if (!$service) {
+        if (! $service) {
             abort(Response::HTTP_NOT_FOUND);
         }
 
         return view('pages.services.show', [
-            'service' => $service
+            'service' => $service,
         ]);
     }
 }

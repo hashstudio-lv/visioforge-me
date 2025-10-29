@@ -40,7 +40,7 @@ class ImagineTextToPng extends Component
         $data = [
             'price' => 1.00,
             'prompt' => $this->prompt,
-            'type' => ProductType::TEXT_TO_IMAGE
+            'type' => ProductType::TEXT_TO_IMAGE,
         ];
 
         foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties) {
@@ -57,13 +57,13 @@ class ImagineTextToPng extends Component
 
         $response = $imagineArtService->generateImageFromPng($this->prompt);
 
-        $filename = Str::orderedUuid() . '.' . $response['extension'];
+        $filename = Str::orderedUuid().'.'.$response['extension'];
 
-        Storage::disk('public')->put('orders/' . $order->id . '/' . $filename, $response['body']);
+        Storage::disk('public')->put('orders/'.$order->id.'/'.$filename, $response['body']);
 
         $product->update([
             'path' => $filename,
-         ]);
+        ]);
 
         $this->result = $order->url;
     }

@@ -14,21 +14,27 @@ use Livewire\Component;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use ZipArchive;
 
-
 class ImageGenerate extends Component
 {
     public $title;
+
     public $description;
+
     public $format;
+
     public $size;
+
     public $prompt;
+
     public $category;
+
     public $style;
+
     public $balance;
 
     protected $rules = [
         'format' => 'required',
-        'size' => 'required'
+        'size' => 'required',
     ];
 
     public function mount()
@@ -48,13 +54,15 @@ class ImageGenerate extends Component
         $this->validate();
 
         // Validate format and size from ImageService
-        if (!$imageService->isValidFormat($this->format)) {
+        if (! $imageService->isValidFormat($this->format)) {
             $this->addError('format', 'Invalid format provided. Available formats: '.implode(', ', $imageService::AVAILABLE_FORMATS));
+
             return;
         }
 
-        if (!$imageService->isValidSize($this->size)) {
+        if (! $imageService->isValidSize($this->size)) {
             $this->addError('size', 'Invalid size provided. Available sizes: '.implode(', ', array_keys($imageService::AVAILABLE_SIZES)));
+
             return;
         }
 
@@ -62,7 +70,7 @@ class ImageGenerate extends Component
             'price' => 1.00,
             'prompt' => $this->prompt,
             'category' => $this->category,
-            'style' => $this->style
+            'style' => $this->style,
         ];
 
         foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties) {
@@ -89,39 +97,39 @@ class ImageGenerate extends Component
         $product->save();
 
         $timestamp = now()->timestamp;
-        $orderDirectory = 'orders/' . $order->id . '/';
-        $zipFileName = $orderDirectory . $timestamp . '.zip';
-        $zipPath = storage_path('app/' . $timestamp . '.zip'); // Temporary local ZIP file
+        $orderDirectory = 'orders/'.$order->id.'/';
+        $zipFileName = $orderDirectory.$timestamp.'.zip';
+        $zipPath = storage_path('app/'.$timestamp.'.zip'); // Temporary local ZIP file
 
-// Create prompt content in memory
+        // Create prompt content in memory
         $promptContent = $this->prompt;
 
-// Retrieve image content from S3
+        // Retrieve image content from S3
         $imageContents = Storage::disk('s3')->get($order->product->image_path);
 
-// Create ZIP archive
+        // Create ZIP archive
         $zip = new ZipArchive;
         if ($zip->open($zipPath, ZipArchive::CREATE) === true) {
             // Add the prompt text file to ZIP
             $zip->addFromString('prompt.txt', $promptContent);
 
             // Add the image file from S3 to ZIP
-            $zip->addFromString('image.' . $this->format, $imageContents);
+            $zip->addFromString('image.'.$this->format, $imageContents);
 
             // Close ZIP archive
             $zip->close();
         }
 
-// Upload ZIP file to S3
+        // Upload ZIP file to S3
         Storage::disk('s3')->put($zipFileName, file_get_contents($zipPath));
 
-// Generate public URL for the ZIP file
+        // Generate public URL for the ZIP file
         $zipFileUrl = Storage::disk('s3')->url($zipFileName);
 
-// Delete temporary ZIP file from local storage
+        // Delete temporary ZIP file from local storage
         unlink($zipPath);
 
-// Dispatch event with download link
+        // Dispatch event with download link
         $this->dispatch('fileDownload', $zipFileUrl);
     }
 
@@ -130,5 +138,3 @@ class ImageGenerate extends Component
         return view('livewire.image-generate');
     }
 }
-
-

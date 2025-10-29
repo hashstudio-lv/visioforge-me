@@ -12,7 +12,9 @@ use Illuminate\Support\Str;
 class FystPaymentService implements PaymentServiceInterface
 {
     private string $merchantId;
+
     private string $apiKey;
+
     private string $apiBaseUrl;
 
     public function __construct()
@@ -43,7 +45,7 @@ class FystPaymentService implements PaymentServiceInterface
     public function generateUrlForPayment(Deposit $deposit): array
     {
         return [false];
-        Log::debug("Initiating balance top-up", [$deposit->toArray()]);
+        Log::debug('Initiating balance top-up', [$deposit->toArray()]);
 
         $payload = $this->buildUrlPayload($deposit);
 
@@ -52,18 +54,19 @@ class FystPaymentService implements PaymentServiceInterface
                 ->asForm()
                 ->post("{$this->apiBaseUrl}/sale-form/{$this->merchantId}", $payload);
 
-            Log::debug("Payment response", ['status' => $response->status(), 'body' => $response->body()]);
+            Log::debug('Payment response', ['status' => $response->status(), 'body' => $response->body()]);
 
             if ($response->failed()) {
-                Log::error("Payment request failed", ['status' => $response->status(), 'body' => $response->body()]);
+                Log::error('Payment request failed', ['status' => $response->status(), 'body' => $response->body()]);
                 throw new \Exception("Payment request failed: {$response->body()}");
             }
 
             $data = [];
             parse_str($response->body(), $data);
+
             return $data;
         } catch (\Exception $e) {
-            Log::error("Error generating payment URL", ['error' => $e->getMessage()]);
+            Log::error('Error generating payment URL', ['error' => $e->getMessage()]);
             throw $e;
         }
     }
@@ -71,7 +74,8 @@ class FystPaymentService implements PaymentServiceInterface
     public function handlePaymentResponse(Deposit $deposit, array $data): bool
     {
         $deposit->update(['status' => DepositStatus::from($data['status'])]);
-        Log::debug("Payment callback processed", ['data' => $data]);
+        Log::debug('Payment callback processed', ['data' => $data]);
+
         return true;
     }
 

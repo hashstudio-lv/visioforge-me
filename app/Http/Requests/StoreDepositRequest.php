@@ -24,14 +24,14 @@ class StoreDepositRequest extends FormRequest
         return [
             'amount' => 'required|numeric|min:1',
             'currency' => 'required|string',
-//            'first_name' => 'required|string',
-//            'last_name' => 'required|string',
-//            'email' => 'required|email',
-//            'phone' => 'required|string',
-//            'address' => 'required|string',
-//            'city' => 'required|string',
-//            'country' => 'required|string',
-//            'zip' => 'required|string'
+            //            'first_name' => 'required|string',
+            //            'last_name' => 'required|string',
+            //            'email' => 'required|email',
+            //            'phone' => 'required|string',
+            //            'address' => 'required|string',
+            //            'city' => 'required|string',
+            //            'country' => 'required|string',
+            //            'zip' => 'required|string'
         ];
     }
 }

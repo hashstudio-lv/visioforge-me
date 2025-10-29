@@ -4,13 +4,14 @@ namespace App\Domain\ExchangeRate\Services;
 
 class ExchangeRateService
 {
-    function getExchangeRate($from, $to) {
+    public function getExchangeRate($from, $to)
+    {
         $from = strtoupper($from);
         $to = strtoupper($to);
 
         // Источник 1: exchangerate.host
         $url1 = "https://api.exchangerate.host/latest?base=$from&symbols=$to";
-        $rate = $this->fetchRateFromApi($url1, function($data) use ($to) {
+        $rate = $this->fetchRateFromApi($url1, function ($data) use ($to) {
             return $data['rates'][$to] ?? null;
         });
 
@@ -20,14 +21,15 @@ class ExchangeRateService
 
         // Источник 2: frankfurter.app
         $url2 = "https://api.frankfurter.app/latest?from=$from&to=$to";
-        $rate = $this->fetchRateFromApi($url2, function($data) use ($to) {
+        $rate = $this->fetchRateFromApi($url2, function ($data) use ($to) {
             return $data['rates'][$to] ?? null;
         });
 
         return $rate;
     }
 
-    public function fetchRateFromApi($url, $extractFn) {
+    public function fetchRateFromApi($url, $extractFn)
+    {
         $ch = curl_init();
         curl_setopt_array($ch, [
             CURLOPT_URL => $url,
@@ -43,6 +45,7 @@ class ExchangeRateService
         }
 
         $data = json_decode($response, true);
+
         return is_array($data) ? $extractFn($data) : null;
     }
 }

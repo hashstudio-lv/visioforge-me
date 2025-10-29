@@ -10,7 +10,7 @@ return [
     ],
 
     'currencies_rates' => [
-		'PLN' => [
+        'PLN' => [
             'one_token_price' => 0.01,
 
             'rate' => [
@@ -20,7 +20,7 @@ return [
                 200 => 172.0,
             ],
         ],
-		
+
         'EUR' => [
             'one_token_price' => 1.0,
 

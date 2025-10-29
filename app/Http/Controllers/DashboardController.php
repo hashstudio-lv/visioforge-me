@@ -12,7 +12,7 @@ class DashboardController extends Controller
 
         return view('pages.dashboard', [
             'user' => auth()->user(),
-            'orders' => $orders
+            'orders' => $orders,
         ]);
     }
 }

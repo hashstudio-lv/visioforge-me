@@ -2,18 +2,14 @@
 
 namespace App\Services;
 
-
-use App\Enums\ProductCategory;
-use App\Enums\ProductStyle;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Storage;
-use OpenAI;
 
 class ImagineArtService
 {
     protected string $apiKey;
+
     protected string $baseUrl;
 
     public function __construct()
@@ -22,14 +18,13 @@ class ImagineArtService
         $this->baseUrl = 'https://api.vyro.ai/v2';
     }
 
-
     public function generateImageFromText(string $prompt, ?string $style = null): array
     {
-        if (!$style) {
+        if (! $style) {
             $style = 'flux-dev';
         }
 
-        $url = $this->baseUrl . '/image/generations';
+        $url = $this->baseUrl.'/image/generations';
 
         $response = Http::withToken($this->apiKey)
             ->asMultipart()
@@ -46,17 +41,17 @@ class ImagineArtService
         return [
             'name' => 'test',
             'extension' => 'jpeg',
-            'body' => $response->body()
+            'body' => $response->body(),
         ];
     }
 
     public function generateImageFromPng(string $prompt, ?string $style = null): array
     {
-        if (!$style) {
+        if (! $style) {
             $style = 'flux-dev';
         }
 
-        $url = $this->baseUrl . '/image/generations/transparent';
+        $url = $this->baseUrl.'/image/generations/transparent';
 
         $response = Http::withToken($this->apiKey)
             ->asMultipart()
@@ -72,17 +67,17 @@ class ImagineArtService
 
         return [
             'extension' => 'png',
-            'body' => $response->body()
+            'body' => $response->body(),
         ];
     }
 
     public function generateVideoFromText(string $prompt, ?string $style = null): string
     {
-        if (!$style) {
+        if (! $style) {
             $style = 'imagine-v2';
         }
 
-        $url = $this->baseUrl . '/video/text-to-video';
+        $url = $this->baseUrl.'/video/text-to-video';
 
         $response = Http::withToken($this->apiKey)
             ->asMultipart()
@@ -100,11 +95,11 @@ class ImagineArtService
 
     public function generateVideoFromImage(string $prompt, UploadedFile $file, ?string $style = null): string
     {
-        if (!$style) {
+        if (! $style) {
             $style = 'imagine-v1';
         }
 
-        $url = $this->baseUrl . '/video/image-to-video';
+        $url = $this->baseUrl.'/video/image-to-video';
 
         $response = Http::withToken($this->apiKey)
             ->asMultipart()
@@ -128,7 +123,7 @@ class ImagineArtService
 
     public function removeBackgroundFromImage(UploadedFile $file): array
     {
-        $url = $this->baseUrl . '/image/background/remover';
+        $url = $this->baseUrl.'/image/background/remover';
 
         $response = Http::withToken($this->apiKey)
             ->asMultipart()
@@ -148,7 +143,7 @@ class ImagineArtService
         return [
             'name' => $file->getClientOriginalName(),
             'extension' => $file->getClientOriginalExtension(),
-            'body' => $response->body()
+            'body' => $response->body(),
         ];
     }
 
@@ -156,7 +151,7 @@ class ImagineArtService
     {
         set_time_limit(300);
 
-        $url = $this->baseUrl . '/image/enhance';
+        $url = $this->baseUrl.'/image/enhance';
 
         $response = Http::withToken($this->apiKey)
             ->timeout(300)
@@ -177,7 +172,7 @@ class ImagineArtService
         return [
             'name' => $file->getClientOriginalName(),
             'extension' => $file->getClientOriginalExtension(),
-            'body' => $response->body()
+            'body' => $response->body(),
         ];
     }
 
@@ -186,7 +181,7 @@ class ImagineArtService
         set_time_limit(0);
         ini_set('max_execution_time', 0);
 
-        $url = $this->baseUrl . '/image/generations/ai-background';
+        $url = $this->baseUrl.'/image/generations/ai-background';
 
         $response = Http::withToken($this->apiKey)
             ->timeout(300)
@@ -208,13 +203,13 @@ class ImagineArtService
         return [
             'name' => $file->getClientOriginalName(),
             'extension' => $file->getClientOriginalExtension(),
-            'body' => $response->body()
+            'body' => $response->body(),
         ];
     }
 
     public function getVideoStatus(string $id): array
     {
-        $url = $this->baseUrl . '/video/' . $id . '/status';
+        $url = $this->baseUrl.'/video/'.$id.'/status';
 
         $response = Http::withToken($this->apiKey)->get($url);
 

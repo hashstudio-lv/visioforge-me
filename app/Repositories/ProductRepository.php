@@ -4,7 +4,6 @@ namespace App\Repositories;
 
 use App\Enums\ProductCategory;
 use App\Enums\ProductStyle;
-use App\Models\Page;
 use App\Models\Product;
 
 class ProductRepository
@@ -20,29 +19,29 @@ class ProductRepository
     {
         $products = Product::query()->public();
 
-        if (!empty($filter['category'])) {
+        if (! empty($filter['category'])) {
             $categories = [];
 
-            foreach($filter['category'] as $category) {
+            foreach ($filter['category'] as $category) {
                 $categories[] = ProductCategory::from($category);
             }
 
             $products = $products->whereIn('category', $categories);
         }
 
-        if (!empty($filter['style'])) {
+        if (! empty($filter['style'])) {
             $styles = [];
 
-            foreach($filter['style'] as $style) {
+            foreach ($filter['style'] as $style) {
                 $styles[] = ProductStyle::from($style);
             }
 
             $products = $products->whereIn('style', $styles);
         }
 
-        if (!empty($filter['search'])) {
+        if (! empty($filter['search'])) {
             $products = $products->whereHas('translations', function ($query) use ($filter) {
-                return $query->where('slug', 'LIKE', '%' . $filter['search'] . '%');
+                return $query->where('slug', 'LIKE', '%'.$filter['search'].'%');
             });
         }
 

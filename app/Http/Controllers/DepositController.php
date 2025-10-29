@@ -34,7 +34,7 @@ class DepositController extends Controller
                     'displayName' => 'Video Creator',
                     'initiative' => 'web',
                     'initiativeContext' => 'video-creator.pro',
-                ]
+                ],
             ]);
             // dd($response->getBody()->getContents());
         }
@@ -44,7 +44,7 @@ class DepositController extends Controller
         $countries = Country::whereIn('country_code', [
             'AU', 'AT', 'BE', 'CA', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IS', 'IE', 'IL', 'IT',
             'JP',
-            'LV', 'LT', 'LU', 'MT', 'NL', 'NZ', 'NO', 'PL', 'PT', 'RO', 'SG', 'SK', 'KR', 'ES', 'SE', 'CH'
+            'LV', 'LT', 'LU', 'MT', 'NL', 'NZ', 'NO', 'PL', 'PT', 'RO', 'SG', 'SK', 'KR', 'ES', 'SE', 'CH',
         ])->get();
 
         $currenciesRate = config('currencies.currencies_rates');
@@ -54,13 +54,13 @@ class DepositController extends Controller
 
         $currentCurrency = request()->get('currency', 'EUR');
 
-        if (!in_array($currentCurrency, $currenciesList)) {
+        if (! in_array($currentCurrency, $currenciesList)) {
             abort(400);
         }
 
         $exchangeRatioToART = 1;
 
-        if (!$isCurrenciesFromConfig) {
+        if (! $isCurrenciesFromConfig) {
             if ($currentCurrency !== 'EUR') {
                 $exchangeRatioToART = $exchangeRateService->getExchangeRate('EUR', $currentCurrency);
             }
@@ -85,7 +85,7 @@ class DepositController extends Controller
 
         return view('pages.deposits.index', [
             'user' => $user,
-            'deposits' => $user->deposits
+            'deposits' => $user->deposits,
         ]);
     }
 
@@ -96,22 +96,22 @@ class DepositController extends Controller
     ) {
         $deposit = $this->prepareStore($request, $exchangeRateService);
 
-//        if(1 == $request->input('is_hide')){
-//            random_int(0, 1)
-//                ?
-//                $data = $paymentService->generateUrlForPayment($deposit)
-//                :
-//                $data = Http::withHeaders([
-//                    'Content-Type' => 'application/vnd.api+json',
-//                    'Accept' => 'application/vnd.api+json',
-//                    'Authorization' => 'Api-Key ' . config('services.exactly.api_key'),
-//                ])->post(
-//                    config('services.exactly.base_url') . 'transactions',
-//                    $this->prepareDataExactly($deposit, $request)
-//                );
-//        } else {
-            $data = $paymentService->generateUrlForPayment($deposit);
-//        }
+        //        if(1 == $request->input('is_hide')){
+        //            random_int(0, 1)
+        //                ?
+        //                $data = $paymentService->generateUrlForPayment($deposit)
+        //                :
+        //                $data = Http::withHeaders([
+        //                    'Content-Type' => 'application/vnd.api+json',
+        //                    'Accept' => 'application/vnd.api+json',
+        //                    'Authorization' => 'Api-Key ' . config('services.exactly.api_key'),
+        //                ])->post(
+        //                    config('services.exactly.base_url') . 'transactions',
+        //                    $this->prepareDataExactly($deposit, $request)
+        //                );
+        //        } else {
+        $data = $paymentService->generateUrlForPayment($deposit);
+        //        }
 
         $deposit->update([
             'merchant_order_id' => $data['order_id'] ?? $data->json()['data']['id'],
@@ -124,8 +124,8 @@ class DepositController extends Controller
     }
 
     private function prepareStore(
-    StoreDepositRequest $request,
-    ExchangeRateService $exchangeRateService
+        StoreDepositRequest $request,
+        ExchangeRateService $exchangeRateService
     ) {
         $currenciesRate = config('currencies.currencies_rates');
         $isCurrenciesFromConfig = config('currencies.options.from_config');
@@ -133,7 +133,7 @@ class DepositController extends Controller
 
         $currentCurrency = request()->get('currency', 'EUR');
 
-        if (!in_array($currentCurrency, $currenciesList)) {
+        if (! in_array($currentCurrency, $currenciesList)) {
             abort(400);
         }
 
@@ -142,7 +142,7 @@ class DepositController extends Controller
         $amount = $request->input('amount');
         if ($currentCurrency === 'GBP' && ($amount == 500 || $amount == 750)) {
             $exchangeRatioToART = 1;
-        } else if (!$isCurrenciesFromConfig) {
+        } elseif (! $isCurrenciesFromConfig) {
             if ($currentCurrency !== 'EUR') {
                 $exchangeRatioToART = $exchangeRateService->getExchangeRate('EUR', $currentCurrency);
             }
@@ -161,7 +161,8 @@ class DepositController extends Controller
         return $deposit;
     }
 
-    public function appleValidateMerchant(Request $request) {
+    public function appleValidateMerchant(Request $request)
+    {
         $config = config('services.decta.apple_pay');
 
         $response = Http::withOptions([
@@ -172,19 +173,20 @@ class DepositController extends Controller
             'merchantIdentifier' => $config['merchant_id'],
             'displayName' => $config['display_name'],
             'initiative' => 'web',
-//            'initiativeContext' => $config['domain'],
+            //            'initiativeContext' => $config['domain'],
         ]);
 
         return response()->json(json_decode($response->getBody(), true));
     }
 
-    public function appleProcessPayment(Request $request) {
+    public function appleProcessPayment(Request $request)
+    {
         $payload = $request->input('token')['paymentData'];
 
         $response = Http::withToken(config('services.decta.token'))
             ->post('https://api.decta.com/payments/apple', [
                 'paymentData' => $payload,
-                'amount' => (int)($request->amount * 100),
+                'amount' => (int) ($request->amount * 100),
                 'currency' => $request->currency,
                 'description' => 'Apple Pay Deposit',
             ]);
@@ -217,8 +219,8 @@ class DepositController extends Controller
 
         $apiEndpoint = $orderResponse['api_do_googlepay'] ?? null;
 
-        if (!$apiEndpoint) {
-            return response()->json(['error' => 'Ошибка создания заказа' . $orderResponse], 500);
+        if (! $apiEndpoint) {
+            return response()->json(['error' => 'Ошибка создания заказа'.$orderResponse], 500);
         }
 
         $paymentData = $request->input('paymentData');
@@ -249,7 +251,7 @@ class DepositController extends Controller
     public function payadmitWebhooks(Request $request): void
     {
         Log::info('payadmitWebhooks:', [$request->all()]);
-        if ('COMPLETED' === $request->input('state')){
+        if ($request->input('state') === 'COMPLETED') {
             Deposit::where('merchant_order_id', $request->input('id'))
                 ->update(['status' => DepositStatus::APPROVED]);
         } else {
@@ -263,11 +265,11 @@ class DepositController extends Controller
         Log::info('exactlyWebhooks:', [$request->all()]);
 
         $attributes = $request->input('included')[0]['attributes'];
-        if (isset($attributes['status']) && 'failed' === $attributes['status']){
+        if (isset($attributes['status']) && $attributes['status'] === 'failed') {
             Deposit::where('id', $attributes['referenceId'])
                 ->update(['status' => DepositStatus::ERROR]);
         }
-        if (isset($attributes['status']) && 'processed' === $attributes['status']){
+        if (isset($attributes['status']) && $attributes['status'] === 'processed') {
             Deposit::where('id', $attributes['referenceId'])
                 ->update(['status' => DepositStatus::APPROVED]);
         }
@@ -285,8 +287,8 @@ class DepositController extends Controller
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json',
             ])->post(
-                config('services.payadmit.base_url') . 'payments',
-                $this->prepareData($deposit, $request, 'BANCONTACT',$paymentService)
+                config('services.payadmit.base_url').'payments',
+                $this->prepareData($deposit, $request, 'BANCONTACT', $paymentService)
             );
 
         $data = $response->json();
@@ -317,8 +319,8 @@ class DepositController extends Controller
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json',
             ])->post(
-                config('services.payadmit.base_url') . 'payments',
-                $this->prepareData($deposit, $request, 'BLIK',$paymentService)
+                config('services.payadmit.base_url').'payments',
+                $this->prepareData($deposit, $request, 'BLIK', $paymentService)
             );
 
         $data = $response->json();
@@ -349,8 +351,8 @@ class DepositController extends Controller
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json',
             ])->post(
-                config('services.payadmit.base_url') . 'payments',
-                $this->prepareData($deposit, $request, 'IDEAL',$paymentService)
+                config('services.payadmit.base_url').'payments',
+                $this->prepareData($deposit, $request, 'IDEAL', $paymentService)
             );
 
         $data = $response->json();
@@ -381,8 +383,8 @@ class DepositController extends Controller
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json',
             ])->post(
-                config('services.payadmit.base_url') . 'payments',
-                $this->prepareData($deposit, $request, 'SOFORT',$paymentService)
+                config('services.payadmit.base_url').'payments',
+                $this->prepareData($deposit, $request, 'SOFORT', $paymentService)
             );
 
         $data = $response->json();
@@ -413,8 +415,8 @@ class DepositController extends Controller
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json',
             ])->post(
-                config('services.payadmit.base_url') . 'payments',
-                $this->prepareData($deposit, $request, 'MBWAY',$paymentService)
+                config('services.payadmit.base_url').'payments',
+                $this->prepareData($deposit, $request, 'MBWAY', $paymentService)
             );
 
         $data = $response->json();
@@ -445,8 +447,8 @@ class DepositController extends Controller
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json',
             ])->post(
-                config('services.payadmit.base_url') . 'payments',
-                $this->prepareData($deposit, $request, 'MULTIBANCO',$paymentService)
+                config('services.payadmit.base_url').'payments',
+                $this->prepareData($deposit, $request, 'MULTIBANCO', $paymentService)
             );
 
         $data = $response->json();
@@ -464,9 +466,10 @@ class DepositController extends Controller
         ]);
     }
 
-    private function prepareData(Deposit $deposit, Request $request, string $paymentMethod,PaymentServiceInterface $paymentService): array
+    private function prepareData(Deposit $deposit, Request $request, string $paymentMethod, PaymentServiceInterface $paymentService): array
     {
         [$payloadAmount, $payloadCurrency] = $paymentService->getDectaPaymentAmountAndCurrency($deposit);
+
         return [
             'paymentType' => 'DEPOSIT',
             'paymentMethod' => $paymentMethod,
@@ -474,10 +477,10 @@ class DepositController extends Controller
             'currency' => $payloadCurrency,
             'customer' => [
                 'email' => $deposit->user->email,
-                'ipaddress' => $request->ip()
+                'ipaddress' => $request->ip(),
             ],
             'additionalParameters' => [
-                'purpose' => 'payment'
+                'purpose' => 'payment',
             ],
             'successReturnUrl' => config('app.url').'/dashboard/deposits',
             'websiteUrl' => config('app.url').'/dashboard/deposits',
@@ -488,9 +491,10 @@ class DepositController extends Controller
         ];
     }
 
-    private function prepareDataExactly(Deposit $deposit,Request $request,PaymentServiceInterface $paymentService): array
+    private function prepareDataExactly(Deposit $deposit, Request $request, PaymentServiceInterface $paymentService): array
     {
         [$payloadAmount, $payloadCurrency] = $paymentService->getDectaPaymentAmountAndCurrency($deposit);
+
         return [
             'data' => [
                 'type' => 'charge',
@@ -498,11 +502,11 @@ class DepositController extends Controller
                     'projectId' => config('services.exactly.project_id'),
                     'paymentMethod' => 'card',
                     'amount' => number_format($payloadAmount, '2', '.'),
-                    'currency' =>  $payloadCurrency,
+                    'currency' => $payloadCurrency,
                     'referenceId' => $deposit->id,
                     'returnUrl' => config('app.url'),
                     'customerIp' => $request->ip(),
-                ]
+                ],
             ],
         ];
     }

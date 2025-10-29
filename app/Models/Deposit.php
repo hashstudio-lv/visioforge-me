@@ -25,7 +25,7 @@ class Deposit extends Model
     protected function casts(): array
     {
         return [
-            'status' => DepositStatus::class
+            'status' => DepositStatus::class,
         ];
     }
 }

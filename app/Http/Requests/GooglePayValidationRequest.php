@@ -24,7 +24,7 @@ class GooglePayValidationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'amount' => ['required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/', /*'min:5'*/],
+            'amount' => ['required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/'/* 'min:5' */],
             'terms_accepted' => 'required|accepted',
             'currency' => 'required|string',
         ];
@@ -33,7 +33,6 @@ class GooglePayValidationRequest extends FormRequest
     /**
      * Handle a failed validation attempt.
      *
-     * @param  \Illuminate\Contracts\Validation\Validator  $validator
      * @return void
      *
      * @throws \Illuminate\Http\Exceptions\HttpResponseException

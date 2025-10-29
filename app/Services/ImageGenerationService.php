@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-
 use App\Enums\ProductCategory;
 use App\Enums\ProductStyle;
 use Illuminate\Support\Arr;
@@ -47,7 +46,6 @@ class ImageGenerationService
             Generate the content in clean JSON format with 'title', 'prompt', and 'description' keys, without any extra line breaks or escape characters.
             PROMPT;
 
-
         // Call OpenAI's chat completion (GPT-3.5 or 4) to generate the prompt
         $response = $this->client->chat()->create([
             'model' => 'gpt-4o-mini',
@@ -66,9 +64,6 @@ class ImageGenerationService
 
     /**
      * Generate an image based on the provided prompt.
-     *
-     * @param string $prompt
-     * @return array
      */
     public function generateImageFromPrompt(string $prompt): array
     {
@@ -76,13 +71,13 @@ class ImageGenerationService
             'prompt' => $prompt,
             'model' => 'dall-e-3',
             'n' => 1, // number of images to generate
-            'size' => '1024x1024' // image size
+            'size' => '1024x1024', // image size
         ]);
 
         // Return image URL and other data from response
         return [
             'url' => $response->data[0]->url,
-            'prompt' => $prompt
+            'prompt' => $prompt,
         ];
     }
 }

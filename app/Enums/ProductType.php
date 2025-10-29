@@ -2,8 +2,6 @@
 
 namespace App\Enums;
 
-use Illuminate\Support\Arr;
-
 enum ProductType: string
 {
     case VIDEO_FROM_IMAGE = 'video-from-image';
@@ -39,7 +37,7 @@ enum ProductType: string
 
     public function translatedValue(): string
     {
-        return match($this) {
+        return match ($this) {
             self::VIDEO_FROM_IMAGE => __('Video from Image'),
             self::VIDEO_FROM_TEXT => __('Video from Text'),
             self::IMAGE_UPSCALE => __('Image Upscale'),
@@ -56,7 +54,7 @@ enum ProductType: string
     public static function getPublicTypes()
     {
         return [
-            ProductType::IMAGE
+            ProductType::IMAGE,
         ];
     }
 }

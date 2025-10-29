@@ -2,13 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\ProductCategory;
-use App\Enums\ProductStyle;
-use App\Jobs\GenerateProduct;
-use App\Models\Product;
 use App\Repositories\ProductRepository;
 use App\Services\ProductService;
-use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {

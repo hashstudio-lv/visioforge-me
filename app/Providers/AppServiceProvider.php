@@ -14,11 +14,11 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->singleton(ImageGenerationService::class, function ($app) {
-            return new ImageGenerationService();
+            return new ImageGenerationService;
         });
 
         $this->app->singleton(ProductRepository::class, function ($app) {
-            return new ProductRepository();
+            return new ProductRepository;
         });
     }
 

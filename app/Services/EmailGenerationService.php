@@ -2,9 +2,6 @@
 
 namespace App\Services;
 
-
-use App\Enums\ProductCategory;
-use App\Enums\ProductStyle;
 use Illuminate\Support\Facades\Log;
 use OpenAI;
 
@@ -51,7 +48,6 @@ Output only the generated prompt as plain text, without JSON or additional forma
     /**
      * Generate an image based on the provided prompt.
      *
-     * @param string $prompt
      * @return array
      */
     public function generateEmailFromPrompt(string $prompt): string

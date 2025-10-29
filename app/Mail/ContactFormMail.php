@@ -5,7 +5,6 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
-use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
@@ -24,12 +23,12 @@ class ContactFormMail extends Mailable implements ShouldQueue
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'New Contact Form Submission - ' . $this->contactData['name'],
+            subject: 'New Contact Form Submission - '.$this->contactData['name'],
         );
     }
 
     public function content(): Content
-    {        
+    {
         return new Content(
             markdown: 'emails.contact-form',
             with: [
@@ -39,4 +38,4 @@ class ContactFormMail extends Mailable implements ShouldQueue
             ],
         );
     }
-} 
+}

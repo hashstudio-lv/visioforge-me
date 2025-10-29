@@ -12,8 +12,8 @@ class PaymentController extends Controller
     {
         $request = request()->all();
 
-        Log::debug("Balance top-up callback", [
-            'data' => $request
+        Log::debug('Balance top-up callback', [
+            'data' => $request,
         ]);
 
         $deposit = Deposit::where('merchant_order_id', $request['client_orderid'])->first();

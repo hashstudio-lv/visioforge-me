@@ -15,11 +15,15 @@ class VideoFromImageGenerate extends Component
     use WithFileUploads;
 
     public $prompt;
+
     public $file;
+
     public $balance;
 
     public ?string $externalId = null;
+
     public ?array $videoStatus = null;
+
     public bool $isVideoReady = false;
 
     protected $rules = [
@@ -41,7 +45,7 @@ class VideoFromImageGenerate extends Component
         $data = [
             'price' => 1.00,
             'prompt' => $this->prompt,
-            'type' => ProductType::VIDEO_FROM_IMAGE
+            'type' => ProductType::VIDEO_FROM_IMAGE,
         ];
 
         foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties) {
@@ -63,7 +67,7 @@ class VideoFromImageGenerate extends Component
 
     public function checkVideoStatus(ImagineArtService $imagineArtService)
     {
-        if (!$this->externalId || $this->isVideoReady) {
+        if (! $this->externalId || $this->isVideoReady) {
             return;
         }
 

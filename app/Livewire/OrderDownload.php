@@ -12,13 +12,16 @@ use ZipArchive;
 class OrderDownload extends Component
 {
     public $order;
+
     public $format;
+
     public $size;
+
     public $prompt;
 
     protected $rules = [
         'format' => 'required',
-        'size' => 'required'
+        'size' => 'required',
     ];
 
     public function mount($order)
@@ -41,13 +44,15 @@ class OrderDownload extends Component
         }
 
         // Validate format and size from ImageService
-        if (!$imageService->isValidFormat($this->format)) {
+        if (! $imageService->isValidFormat($this->format)) {
             $this->addError('format', 'Invalid format provided. Available formats: '.implode(', ', $imageService::AVAILABLE_FORMATS));
+
             return;
         }
 
-        if (!$imageService->isValidSize($this->size)) {
+        if (! $imageService->isValidSize($this->size)) {
             $this->addError('size', 'Invalid size provided. Available sizes: '.implode(', ', array_keys($imageService::AVAILABLE_SIZES)));
+
             return;
         }
 
@@ -58,11 +63,11 @@ class OrderDownload extends Component
         $result = $imageGenerationService->generateImageFromPrompt($this->prompt);
 
         // Step 2: Download the generated image using the provided URL
-        $imagePath = $imageService->downloadImage($result['url'], 'orders/' . $this->order->id);
+        $imagePath = $imageService->downloadImage($result['url'], 'orders/'.$this->order->id);
 
         // Step 3: Resize and reformat the image
         $image = Image::read(storage_path('app/public/'.$imagePath));
-        $resizedImagePath = storage_path('app/public/orders/' . $this->order->id . '/image_'.$this->order->id.'.'.$this->format);
+        $resizedImagePath = storage_path('app/public/orders/'.$this->order->id.'/image_'.$this->order->id.'.'.$this->format);
         $image->save($resizedImagePath, $this->format);
 
         // Step 4: Generate the prompt.txt file
@@ -70,7 +75,7 @@ class OrderDownload extends Component
         file_put_contents($txtFilePath, $this->prompt);
 
         // Step 5: Create a ZIP file containing both the resized image and the prompt.txt file
-        $zipFilePath = storage_path('app/public/orders/' . $this->order->id . '/' . now()->timestamp . '.zip');
+        $zipFilePath = storage_path('app/public/orders/'.$this->order->id.'/'.now()->timestamp.'.zip');
         $zip = new ZipArchive;
 
         if ($zip->open($zipFilePath, ZipArchive::CREATE) === true) {
@@ -84,7 +89,7 @@ class OrderDownload extends Component
         unlink($resizedImagePath);
 
         // Step 6: Dispatch an event for the download link
-        $this->dispatch('fileDownload', asset('storage/orders/' . $this->order->id . '/' . now()->timestamp . '.zip'));
+        $this->dispatch('fileDownload', asset('storage/orders/'.$this->order->id.'/'.now()->timestamp.'.zip'));
     }
 
     public function render()

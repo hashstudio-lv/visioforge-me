@@ -6,14 +6,15 @@ use App\Domain\Payments\Domain\Services\PaymentServiceInterface;
 use App\Enums\DepositStatus;
 use App\Http\Requests\GooglePayValidationRequest;
 use App\Models\Deposit;
+use Illuminate\Http\Client\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Http\Client\Response;
 
 class DectaPaymentService implements PaymentServiceInterface
 {
     private string $apiKey;
+
     private string $apiBaseUrl;
 
     public function __construct()
@@ -34,7 +35,7 @@ class DectaPaymentService implements PaymentServiceInterface
 
     public function generateUrlForPayment(Deposit $deposit): array
     {
-        Log::debug("Initiating DECTA payment order creation", [$deposit->toArray()]);
+        Log::debug('Initiating DECTA payment order creation', [$deposit->toArray()]);
 
         $payload = $this->buildPaymentOrderPayload($deposit);
 
@@ -45,15 +46,15 @@ class DectaPaymentService implements PaymentServiceInterface
                 'Accept' => 'application/json',
             ])->post("{$this->apiBaseUrl}/orders/", $payload);
 
-            Log::debug("DECTA API response", [
+            Log::debug('DECTA API response', [
                 'status' => $response->status(),
-                'body' => $response->body()
+                'body' => $response->body(),
             ]);
 
             if ($response->failed()) {
-                Log::error("DECTA order creation failed", [
+                Log::error('DECTA order creation failed', [
                     'status' => $response->status(),
-                    'body' => $response->body()
+                    'body' => $response->body(),
                 ]);
                 throw new \Exception("Failed to create DECTA payment order: {$response->body()}");
             }
@@ -63,10 +64,10 @@ class DectaPaymentService implements PaymentServiceInterface
             return [
                 'order_id' => $data['id'] ?? null,
                 'checkout_url' => $data['full_page_checkout'] ?? null,
-                'status' => DepositStatus::PENDING
+                'status' => DepositStatus::PENDING,
             ];
         } catch (\Exception $e) {
-            Log::error("Error generating DECTA payment URL", ['error' => $e->getMessage()]);
+            Log::error('Error generating DECTA payment URL', ['error' => $e->getMessage()]);
             throw $e;
         }
     }
@@ -79,7 +80,7 @@ class DectaPaymentService implements PaymentServiceInterface
             $response = Http::withToken($this->apiKey)
                 ->withHeaders([
                     'Accept' => 'application/json',
-                    'Content-Type' => 'application/json'
+                    'Content-Type' => 'application/json',
                 ])
                 ->post("$this->apiBaseUrl/orders/", $order);
 
@@ -89,8 +90,8 @@ class DectaPaymentService implements PaymentServiceInterface
 
             $data = $response->json();
 
-        }catch (\Exception $e) {
-            Log::error("Error generating DECTA payment URL", ['error' => $e->getMessage()]);
+        } catch (\Exception $e) {
+            Log::error('Error generating DECTA payment URL', ['error' => $e->getMessage()]);
             throw $e;
         }
 
@@ -114,7 +115,7 @@ class DectaPaymentService implements PaymentServiceInterface
                 'signature' => $tokenData['signature'],
                 'intermediateSigningKey' => [
                     'signedKey' => $tokenData['intermediateSigningKey']['signedKey'],
-                    'signatures' => $tokenData['intermediateSigningKey']['signatures']
+                    'signatures' => $tokenData['intermediateSigningKey']['signatures'],
                 ],
                 'protocolVersion' => $tokenData['protocolVersion'],
                 'signedMessage' => $tokenData['signedMessage'],
@@ -124,11 +125,11 @@ class DectaPaymentService implements PaymentServiceInterface
             $response = Http::withToken($this->apiKey)
                 ->withHeaders([
                     'Accept' => 'application/json',
-                    'Content-Type' => 'application/json'
+                    'Content-Type' => 'application/json',
                 ])
                 ->post($orderResponse['api_do_googlepay'], $googlePayData);
         } catch (\Exception $e) {
-            Log::error("Error generating DECTA payment URL", ['error' => $e->getMessage()]);
+            Log::error('Error generating DECTA payment URL', ['error' => $e->getMessage()]);
             throw $e;
         }
 
@@ -158,8 +159,8 @@ class DectaPaymentService implements PaymentServiceInterface
                 ],
             ]);
 
-        if (!$response->successful()) {
-            Log::error("Error setting DECTA payment webhook", [
+        if (! $response->successful()) {
+            Log::error('Error setting DECTA payment webhook', [
                 'status' => $response->status(),
             ]);
             throw new \Exception("Failed to set DECTA payment webhook: {$response->body()}");
@@ -177,7 +178,7 @@ class DectaPaymentService implements PaymentServiceInterface
     public function getDectaPaymentAmountAndCurrency(Deposit $deposit): array
     {
         $currency = strtoupper($deposit->currency);
-        
+
         if ($currency === 'GBP') {
             if ($deposit->amount === 500) {
                 return [450.00, 'EUR'];
@@ -186,12 +187,14 @@ class DectaPaymentService implements PaymentServiceInterface
                 return [640.00, 'EUR'];
             }
         }
-        
+
         if ($currency !== 'EUR' && $currency !== 'USD') {
             $amountEur = ceil(($deposit->amount * $deposit->exchange_rate) * 100) / 100;
+
             return [$amountEur, 'EUR'];
         } else {
             $amount = ceil($deposit->amount * 100) / 100;
+
             return [$amount, $currency];
         }
     }
@@ -199,6 +202,7 @@ class DectaPaymentService implements PaymentServiceInterface
     private function buildPaymentOrderPayload(Deposit $deposit): array
     {
         [$payloadAmount, $payloadCurrency] = $this->getDectaPaymentAmountAndCurrency($deposit);
+
         return [
             'client' => [
                 'email' => $deposit->user->email,
@@ -207,7 +211,7 @@ class DectaPaymentService implements PaymentServiceInterface
                 [
                     'price' => $payloadAmount,
                     'title' => "Deposit {$deposit->id}",
-                ]
+                ],
             ],
             'currency' => $payloadCurrency,
             'success_redirect' => config('services.decta.success_redirect'),
@@ -217,6 +221,7 @@ class DectaPaymentService implements PaymentServiceInterface
     private function buildPaymentOrderPayloadForGooglePay(Deposit $deposit): array
     {
         [$payloadAmount, $payloadCurrency] = $this->getDectaPaymentAmountAndCurrency($deposit);
+
         return [
             'client' => [
                 'email' => $deposit->user->email,

@@ -40,7 +40,7 @@ class ImageUpscale extends Component
         $data = [
             'price' => 1.00,
             'prompt' => '',
-            'type' => ProductType::IMAGE_UPSCALE
+            'type' => ProductType::IMAGE_UPSCALE,
         ];
 
         foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties) {
@@ -57,13 +57,13 @@ class ImageUpscale extends Component
 
         $response = $imagineArtService->imageUpscale($this->file);
 
-        $filename = Str::orderedUuid() . '.' . $response['extension'];
-        $path = 'orders/' . $order->id . '/' . $filename;
+        $filename = Str::orderedUuid().'.'.$response['extension'];
+        $path = 'orders/'.$order->id.'/'.$filename;
 
-        Storage::disk('public')->put('orders/' . $order->id . '/' . $filename, $response['body']);
+        Storage::disk('public')->put('orders/'.$order->id.'/'.$filename, $response['body']);
 
         $product->update([
-            'path' => $filename
+            'path' => $filename,
         ]);
 
         $this->result = $order->url;

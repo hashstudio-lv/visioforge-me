@@ -13,9 +13,13 @@ use ZipArchive;
 class EmailGenerate extends Component
 {
     public $balance;
+
     public $prompt;
+
     public $email;
+
     public $order;
+
     public $template;
 
     protected $rules = [
@@ -35,19 +39,19 @@ class EmailGenerate extends Component
         // Validate the input (this will apply the rules set in the $rules property)
         $this->validate();
 
-        $prompt = $emailGenerationService->generatePromptUsingOpenAI($this->template . ' ' . $this->prompt);
+        $prompt = $emailGenerationService->generatePromptUsingOpenAI($this->template.' '.$this->prompt);
         $this->email = $emailGenerationService->generateEmailFromPrompt($prompt);
 
         $data = [
             'price' => 10.00,
             'prompt' => $prompt,
-            'type' => 'email'
+            'type' => 'email',
         ];
 
         foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties) {
             $data[$localeCode] = [
                 'title' => $this->prompt,
-                'description' => $this->email
+                'description' => $this->email,
             ];
         }
 
@@ -60,11 +64,11 @@ class EmailGenerate extends Component
         ]);
 
         $timestamp = now()->timestamp;
-        $orderDirectory = 'orders/' . $this->order->id . '/';
-        $zipFileName = $orderDirectory . $timestamp . '.zip';
-        $zipPath = storage_path('app/' . $timestamp . '.zip');
+        $orderDirectory = 'orders/'.$this->order->id.'/';
+        $zipFileName = $orderDirectory.$timestamp.'.zip';
+        $zipPath = storage_path('app/'.$timestamp.'.zip');
 
-        $product->update(['path' => $timestamp . '.zip']);
+        $product->update(['path' => $timestamp.'.zip']);
 
         $zip = new ZipArchive;
 

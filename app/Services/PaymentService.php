@@ -4,7 +4,6 @@ namespace App\Services;
 
 use App\Enums\DepositStatus;
 use App\Models\Deposit;
-use App\Models\User;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
@@ -12,7 +11,9 @@ use Illuminate\Support\Str;
 class PaymentService
 {
     protected $merchantId;
+
     protected $apiKey;
+
     protected $apiBaseUrl;
 
     public function __construct()
@@ -69,7 +70,7 @@ class PaymentService
 
     public function generateUrlForPayment(Deposit $deposit)
     {
-        Log::debug("Initiating balance top-up", [$deposit->toArray()]);
+        Log::debug('Initiating balance top-up', [$deposit->toArray()]);
 
         $endpointId = config('services.fyst.merchant_id');
         $clientOrderId = (string) Str::uuid();
@@ -98,7 +99,7 @@ class PaymentService
             'control' => $controlKey,
         ];
 
-        Log::debug("Sending payment request", [$payload]);
+        Log::debug('Sending payment request', [$payload]);
 
         // Send request
         $response = Http::withHeaders(['Content-Type' => 'application/x-www-form-urlencoded'])
@@ -117,17 +118,17 @@ class PaymentService
         parse_str($response->body(), $data);
 
         return $data;
-//        return $this->handlePaymentResponse($paymentData, $deposit);
+        //        return $this->handlePaymentResponse($paymentData, $deposit);
     }
 
     public function handlePaymentResponse(Deposit $deposit, array $data)
     {
         $deposit->update([
-            'status' => DepositStatus::from($data['status'])
+            'status' => DepositStatus::from($data['status']),
         ]);
 
-        Log::debug("Balance top-up callback", [
-            'data' => $data
+        Log::debug('Balance top-up callback', [
+            'data' => $data,
         ]);
 
         return true;

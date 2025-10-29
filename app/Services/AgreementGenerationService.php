@@ -2,9 +2,6 @@
 
 namespace App\Services;
 
-
-use App\Enums\ProductCategory;
-use App\Enums\ProductStyle;
 use Illuminate\Support\Facades\Log;
 use OpenAI;
 

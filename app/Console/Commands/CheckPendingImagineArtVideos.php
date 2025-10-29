@@ -9,6 +9,7 @@ use Illuminate\Console\Command;
 class CheckPendingImagineArtVideos extends Command
 {
     protected $signature = 'imagine:check-pending-videos';
+
     protected $description = 'Check all products without video URL and update their status via ImagineArt API';
 
     public function handle()
@@ -20,6 +21,7 @@ class CheckPendingImagineArtVideos extends Command
 
         if ($pendingProducts->isEmpty()) {
             $this->info('No pending videos found.');
+
             return;
         }
 

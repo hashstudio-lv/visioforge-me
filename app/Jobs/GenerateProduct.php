@@ -22,8 +22,7 @@ class GenerateProduct implements ShouldQueue
     public function __construct(
         private ProductCategory $category,
         private ProductStyle $style
-    ) {
-    }
+    ) {}
 
     /**
      * Execute the job.
@@ -39,7 +38,7 @@ class GenerateProduct implements ShouldQueue
             'prompt' => $prompt['prompt'],
             'category' => $this->category,
             'style' => $this->style,
-            'type' => ProductType::IMAGE
+            'type' => ProductType::IMAGE,
         ];
 
         foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties) {
