@@ -379,10 +379,6 @@
                         @input="selectedAmount = parseFloat(event.target.value) || 0; inputAmount(event.target.value, 'input')"
                     >
 
-                    <p class="text-center mt-2" style="font-size: 12px;">
-                        {{ __("Token amounts will be rounded down to the nearest whole unit.") }}
-                    </p>
-
                     <input
                         type="hidden"
                         name="currency"
