@@ -2,7 +2,7 @@
     <div class="cookies__alert">
         <div class="cookies__container">
             <div class="cookies__wrapper">
-                <h5 class="cookies__title">@lang('cookieConsent::cookies.title')</h5>
+                <h5 class="cookies__title" style="color: rgb(95 45 237);">@lang('cookieConsent::cookies.title')</h5>
                 <div class="cookies__intro">
                     <p>@lang('cookieConsent::cookies.intro')</p>
                     @if($policy)

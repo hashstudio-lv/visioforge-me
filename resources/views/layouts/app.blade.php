@@ -64,6 +64,8 @@
 
         gtag('config', 'G-5MZE0W603V');
     </script>
+
+    @cookieconsentscripts
 </head>
 
 <body class="font-inter bg-bodyBg dark:bg-bodyBg-dark relative text-base font-normal leading-[1.8]">
@@ -484,7 +486,7 @@
                         <ul class="flex items-center justify-end">
                             <li>
                                 <a
-                                    href="{{ route('pages.show', 'terms-and-conditions') }}"
+                                    href="{{ route('pages.terms') }}"
                                     class="text-darkgray hover:text-primaryColor border-darkgray leading-1 border-r pr-4 text-base"
                                 >
                                     {{ __('Terms & Conditions') }}
@@ -492,7 +494,7 @@
                             </li>
                             <li>
                                 <a
-                                    href="{{ route('pages.show', 'privacy-policy') }}"
+                                    href="{{ route('pages.privacy') }}"
                                     class="text-darkgray hover:text-primaryColor border-darkgray leading-1 border-r pl-4 pr-4 text-base"
                                 >
                                     {{ __('Privacy Policy') }}
@@ -500,7 +502,7 @@
                             </li>
                             <li>
                                 <a
-                                    href="{{ route('pages.show', 'cookie-policy') }}"
+                                    href="{{ route('pages.cookie') }}"
                                     class="text-darkgray hover:text-primaryColor pl-4 text-base"
                                 >
                                     {{ __('Cookie Policy') }}
@@ -535,6 +537,8 @@
     <script src="{{ asset('assets/js/aos.js') }}?t={{ now()->timestamp }}"></script>
     <script src="{{ asset('assets/js/main.js') }}?t={{ now()->timestamp }}"></script>
     @stack('scripts')
+
+    @cookieconsentview
 </body>
 
 </html>

@@ -132,4 +132,13 @@ return [
         'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
+
+    'company' => [
+        'name' => env('COMPANY_NAME'),
+        'email' => env('COMPANY_EMAIL'),
+        'address' => env('COMPANY_ADDRESS'),
+        'regon' => env('COMPANY_REGON'),
+        'nip' => env('COMPANY_NIP'),
+        'krs' => env('COMPANY_KRS'),
+    ]
 ];

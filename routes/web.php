@@ -55,6 +55,13 @@ Route::group(
         Route::get('/products/{slug}', [\App\Http\Controllers\ProductController::class, 'show'])->name('products.show');
         //    Route::get('/image-generation', [\App\Http\Controllers\PageController::class, 'imageGeneration'])->name('pages.image-generation');
         //    Route::get('/image-editing', [\App\Http\Controllers\PageController::class, 'imageEditing'])->name('pages.image-editing');
+
+        Route::get('/cookie', [\App\Http\Controllers\PageController::class, 'cookie'])->name('pages.cookie');
+        Route::get('/privacy', [\App\Http\Controllers\PageController::class, 'privacy'])->name('pages.privacy');
+        Route::get('/terms', [\App\Http\Controllers\PageController::class, 'terms'])->name('pages.terms');
+
+        Route::get('/cookie-policy', [\App\Http\Controllers\PageController::class, 'cookiePolicy'])->name('pages.cookie-policy');
+
         Route::get('/{slug?}', [\App\Http\Controllers\PageController::class, 'show'])->name('pages.show');
 
         Route::post('/contact', [\App\Http\Controllers\ContactController::class, 'store'])->name('contact.store');

@@ -9165,3 +9165,8 @@ video {
 [x-cloak] {
 	display: none
 }
+
+#cookies-policy.cookies {
+    left: 0;
+    right: initial;
+}

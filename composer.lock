@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3dd45ef180a590a6e15213960ced9681",
+    "content-hash": "43c091ea2210c119e4fb6cfa1c6c1217",
     "packages": [
         {
             "name": "astrotomic/laravel-translatable",
@@ -7656,16 +7656,16 @@
         },
         {
             "name": "whitecube/laravel-cookie-consent",
-            "version": "v1.3.0",
+            "version": "v1.3.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/whitecube/laravel-cookie-consent.git",
-                "reference": "a94f920af53f3b0c4e084f4689ae3866428216cd"
+                "reference": "cc89189ec1b37a233858d9577988ab5bd157ea6d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/whitecube/laravel-cookie-consent/zipball/a94f920af53f3b0c4e084f4689ae3866428216cd",
-                "reference": "a94f920af53f3b0c4e084f4689ae3866428216cd",
+                "url": "https://api.github.com/repos/whitecube/laravel-cookie-consent/zipball/cc89189ec1b37a233858d9577988ab5bd157ea6d",
+                "reference": "cc89189ec1b37a233858d9577988ab5bd157ea6d",
                 "shasum": ""
             },
             "require": {
@@ -7719,7 +7719,7 @@
             ],
             "support": {
                 "issues": "https://github.com/whitecube/laravel-cookie-consent/issues",
-                "source": "https://github.com/whitecube/laravel-cookie-consent/tree/v1.3.0"
+                "source": "https://github.com/whitecube/laravel-cookie-consent/tree/v1.3.7"
             },
             "funding": [
                 {
@@ -7727,7 +7727,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-02-24T20:30:28+00:00"
+            "time": "2025-10-21T09:28:38+00:00"
         }
     ],
     "packages-dev": [
