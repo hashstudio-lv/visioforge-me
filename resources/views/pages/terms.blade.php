@@ -39,13 +39,14 @@
         <div class="container py-10 md:py-50px lg:py-60px 2xl:py-100px">
             <h5 class="mb-3 mt-5">{{ __('Last Updated: January 08, 2026') }}</h5>
 
+             {{-- under NIP: :company_nip, REGON: :company_regon, KRS: :company_krs --}}
             <p>
-                {!! __('Welcome to https://visioforge.me (the "Website"), operated by :company_name, a company incorporated in Poland under NIP: :company_nip, REGON: :company_regon, KRS: :company_krs, with its registered office at :company_address ("we", "us", "our", the "Company"). These Terms and Conditions (the "Terms", the "Agreement") govern your access to and use of our AI image generation and editing services (the "Platform"), forming a binding contract between you ("you", "your", "user", "customer") and the Company. For any inquiries, please contact us at :company_email.',
+                {!! __('Welcome to https://visioforge.me (the "Website"), operated by :company_name, a company incorporated in Poland, with its registered office at :company_address ("we", "us", "our", the "Company"). These Terms and Conditions (the "Terms", the "Agreement") govern your access to and use of our AI image generation and editing services (the "Platform"), forming a binding contract between you ("you", "your", "user", "customer") and the Company. For any inquiries, please contact us at :company_email.',
                     [
                         'company_name'    => config('app.company.name'),
-                        'company_nip'     => config('app.company.nip', '5273164602'),
-                        'company_regon'   => config('app.company.regon', '541742501'),
-                        'company_krs'     => config('app.company.krs', '0001173280'),
+                        // 'company_nip'     => config('app.company.nip', '5273164602'),
+                        // 'company_regon'   => config('app.company.regon', '541742501'),
+                        // 'company_krs'     => config('app.company.krs', '0001173280'),
                         'company_address' => config('app.company.address'),
                         'company_email'   => config('app.company.email'),
                     ]) !!}
